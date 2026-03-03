@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://snpit-guide.pages.dev/sitemap.xml

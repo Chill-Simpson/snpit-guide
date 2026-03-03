@@ -1,0 +1,542 @@
+/* ===================================
+   チャットページ専用スタイル
+   =================================== */
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 57px - 90px);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* メッセージエリア */
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ウェルカム画面 */
+.welcome-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  text-align: center;
+  padding: 20px;
+}
+
+.welcome-icon {
+  font-size: 3.5rem;
+  margin-bottom: 12px;
+}
+
+.welcome-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.welcome-subtitle {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 28px;
+}
+
+.welcome-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  max-width: 400px;
+}
+
+.suggestion-btn {
+  background-color: var(--card-background);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  font-family: 'Noto Sans JP', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.suggestion-btn:hover {
+  border-color: var(--accent);
+  background-color: var(--accent-glow);
+}
+
+/* メッセージ吹き出し */
+.message {
+  display: flex;
+  gap: 10px;
+  max-width: 85%;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.message-user {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.message-assistant {
+  align-self: flex-start;
+}
+
+.message-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.message-user .message-avatar {
+  background-color: var(--accent-dark);
+}
+
+.message-assistant .message-avatar {
+  background-color: var(--card-inner);
+}
+
+.message-bubble {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.message-content {
+  padding: 10px 14px;
+  border-radius: 16px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  word-break: break-word;
+}
+
+.message-user .message-content {
+  background-color: var(--accent);
+  color: var(--background);
+  border-bottom-right-radius: 4px;
+}
+
+.message-assistant .message-content {
+  background-color: var(--card-background);
+  color: var(--text-primary);
+  border-bottom-left-radius: 4px;
+}
+
+.message-content a {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.message-user .message-content a {
+  color: var(--background);
+}
+
+/* ローディングアニメーション */
+.typing-indicator {
+  display: flex;
+  gap: 4px;
+  padding: 4px 0;
+}
+
+.typing-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--text-secondary);
+  border-radius: 50%;
+  animation: typingBounce 1.4s infinite ease-in-out;
+}
+
+.typing-dot:nth-child(1) { animation-delay: 0s; }
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typingBounce {
+  0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+  40% { transform: scale(1); opacity: 1; }
+}
+
+/* 入力エリア */
+.chat-input-area {
+  padding: 12px 16px;
+  border-top: 1px solid var(--card-inner);
+  background-color: var(--background);
+}
+
+.chat-input-wrapper {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  background-color: var(--card-background);
+  border-radius: 24px;
+  padding: 8px 8px 8px 16px;
+  border: 1px solid var(--border);
+  transition: border-color 0.2s ease;
+}
+
+.chat-input-wrapper:focus-within {
+  border-color: var(--accent);
+}
+
+.chat-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-family: 'Noto Sans JP', sans-serif;
+  resize: none;
+  outline: none;
+  line-height: 1.5;
+  max-height: 120px;
+  padding: 4px 0;
+}
+
+.chat-input::placeholder {
+  color: var(--text-muted);
+}
+
+.chat-send-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--accent);
+  color: var(--background);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.chat-send-btn:disabled {
+  background-color: var(--card-inner);
+  color: var(--text-muted);
+  cursor: not-allowed;
+}
+
+.chat-send-btn:not(:disabled):hover {
+  background-color: var(--accent-dark);
+}
+
+.chat-disclaimer {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 8px;
+}
+
+/* エラーメッセージ */
+.error-message {
+  background-color: rgba(255, 80, 80, 0.15);
+  color: #ff6b6b;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  text-align: center;
+  margin: 8px 0;
+}
+
+/* バナー広告 */
+.banner-ad {
+  width: 100%;
+  max-width: 728px;
+  height: 90px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--card-background);
+  border-bottom: 1px solid var(--border);
+}
+
+.banner-ad-placeholder {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+/* リワード動画広告オーバーレイ */
+.ad-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.ad-overlay.active {
+  display: flex;
+}
+
+.ad-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  max-width: 400px;
+  width: 90%;
+}
+
+.ad-content {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: var(--card-background);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.ad-placeholder {
+  text-align: center;
+}
+
+.ad-placeholder-icon {
+  font-size: 3rem;
+  margin-bottom: 8px;
+}
+
+.ad-placeholder-text {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.ad-timer {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.85rem;
+  padding: 8px 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+}
+
+/* 報告ボタン（AI回答の下） */
+.report-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-family: 'Noto Sans JP', sans-serif;
+  cursor: pointer;
+  padding: 4px 0;
+  margin-top: 4px;
+  transition: color 0.2s ease;
+}
+
+.report-btn:hover {
+  color: #ff6b6b;
+}
+
+/* 報告モーダル */
+.report-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.report-overlay.active {
+  display: flex;
+}
+
+.report-modal {
+  background-color: var(--card-background);
+  border-radius: 16px;
+  width: 90%;
+  max-width: 440px;
+  max-height: 85vh;
+  overflow-y: auto;
+  animation: fadeIn 0.3s ease;
+}
+
+.report-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.report-modal-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.report-modal-close {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 4px;
+  line-height: 1;
+}
+
+.report-modal-close:hover {
+  color: var(--text-primary);
+}
+
+.report-modal-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.report-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.report-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-weight: 700;
+}
+
+.report-required {
+  color: #ff6b6b;
+}
+
+.report-readonly {
+  background-color: var(--card-inner);
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  max-height: 80px;
+  overflow-y: auto;
+  word-break: break-word;
+}
+
+.report-input,
+.report-textarea {
+  background-color: var(--card-inner);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 0.85rem;
+  font-family: 'Noto Sans JP', sans-serif;
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.2s ease;
+  resize: none;
+}
+
+.report-input:focus,
+.report-textarea:focus {
+  border-color: var(--accent);
+}
+
+.report-input::placeholder,
+.report-textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.report-submit-btn {
+  background-color: var(--accent);
+  color: var(--background);
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  font-family: 'Noto Sans JP', sans-serif;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.report-submit-btn:hover {
+  background-color: var(--accent-dark);
+}
+
+.report-submit-btn:disabled {
+  background-color: var(--card-inner);
+  color: var(--text-muted);
+  cursor: not-allowed;
+}
+
+.report-usage-note {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-align: center;
+  margin: 4px 0 8px;
+  line-height: 1.4;
+}
+
+.report-note {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.report-note.success {
+  color: var(--accent);
+}
+
+.report-note.error {
+  color: #ff6b6b;
+}
+
+/* レスポンシブ */
+@media (max-width: 600px) {
+  .chat-container {
+    height: calc(100vh - 85px - 90px);
+  }
+
+  .banner-ad {
+    height: 50px;
+  }
+
+  .message {
+    max-width: 90%;
+  }
+
+  .welcome-title {
+    font-size: 1.5rem;
+  }
+
+  .welcome-suggestions {
+    max-width: 100%;
+  }
+
+  .suggestion-btn {
+    font-size: 0.8rem;
+    padding: 7px 12px;
+  }
+}

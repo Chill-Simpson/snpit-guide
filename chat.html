@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>スナピー - SNPIT AIアシスタント</title>
+  <meta name="description" content="SNPITのことなら何でも聞けるAIチャットボット。始め方、バトル、トークンの疑問をスナピーが回答します。">
+  <link rel="canonical" href="https://snpit-guide.pages.dev/chat">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <!-- OGP -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="SNPITガイド">
+  <meta property="og:title" content="スナピー - SNPIT AIアシスタント">
+  <meta property="og:description" content="SNPITのことなら何でも聞けるAIチャットボット。始め方、バトル、トークンの疑問をスナピーが回答します。">
+  <meta property="og:url" content="https://snpit-guide.pages.dev/chat">
+  <meta property="og:image" content="https://snpit-guide.pages.dev/images/ogp.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="chat.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6789708198801982"
+     crossorigin="anonymous"></script>
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2CXFBGQWD4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2CXFBGQWD4');
+  </script>
+</head>
+<body>
+  <nav class="nav">
+    <button class="hamburger" onclick="toggleMenu()" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="index.html" class="nav-logo">SNPITガイド</a>
+  </nav>
+  <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+  <div class="slide-menu" id="slideMenu">
+    <div class="menu-header">
+      <span class="menu-title">SNPITガイド</span>
+      <button class="menu-close" onclick="toggleMenu()">&times;</button>
+    </div>
+    <div class="menu-links">
+      <a href="index.html" class="menu-link"><span class="menu-link-icon">🏠</span>ホーム</a>
+      <a href="tutorials.html" class="menu-link"><span class="menu-link-icon">📹</span>チュートリアル</a>
+      <a href="chat.html" class="menu-link active menu-link-accent"><span class="menu-link-icon">💬</span>スナピー (AI)</a>
+      <a href="reports.html" class="menu-link"><span class="menu-link-icon">📋</span>報告一覧</a>
+    </div>
+  </div>
+  <script>
+  function toggleMenu() {
+    document.getElementById('slideMenu').classList.toggle('open');
+    document.getElementById('menuOverlay').classList.toggle('open');
+  }
+  </script>
+
+  <!-- バナー広告枠 -->
+  <div class="banner-ad" id="bannerAd">
+    <span class="banner-ad-placeholder">広告スペース</span>
+    <!-- TODO: AdSense/nend審査通過後にここに広告コードを差し込む -->
+  </div>
+
+  <!-- 広告オーバーレイ（リワード動画広告用） -->
+  <div class="ad-overlay" id="adOverlay">
+    <div class="ad-container">
+      <div class="ad-content" id="adContent">
+        <!-- TODO: 実際の広告SDKのコンテンツがここに入る -->
+        <div class="ad-placeholder">
+          <div class="ad-placeholder-icon">📺</div>
+          <p class="ad-placeholder-text">広告</p>
+        </div>
+      </div>
+      <div class="ad-timer" id="adTimer">広告終了まで 5秒</div>
+    </div>
+  </div>
+
+  <!-- 誤回答報告モーダル -->
+  <div class="report-overlay" id="reportOverlay">
+    <div class="report-modal">
+      <div class="report-modal-header">
+        <span class="report-modal-title">間違いを報告</span>
+        <button class="report-modal-close" onclick="closeReportModal()">&times;</button>
+      </div>
+      <div class="report-modal-body">
+        <div class="report-field">
+          <label class="report-label">あなたの質問</label>
+          <div class="report-readonly" id="reportQuestion"></div>
+        </div>
+        <div class="report-field">
+          <label class="report-label">スナピーの回答</label>
+          <div class="report-readonly" id="reportAnswer"></div>
+        </div>
+        <div class="report-field">
+          <label class="report-label">ニックネーム <span class="report-required">*</span></label>
+          <input type="text" class="report-input" id="reportNickname" placeholder="例: しんぷそん" maxlength="20">
+        </div>
+        <div class="report-field">
+          <label class="report-label">どこが間違っていますか？ <span class="report-required">*</span></label>
+          <textarea class="report-textarea" id="reportWhatIsWrong" placeholder="例: 1勝=3FPではなく5FPに変わりました" maxlength="500" rows="3"></textarea>
+        </div>
+        <div class="report-field">
+          <label class="report-label">正しい情報（分かれば）</label>
+          <textarea class="report-textarea" id="reportCorrectInfo" placeholder="例: 2025年12月のアップデートで変更" maxlength="500" rows="2"></textarea>
+        </div>
+        <p class="report-usage-note">いただいた報告はAIの回答改善に活用させていただきます</p>
+        <button class="report-submit-btn" id="reportSubmitBtn" onclick="submitReport()">送信する</button>
+        <p class="report-note" id="reportStatus"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="chat-container">
+    <!-- チャットメッセージエリア -->
+    <div class="chat-messages" id="chatMessages">
+      <!-- ウェルカムメッセージ -->
+      <div class="welcome-screen" id="welcomeScreen">
+        <div class="welcome-icon">📸</div>
+        <h2 class="welcome-title">スナピー</h2>
+        <p class="welcome-subtitle">SNPITのことなら何でも聞いてね！</p>
+        <div class="welcome-suggestions">
+          <button class="suggestion-btn" onclick="sendSuggestion('SNPITって何？')">SNPITって何？</button>
+          <button class="suggestion-btn" onclick="sendSuggestion('無料で始める方法は？')">無料で始める方法は？</button>
+          <button class="suggestion-btn" onclick="sendSuggestion('カジュアルバトルの報酬は？')">カジュアルバトルの報酬は？</button>
+          <button class="suggestion-btn" onclick="sendSuggestion('FPはどうやって交換するの？')">FPはどうやって交換するの？</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 入力エリア -->
+    <div class="chat-input-area">
+      <div class="chat-input-wrapper">
+        <textarea
+          class="chat-input"
+          id="chatInput"
+          placeholder="SNPITについて質問してね..."
+          rows="1"
+          maxlength="500"
+        ></textarea>
+        <button class="chat-send-btn" id="sendBtn" onclick="sendMessage()" disabled>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 2L11 13"></path>
+            <path d="M22 2L15 22L11 13L2 9L22 2Z"></path>
+          </svg>
+        </button>
+      </div>
+      <p class="chat-disclaimer">スナピーはAIです。回答が正確でない場合があります。</p>
+    </div>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+
+  <script src="chat.js"></script>
+</body>
+</html>

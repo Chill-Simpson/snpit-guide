@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SNPITガイド｜写真で稼ぐSnap to Earnの始め方・攻略情報</title>
+  <meta name="description" content="SNPIT（Snap to Earn）の総合ガイド。始め方、バトルの仕組み、トークン情報、公式リンク集をまとめています。">
+  <link rel="canonical" href="https://snpit-guide.pages.dev/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <!-- OGP -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="SNPITガイド">
+  <meta property="og:title" content="SNPITガイド｜写真で稼ぐSnap to Earnの始め方・攻略情報">
+  <meta property="og:description" content="SNPIT（Snap to Earn）の総合ガイド。始め方、バトルの仕組み、トークン情報、公式リンク集をまとめています。">
+  <meta property="og:url" content="https://snpit-guide.pages.dev/">
+  <meta property="og:image" content="https://snpit-guide.pages.dev/images/ogp.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6789708198801982"
+     crossorigin="anonymous"></script>
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2CXFBGQWD4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2CXFBGQWD4');
+  </script>
+</head>
+<body>
+  <!-- ナビゲーション -->
+  <nav class="nav">
+    <button class="hamburger" onclick="toggleMenu()" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="index.html" class="nav-logo">SNPITガイド</a>
+  </nav>
+  <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+  <div class="slide-menu" id="slideMenu">
+    <div class="menu-header">
+      <span class="menu-title">SNPITガイド</span>
+      <button class="menu-close" onclick="toggleMenu()">&times;</button>
+    </div>
+    <div class="menu-links">
+      <a href="index.html" class="menu-link active"><span class="menu-link-icon">🏠</span>ホーム</a>
+      <a href="tutorials.html" class="menu-link"><span class="menu-link-icon">📹</span>チュートリアル</a>
+      <a href="chat.html" class="menu-link menu-link-accent"><span class="menu-link-icon">💬</span>スナピー (AI)</a>
+      <a href="reports.html" class="menu-link"><span class="menu-link-icon">📋</span>報告一覧</a>
+    </div>
+  </div>
+  <script>
+  function toggleMenu() {
+    document.getElementById('slideMenu').classList.toggle('open');
+    document.getElementById('menuOverlay').classList.toggle('open');
+  }
+  </script>
+
+  <!-- ヒーローセクション -->
+  <header class="hero">
+    <h1 class="hero-title">SNPIT</h1>
+    <p class="hero-catch">写真を撮って稼ぐ。世界初の Snap to Earn</p>
+    <p class="hero-description">Snap, Battle, Connect（撮る、戦う、繋がる）</p>
+    <div class="hero-badges">
+      <a href="https://apps.apple.com/jp/app/snpit-snap-to-earn/id6456411024" target="_blank" rel="noopener">
+        <img src="images/badge_appstore.svg" alt="App Storeからダウンロード" class="store-badge">
+      </a>
+      <a href="https://play.google.com/store/apps/details?id=ae.zealnova.snpit" target="_blank" rel="noopener">
+        <img src="images/badge_googleplay.svg" alt="Google Playで手に入れよう" class="store-badge">
+      </a>
+    </div>
+    <div class="hero-buttons">
+      <a href="chat.html" class="btn btn-accent">スナピーに聞く</a>
+    </div>
+  </header>
+
+  <!-- バナー広告枠 -->
+  <div class="banner-ad" id="bannerAd">
+    <span class="banner-ad-placeholder">広告スペース</span>
+    <!-- TODO: AdSense/nend審査通過後にここに広告コードを差し込む -->
+  </div>
+
+  <main class="main">
+
+    <!-- SNPITとは？ -->
+    <section class="section">
+      <h2 class="section-heading">SNPITとは？</h2>
+      <div class="shop-image-grid">
+        <div class="shop-image-card">
+          <img src="images/snpit_app_camera.png" alt="Snap to Earn" class="shop-card-img img-app" loading="lazy">
+          <div class="shop-card-info">
+            <h3>Snap to Earn</h3>
+            <p class="shop-description">写真を撮るだけでポイントやトークンが稼げる世界初のアプリ。無料で始められます。</p>
+          </div>
+        </div>
+        <div class="shop-image-card">
+          <img src="images/snpit_app_battle.png" alt="フォトバトル" class="shop-card-img img-app" loading="lazy">
+          <div class="shop-card-info">
+            <h3>フォトバトル</h3>
+            <p class="shop-description">撮った写真でユーザー同士がバトル。投票で勝敗が決まり、勝てば報酬ゲット。</p>
+          </div>
+        </div>
+        <div class="shop-image-card">
+          <img src="images/snpit_earn_btc.png" alt="稼いで交換" class="shop-card-img img-app" loading="lazy">
+          <div class="shop-card-info">
+            <h3>稼いで交換</h3>
+            <p class="shop-description">獲得したFPは電子マネーやBTCに交換可能。STPは暗号資産SNPTに交換できます。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ゲーム機能 -->
+    <section class="section">
+      <h2 class="section-heading">ゲーム機能</h2>
+      <div class="shop-image-grid">
+        <a href="https://docs.snpit.xyz/Comparison-of-Image-Quality-by-Quality-Parameter-9466cb57c68a4fe48cea308068cc10ce" target="_blank" rel="noopener" class="shop-image-card">
+          <img src="images/feature_quality.jpg" alt="画質について" class="shop-card-img" loading="lazy">
+          <div class="shop-card-info">
+            <h3>画質（Quality）について</h3>
+            <p class="shop-description">Qualityパラメータによる画質の違いを比較</p>
+          </div>
+        </a>
+        <a href="https://docs.snpit.xyz/About-the-Camera-Rental-Feature-165e1c06a6c8801a961ef3b7f708dd5f" target="_blank" rel="noopener" class="shop-image-card">
+          <img src="images/feature_rental.jpg" alt="カメラレンタル" class="shop-card-img" loading="lazy">
+          <div class="shop-card-info">
+            <h3>カメラレンタル</h3>
+            <p class="shop-description">NFTカメラの貸し借り機能</p>
+          </div>
+        </a>
+        <a href="https://docs.snpit.xyz/what-is-snpit-launchcam" target="_blank" rel="noopener" class="shop-image-card">
+          <img src="images/feature_launchcam.jpg" alt="ローンチカム" class="shop-card-img" loading="lazy">
+          <div class="shop-card-info">
+            <h3>ローンチカム</h3>
+            <p class="shop-description">LaunchCamの仕組みを解説</p>
+          </div>
+        </a>
+        <a href="https://docs.snpit.xyz/snpit-new-staking-and-launchcam-queuing-system-overview-ja" target="_blank" rel="noopener" class="shop-image-card">
+          <img src="images/feature_staking.jpg" alt="ステーキング" class="shop-card-img" loading="lazy">
+          <div class="shop-card-info">
+            <h3>ステーキング</h3>
+            <p class="shop-description">新しいステーキングシステムの概要</p>
+          </div>
+        </a>
+        <a href="https://docs.snpit.xyz/Regarding-the-synthesis-of-items-accessories-skins-15ce1c06a6c880c28ed0ffc13bc18031" target="_blank" rel="noopener" class="shop-image-card">
+          <img src="images/feature_synthesis.jpg" alt="アイテム合成" class="shop-card-img" loading="lazy">
+          <div class="shop-card-info">
+            <h3>アイテム合成</h3>
+            <p class="shop-description">アクセサリー・スキンの合成方法</p>
+          </div>
+        </a>
+        <a href="https://www.canva.com/design/DAGddYgOUDE/2zjQ4DXbYjfiaXNANckqWA/view" target="_blank" rel="noopener" class="shop-image-card">
+          <img src="images/feature_guild.jpg" alt="ギルド" class="shop-card-img" loading="lazy">
+          <div class="shop-card-info">
+            <h3>ギルド</h3>
+            <p class="shop-description">ギルドシステムの詳細（Litepaper）</p>
+          </div>
+        </a>
+        <a href="https://docs.google.com/presentation/d/1sRSd_2a69uchU98YEhBtwgRyA5i-tuxZ1sYIgSxtJqA/" target="_blank" rel="noopener" class="shop-image-card">
+          <img src="images/feature_aitag_new.jpg" alt="AIタグ仕様" class="shop-card-img" loading="lazy">
+          <div class="shop-card-info">
+            <h3>AIタグ仕様</h3>
+            <p class="shop-description">写真属性とAIタグの仕組み</p>
+          </div>
+        </a>
+        <a href="tutorials.html" class="shop-image-card">
+          <img src="images/tutorial_snap.jpg" alt="チュートリアル動画" class="shop-card-img" loading="lazy">
+          <div class="shop-card-info">
+            <h3>チュートリアル動画</h3>
+            <p class="shop-description">撮影・バトル・購入の使い方を動画で解説</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- 公式情報 -->
+    <section class="section">
+      <h2 class="section-heading">公式情報</h2>
+      <div class="link-group">
+        <h3 class="link-group-title">基本リンク</h3>
+        <div class="shop-image-grid">
+          <a href="https://lp.snpit.xyz/" target="_blank" rel="noopener" class="shop-image-card">
+            <img src="images/link_official.jpg" alt="公式サイト" class="shop-card-img" loading="lazy">
+            <div class="shop-card-info">
+              <h3>公式サイト</h3>
+            </div>
+          </a>
+          <a href="https://wp.snpit.xyz" target="_blank" rel="noopener" class="shop-image-card">
+            <img src="images/link_whitepaper.jpg" alt="ホワイトペーパー" class="shop-card-img" loading="lazy">
+            <div class="shop-card-info">
+              <h3>ホワイトペーパー</h3>
+            </div>
+          </a>
+          <a href="https://x.gd/e9gPN" target="_blank" rel="noopener" class="shop-image-card">
+            <img src="images/link_guide.jpg" alt="使い方ガイド" class="shop-card-img" loading="lazy">
+            <div class="shop-card-info">
+              <h3>使い方ガイド</h3>
+            </div>
+          </a>
+          <a href="https://docs.snpit.xyz/snpit-portal-jp" target="_blank" rel="noopener" class="shop-image-card">
+            <img src="images/link_portal.jpg" alt="ポータル" class="shop-card-img" loading="lazy">
+            <div class="shop-card-info">
+              <h3>ポータル（日本語）</h3>
+            </div>
+          </a>
+          <a href="https://lp.snpit.xyz/design-resource" target="_blank" rel="noopener" class="shop-image-card">
+            <img src="images/link_design.jpg" alt="デザインリソース" class="shop-card-img" loading="lazy">
+            <div class="shop-card-info">
+              <h3>デザインリソース</h3>
+            </div>
+          </a>
+          <a href="https://linktr.ee/snpit" target="_blank" rel="noopener" class="shop-image-card">
+            <img src="images/link_linktree.jpg" alt="Linktree" class="shop-card-img" loading="lazy">
+            <div class="shop-card-info">
+              <h3>Linktree</h3>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="link-group">
+        <h3 class="link-group-title">トークン・交換</h3>
+        <div class="shop-image-grid">
+          <a href="https://app.snpit.xyz/swap/" target="_blank" rel="noopener" class="shop-image-card">
+            <img src="images/token_swap.jpg" alt="STP⇄SNPTスワップ" class="shop-card-img" loading="lazy">
+            <div class="shop-card-info">
+              <h3>STP⇄SNPTスワップ</h3>
+            </div>
+          </a>
+          <a href="https://app.snpit.xyz/raffle" target="_blank" rel="noopener" class="shop-image-card">
+            <img src="images/token_raffle.jpg" alt="ラッフル（抽選）" class="shop-card-img" loading="lazy">
+            <div class="shop-card-info">
+              <h3>ラッフル（抽選）</h3>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="link-group">
+        <h3 class="link-group-title">SNS・コミュニティ</h3>
+        <div class="shop-image-grid">
+          <a href="https://x.com/SNPIT_BCG" target="_blank" rel="noopener" class="shop-image-card">
+            <img src="images/sns_x_japan.jpg" alt="X（日本公式）" class="shop-card-img" loading="lazy">
+            <div class="shop-card-info">
+              <h3>X（日本公式）</h3>
+            </div>
+          </a>
+          <a href="https://x.com/snpit_global" target="_blank" rel="noopener" class="shop-image-card">
+            <img src="images/sns_x_global.jpg" alt="X（グローバル）" class="shop-card-img" loading="lazy">
+            <div class="shop-card-info">
+              <h3>X（グローバル）</h3>
+            </div>
+          </a>
+          <a href="https://x.com/SNPIT_Updates" target="_blank" rel="noopener" class="shop-image-card">
+            <img src="images/sns_x_updates.jpg" alt="SNPIT Updates" class="shop-card-img" loading="lazy">
+            <div class="shop-card-info">
+              <h3>SNPIT Updates</h3>
+            </div>
+          </a>
+          <a href="https://discord.gg/snpitbcg" target="_blank" rel="noopener" class="shop-image-card">
+            <img src="images/sns_discord.jpg" alt="Discord" class="shop-card-img" loading="lazy">
+            <div class="shop-card-info">
+              <h3>Discord</h3>
+            </div>
+          </a>
+          <a href="https://x.gd/lynyQ" target="_blank" rel="noopener" class="shop-image-card">
+            <img src="images/sns_line.jpg" alt="LINE OPENCHAT" class="shop-card-img" loading="lazy">
+            <div class="shop-card-info">
+              <h3>LINE OPENCHAT</h3>
+            </div>
+          </a>
+          <a href="https://t.me/SNPITGlobal" target="_blank" rel="noopener" class="shop-image-card">
+            <img src="images/sns_telegram.jpg" alt="Telegram" class="shop-card-img" loading="lazy">
+            <div class="shop-card-info">
+              <h3>Telegram</h3>
+            </div>
+          </a>
+          <a href="https://www.instagram.com/snpit_app/" target="_blank" rel="noopener" class="shop-image-card">
+            <img src="images/sns_instagram.jpg" alt="Instagram" class="shop-card-img" loading="lazy">
+            <div class="shop-card-info">
+              <h3>Instagram</h3>
+            </div>
+          </a>
+          <a href="https://www.youtube.com/@SNPITchannel" target="_blank" rel="noopener" class="shop-image-card">
+            <img src="images/sns_youtube.jpg" alt="YouTube" class="shop-card-img" loading="lazy">
+            <div class="shop-card-info">
+              <h3>YouTube</h3>
+            </div>
+          </a>
+          <a href="https://www.tiktok.com/@snpitofficial" target="_blank" rel="noopener" class="shop-image-card">
+            <img src="images/sns_tiktok.jpg" alt="TikTok" class="shop-card-img" loading="lazy">
+            <div class="shop-card-info">
+              <h3>TikTok</h3>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- NFTマーケット -->
+    <section class="section">
+      <h2 class="section-heading">NFTマーケット</h2>
+
+      <div class="link-group">
+        <h3 class="link-group-title">カメラNFT</h3>
+        <div class="shop-image-grid">
+          <a href="https://snpit.nftt.market/" target="_blank" rel="noopener" class="shop-image-card">
+            <img src="images/nft_nfttmarket.jpg" alt="NFTT Market" class="shop-card-img" loading="lazy">
+            <div class="shop-card-info">
+              <h3>NFTT Market</h3>
+              <p class="shop-description">SNPIT公式NFTマーケット</p>
+            </div>
+          </a>
+          <a href="https://opensea.io/collection/snpitcameranft" target="_blank" rel="noopener" class="shop-image-card">
+            <img src="images/nft_opensea.jpg" alt="OpenSea" class="shop-card-img" loading="lazy">
+            <div class="shop-card-info">
+              <h3>OpenSea</h3>
+              <p class="shop-description">世界最大のNFTマーケット</p>
+            </div>
+          </a>
+          <a href="https://camera666-666.com/" target="_blank" rel="noopener" class="shop-image-card">
+            <img src="images/nft_camera666.jpg" alt="カメラの日直" class="shop-card-img" loading="lazy">
+            <div class="shop-card-info">
+              <h3>カメラの日直</h3>
+              <p class="shop-description">カメラNFTの情報サイト</p>
+            </div>
+          </a>
+          <a href="https://sbinft.market/partners/snpit" target="_blank" rel="noopener" class="shop-image-card">
+            <img src="images/nft_sbinft.jpg" alt="SBI NFT Market" class="shop-card-img" loading="lazy">
+            <div class="shop-card-info">
+              <h3>SBI NFT Market</h3>
+              <p class="shop-description">SBIグループのNFTマーケット</p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- SNPIT関連のお店 -->
+    <section class="section">
+      <h2 class="section-heading">SNPIT関連のお店</h2>
+      <p class="section-sub">SNPITコミュニティとつながりのあるお店です</p>
+      <div class="shop-image-grid">
+        <a href="https://www.menshou-taketora.com" target="_blank" rel="noopener" class="shop-image-card">
+          <img src="images/taketora.jpg" alt="麺匠 竹虎" class="shop-card-img" loading="lazy">
+          <div class="shop-card-info">
+            <h3>麺匠 竹虎</h3>
+            <p class="shop-description">個室で楽しむ絶品ラーメン＆つけ麺</p>
+          </div>
+        </a>
+        <a href="https://blueturtle.jp" target="_blank" rel="noopener" class="shop-image-card">
+          <img src="images/blueturtle.jpg" alt="Blue Turtle" class="shop-card-img" loading="lazy">
+          <div class="shop-card-info">
+            <h3>Blue Turtle</h3>
+            <p class="shop-description">宮古島の美しい海を臨む絶景カフェレストラン</p>
+          </div>
+        </a>
+        <a href="https://blueturtlefarm.stores.jp" target="_blank" rel="noopener" class="shop-image-card">
+          <img src="images/mangocafe.jpg" alt="Mango Cafe" class="shop-card-img" loading="lazy">
+          <div class="shop-card-info">
+            <h3>Mango Cafe</h3>
+            <p class="shop-description">宮古島産完熟マンゴーを農園直送</p>
+          </div>
+        </a>
+        <a href="https://x.com/kurogeshichirin" target="_blank" rel="noopener" class="shop-image-card">
+          <img src="images/kurogeshichirin.jpg" alt="黒毛七厘" class="shop-card-img" loading="lazy">
+          <div class="shop-card-info">
+            <h3>黒毛七厘</h3>
+            <p class="shop-location">東京都渋谷区恵比寿1-23-16</p>
+            <span class="shop-badge">SNPT払い可</span>
+          </div>
+        </a>
+        <a href="https://x.com/trim_kitaurawa" target="_blank" rel="noopener" class="shop-image-card">
+          <img src="images/trim.jpg" alt="肉バル×アヒージョ Trim" class="shop-card-img" loading="lazy">
+          <div class="shop-card-info">
+            <h3>Trim</h3>
+            <p class="shop-location">埼玉県さいたま市浦和区元町2-4-4</p>
+            <span class="shop-badge">SNPT払い可</span>
+          </div>
+        </a>
+        <a href="https://kodaruma-imazuminami.com/" target="_blank" rel="noopener" class="shop-image-card">
+          <img src="images/kodaruma.jpg" alt="小だるま今津南店" class="shop-card-img" loading="lazy">
+          <div class="shop-card-info">
+            <h3>小だるま今津南店</h3>
+            <p class="shop-location">兵庫県西宮市今津水波町1-1</p>
+            <span class="shop-badge">SNPT払い可</span>
+          </div>
+        </a>
+        <a href="https://brasserieandcafelien.owst.jp/" target="_blank" rel="noopener" class="shop-image-card">
+          <img src="images/lien.jpg" alt="Brasserie&cafe Lien" class="shop-card-img" loading="lazy">
+          <div class="shop-card-info">
+            <h3>Brasserie&cafe Lien</h3>
+            <p class="shop-location">東京都福生市熊川987 ヤマカビル1F</p>
+            <span class="shop-badge">SNPT払い可</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- フッター -->
+  <footer class="footer">
+    <p>SNPITガイド</p>
+    <p class="footer-note">このサイトは非公式のファンサイトです</p>
+    <p class="footer-author">運営: しんぷそん (<a href="https://x.com/chill_simpson_" target="_blank" rel="noopener">@chill_simpson_</a>)</p>
+    <div class="footer-links">
+      <a href="https://x.com/chill_simpson_" target="_blank" rel="noopener">X (Twitter)</a>
+      <a href="https://lp.snpit.xyz/" target="_blank" rel="noopener">SNPIT公式サイト</a>
+    </div>
+  </footer>
+</body>
+</html>
