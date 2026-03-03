@@ -12,6 +12,10 @@ const FIREBASE_CONFIG = {
   appId: '1:788074705330:web:2fdb2bc36731bb37ac34ab'
 };
 
+let db = null;
+let editingDocId = null; // 編集中のドキュメントID
+let editingData = null; // 編集中のデータ
+
 function escapeHtml(text) {
   const div = document.createElement('div');
   div.textContent = text;
@@ -27,13 +31,29 @@ function formatDate(timestamp) {
   return `${y}/${m}/${d}`;
 }
 
-function createReportCard(data) {
+function createReportCard(docId, data) {
   const card = document.createElement('div');
   card.className = 'report-card';
 
+  // ステータスバッジ
+  const statusBadge = data.status === 'resolved'
+    ? '<span class="report-card-status resolved">対応済み</span>'
+    : '';
+
+  // 対応メモ
+  const adminNote = data.adminNote
+    ? `<div class="report-card-admin-note">
+        <span class="report-card-admin-note-label">対応メモ:</span>
+        <span class="report-card-admin-note-text">${escapeHtml(data.adminNote)}</span>
+      </div>`
+    : '';
+
   card.innerHTML = `
     <div class="report-card-header">
-      <span class="report-card-nickname">${escapeHtml(data.nickname)}</span>
+      <div class="report-card-header-left">
+        <span class="report-card-nickname">${escapeHtml(data.nickname)}</span>
+        ${statusBadge}
+      </div>
       <span class="report-card-date">${formatDate(data.createdAt)}</span>
     </div>
     <div class="report-card-body">
@@ -58,6 +78,10 @@ function createReportCard(data) {
         <span class="report-card-value">${escapeHtml(data.correctInfo)}</span>
       </div>
       ` : ''}
+      ${adminNote}
+    </div>
+    <div class="report-card-footer">
+      <button class="report-card-edit-btn" onclick="openEditModal('${docId}')">編集</button>
     </div>
   `;
 
@@ -74,7 +98,12 @@ function initReports() {
 
   try {
     firebase.initializeApp(FIREBASE_CONFIG);
-    const db = firebase.firestore();
+    db = firebase.firestore();
+
+    // 匿名認証でサインイン（編集機能に必要）
+    firebase.auth().signInAnonymously().catch((error) => {
+      console.error('匿名認証エラー:', error);
+    });
 
     // リアルタイムで報告を取得（新しい順）
     db.collection('reports')
@@ -99,7 +128,7 @@ function initReports() {
         emptyEl.style.display = 'none';
 
         snapshot.forEach((doc) => {
-          const card = createReportCard(doc.data());
+          const card = createReportCard(doc.id, doc.data());
           listEl.appendChild(card);
         });
       }, (error) => {
@@ -114,6 +143,94 @@ function initReports() {
     document.getElementById('reportsLoading').style.display = 'none';
     document.getElementById('reportsEmpty').style.display = 'block';
     document.getElementById('reportsEmpty').querySelector('p').textContent = 'エラーが発生しました';
+  }
+}
+
+// --- 編集機能 ---
+function openEditModal(docId) {
+  if (!db) return;
+
+  editingDocId = docId;
+
+  // Firestoreからデータ取得
+  db.collection('reports').doc(docId).get().then((doc) => {
+    if (!doc.exists) return;
+    editingData = doc.data();
+
+    document.getElementById('editWhatIsWrong').value = editingData.whatIsWrong || '';
+    document.getElementById('editCorrectInfo').value = editingData.correctInfo || '';
+    document.getElementById('editAdminNote').value = editingData.adminNote || '';
+    document.getElementById('editStatusSelect').value = editingData.status || 'new';
+    document.getElementById('editNickname').value = '';
+    document.getElementById('editStatusMsg').textContent = '';
+    document.getElementById('editStatusMsg').className = 'edit-note';
+    document.getElementById('editSubmitBtn').disabled = false;
+    document.getElementById('editOverlay').classList.add('active');
+  }).catch((error) => {
+    console.error('報告取得エラー:', error);
+  });
+}
+
+function closeEditModal() {
+  document.getElementById('editOverlay').classList.remove('active');
+  editingDocId = null;
+  editingData = null;
+}
+
+async function submitEdit() {
+  const whatIsWrong = document.getElementById('editWhatIsWrong').value.trim();
+  const correctInfo = document.getElementById('editCorrectInfo').value.trim();
+  const adminNote = document.getElementById('editAdminNote').value.trim();
+  const status = document.getElementById('editStatusSelect').value;
+  const editorNickname = document.getElementById('editNickname').value.trim();
+  const statusEl = document.getElementById('editStatusMsg');
+  const submitBtn = document.getElementById('editSubmitBtn');
+
+  if (!editorNickname) {
+    statusEl.textContent = 'ニックネームを入力してください';
+    statusEl.className = 'edit-note error';
+    return;
+  }
+  if (!whatIsWrong) {
+    statusEl.textContent = '間違いの内容を入力してください';
+    statusEl.className = 'edit-note error';
+    return;
+  }
+
+  submitBtn.disabled = true;
+  statusEl.textContent = '保存中...';
+  statusEl.className = 'edit-note';
+
+  try {
+    // ニックネームを追記（既存名と重複しなければ）
+    let updatedNickname = editingData.nickname || '';
+    if (!updatedNickname.includes(editorNickname)) {
+      updatedNickname = updatedNickname
+        ? `${updatedNickname}, ${editorNickname}`
+        : editorNickname;
+    }
+
+    await db.collection('reports').doc(editingDocId).update({
+      whatIsWrong: whatIsWrong,
+      correctInfo: correctInfo,
+      adminNote: adminNote,
+      status: status,
+      nickname: updatedNickname,
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+
+    statusEl.textContent = '保存しました！';
+    statusEl.className = 'edit-note success';
+
+    setTimeout(() => {
+      closeEditModal();
+    }, 1000);
+
+  } catch (error) {
+    console.error('編集エラー:', error);
+    statusEl.textContent = '保存に失敗しました。もう一度お試しください';
+    statusEl.className = 'edit-note error';
+    submitBtn.disabled = false;
   }
 }
 

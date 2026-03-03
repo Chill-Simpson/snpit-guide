@@ -178,6 +178,42 @@ Phase 1で世界中の写真を収集→Phase 2でWeb2アプリに拡張→Phase
 10. 挨拶されたら「やっほー！SNPITのことなら何でも聞いてね！」のようにフレンドリーに返す
 11. 「ウォレット」という用語は暗号資産ウォレット（SNPT/MATIC等の管理）を指す。FPの確認方法を聞かれた時は「ウォレットの履歴」ではなく「アプリ上部ヘッダー右上のFP表示」と案内する`;
 
+// --- 報告モード用システムプロンプト ---
+const REPORT_SYSTEM_PROMPT = `あなたはSNPITガイドのAIアシスタント「スナピー」です。
+ユーザーがあなたの回答に間違いがあると報告しようとしています。
+
+【報告対象】
+ユーザーの質問: {QUESTION}
+あなたの回答: {ANSWER}
+
+【あなたの役割】
+ユーザーから間違いの情報を聞き出し、修正版の答え方を提案して確認を取ってから報告を生成してください。
+
+【フロー】
+1. まずユーザーに「どこが間違っているか」を聞く
+2. 必要に応じて具体的に聞き返す（1〜2回程度）
+3. 情報が集まったら、修正版の答え方を提案して確認を取る
+   例: 「なるほど！じゃあ次から同じ質問をされたら『フリーカメラの投票は1日5票まで』って答えるようにするね。この答え方で合ってるかな？」
+4. ユーザーが「合ってる」「OK」等と確認したら、報告データを出力する
+
+【ルール】
+- あなたは自分が何と回答したか把握しています。「何と回答しましたか？」のような質問は絶対にしないこと
+- 自分の回答を引用しながら「僕は○○って答えたけど、ここが違うの？」のように確認すること
+- 情報が曖昧な場合は具体的に聞き返すこと（例:「7票は全ユーザー？フリーカメラだけ？」）
+- あまり何度も聞かないこと（合計3往復以内）
+- 一人称は「僕」、口調はフレンドリーに
+- 修正版の答え方は、実際にユーザーに回答するときの文章として自然な形で提案すること
+- ユーザーが確認OKを出すまでは、絶対に|||REPORT|||を出力しないこと
+- ユーザーが確認OKを出したら、最後のメッセージに以下の形式を必ず含めること：
+
+|||REPORT|||
+whatIsWrong: [間違いの具体的な内容]
+correctInfo: [正しい情報（修正版の答え方）]
+|||END_REPORT|||
+
+この形式の後に「報告フォームに記入したよ！内容を確認して送信してね！」と添えること。
+この形式はシステムが読み取るためのものなので、必ず正確に出力すること。`;
+
 // --- 状態管理 ---
 let conversationHistory = [];
 let isProcessing = false;
@@ -186,6 +222,8 @@ let db = null;
 let sessionQuestionCount = 0; // セッション内の質問回数（広告の秒数管理用）
 let lastUserQuestion = ''; // 最後のユーザー質問（報告用）
 let lastReportTimestamp = 0; // 最後の報告送信時刻（レート制限用）
+let isReportMode = false; // 報告モード中かどうか
+let reportContext = null; // 報告対象の質問と回答 { question, answer }
 
 // --- 広告設定 ---
 const AD_CONFIG = {
@@ -336,23 +374,45 @@ async function sendMessage() {
   try {
     let response;
 
-    if (adDuration > 0) {
-      // 広告とAPI呼び出しを同時に開始（広告の裏でAPIを叩く）
+    // 報告モード時は報告用プロンプトを使用
+    const systemPrompt = isReportMode
+      ? REPORT_SYSTEM_PROMPT
+          .replace('{QUESTION}', reportContext.question)
+          .replace('{ANSWER}', reportContext.answer)
+      : SYSTEM_PROMPT;
+
+    if (adDuration > 0 && !isReportMode) {
+      // 広告とAPI呼び出しを同時に開始（報告モード時は広告なし）
       const [, apiResponse] = await Promise.all([
         showAdOverlay(adDuration),
-        callGeminiAPI(text)
+        callGeminiAPI(systemPrompt)
       ]);
       response = apiResponse;
     } else {
-      // 広告なし（通常のAPI呼び出し）
-      response = await callGeminiAPI(text);
+      response = await callGeminiAPI(systemPrompt);
     }
 
     loadingEl.remove();
 
-    // アシスタントメッセージを表示
-    appendMessage('assistant', response);
-    conversationHistory.push({ role: 'model', parts: [{ text: response }] });
+    // 報告データのマーカーをチェック
+    if (isReportMode && response.includes('|||REPORT|||')) {
+      const reportData = parseReportOutput(response);
+      const displayText = response.replace(/\|\|\|REPORT\|\|\|[\s\S]*?\|\|\|END_REPORT\|\|\|/g, '').trim();
+      appendMessage('assistant', displayText);
+      conversationHistory.push({ role: 'model', parts: [{ text: response }] });
+
+      // 報告モーダルをプリフィルして表示
+      showPrefilledReportModal(reportData);
+
+      // 報告モード終了
+      isReportMode = false;
+      reportContext = null;
+      hideReportModeBanner();
+    } else {
+      // 通常の回答表示
+      appendMessage('assistant', response);
+      conversationHistory.push({ role: 'model', parts: [{ text: response }] });
+    }
 
     // 履歴が長くなりすぎたら古いものを削除
     if (conversationHistory.length > CONFIG.MAX_HISTORY_MESSAGES) {
@@ -397,7 +457,7 @@ function sendSuggestion(text) {
 }
 
 // --- Gemini API呼び出し ---
-async function callGeminiAPI(userMessage) {
+async function callGeminiAPI(systemPrompt) {
   if (!CONFIG.GEMINI_API_KEY) {
     throw new Error('API_KEY_NOT_SET');
   }
@@ -406,7 +466,7 @@ async function callGeminiAPI(userMessage) {
 
   const body = {
     system_instruction: {
-      parts: [{ text: SYSTEM_PROMPT }]
+      parts: [{ text: systemPrompt || SYSTEM_PROMPT }]
     },
     contents: conversationHistory,
     generationConfig: {
@@ -460,8 +520,8 @@ function appendMessage(role, text) {
 
   bubble.appendChild(content);
 
-  // AI回答に「間違いを報告」ボタンを追加
-  if (role === 'assistant') {
+  // AI回答に「間違いを報告」ボタンを追加（報告モード中は非表示）
+  if (role === 'assistant' && !isReportMode) {
     const reportBtn = document.createElement('button');
     reportBtn.className = 'report-btn';
     reportBtn.textContent = '間違いを報告';
@@ -567,12 +627,89 @@ function escapeHtml(text) {
 
 function openReportModal(question, answer) {
   if (typeof gtag === 'function') gtag('event', 'click_report');
+
+  // 報告モードに切り替え
+  isReportMode = true;
+  reportContext = { question, answer };
+
+  // 報告モードバナーを表示
+  showReportModeBanner();
+
+  // スナピーの最初の質問を表示
+  appendMessage('assistant', 'この回答のどこが間違ってたかな？具体的に教えてくれると嬉しい！');
+}
+
+// --- 報告モードUI ---
+function showReportModeBanner() {
+  const banner = document.createElement('div');
+  banner.id = 'reportModeBanner';
+  banner.className = 'report-mode-banner';
+  banner.innerHTML = `
+    <span>報告モード中 - スナピーが間違いの詳細を聞いています</span>
+    <div class="report-mode-actions">
+      <button class="report-mode-manual" onclick="openManualReportModal()">手動で入力</button>
+      <button class="report-mode-cancel" onclick="cancelReportMode()">キャンセル</button>
+    </div>
+  `;
+  const inputArea = document.querySelector('.chat-input-area');
+  inputArea.parentNode.insertBefore(banner, inputArea);
+}
+
+function hideReportModeBanner() {
+  const banner = document.getElementById('reportModeBanner');
+  if (banner) banner.remove();
+}
+
+function cancelReportMode() {
+  isReportMode = false;
+  reportContext = null;
+  hideReportModeBanner();
+  appendMessage('assistant', '報告をキャンセルしたよ。また何かあったら教えてね！');
+}
+
+function openManualReportModal() {
   const overlay = document.getElementById('reportOverlay');
-  document.getElementById('reportQuestion').textContent = question;
-  document.getElementById('reportAnswer').textContent = answer;
+  document.getElementById('reportQuestion').textContent = reportContext ? reportContext.question : '';
+  document.getElementById('reportAnswer').textContent = reportContext ? reportContext.answer : '';
   document.getElementById('reportNickname').value = '';
   document.getElementById('reportWhatIsWrong').value = '';
   document.getElementById('reportCorrectInfo').value = '';
+  document.getElementById('reportStatus').textContent = '';
+  document.getElementById('reportStatus').className = 'report-note';
+  document.getElementById('reportSubmitBtn').disabled = false;
+  overlay.classList.add('active');
+
+  // 報告モード終了
+  isReportMode = false;
+  reportContext = null;
+  hideReportModeBanner();
+}
+
+// --- 報告データ解析 ---
+function parseReportOutput(text) {
+  const match = text.match(/\|\|\|REPORT\|\|\|\s*([\s\S]*?)\s*\|\|\|END_REPORT\|\|\|/);
+  if (!match) return null;
+
+  const lines = match[1].split('\n');
+  const data = {};
+  for (const line of lines) {
+    const colonIdx = line.indexOf(':');
+    if (colonIdx > -1) {
+      const key = line.substring(0, colonIdx).trim();
+      const value = line.substring(colonIdx + 1).trim();
+      data[key] = value;
+    }
+  }
+  return data;
+}
+
+function showPrefilledReportModal(reportData) {
+  const overlay = document.getElementById('reportOverlay');
+  document.getElementById('reportQuestion').textContent = reportContext ? reportContext.question : '';
+  document.getElementById('reportAnswer').textContent = reportContext ? reportContext.answer : '';
+  document.getElementById('reportNickname').value = '';
+  document.getElementById('reportWhatIsWrong').value = reportData?.whatIsWrong || '';
+  document.getElementById('reportCorrectInfo').value = reportData?.correctInfo || '';
   document.getElementById('reportStatus').textContent = '';
   document.getElementById('reportStatus').className = 'report-note';
   document.getElementById('reportSubmitBtn').disabled = false;

@@ -88,8 +88,46 @@
     </div>
   </footer>
 
+  <!-- 編集モーダル -->
+  <div class="edit-overlay" id="editOverlay">
+    <div class="edit-modal">
+      <div class="edit-modal-header">
+        <span class="edit-modal-title">報告を編集</span>
+        <button class="edit-modal-close" onclick="closeEditModal()">&times;</button>
+      </div>
+      <div class="edit-modal-body">
+        <div class="edit-field">
+          <label class="edit-label">間違いの指摘 <span class="edit-required">*</span></label>
+          <textarea class="edit-textarea" id="editWhatIsWrong" rows="3"></textarea>
+        </div>
+        <div class="edit-field">
+          <label class="edit-label">正しい情報</label>
+          <textarea class="edit-textarea" id="editCorrectInfo" rows="2"></textarea>
+        </div>
+        <div class="edit-field">
+          <label class="edit-label">対応メモ</label>
+          <textarea class="edit-textarea" id="editAdminNote" placeholder="例: SYSTEM_PROMPT修正済み" rows="2"></textarea>
+        </div>
+        <div class="edit-field">
+          <label class="edit-label">ステータス</label>
+          <select class="edit-select" id="editStatusSelect">
+            <option value="new">新規</option>
+            <option value="resolved">対応済み</option>
+          </select>
+        </div>
+        <div class="edit-field">
+          <label class="edit-label">あなたのニックネーム <span class="edit-required">*</span></label>
+          <input type="text" class="edit-input" id="editNickname" placeholder="例: しんぷそん" maxlength="20">
+        </div>
+        <button class="edit-submit-btn" id="editSubmitBtn" onclick="submitEdit()">保存する</button>
+        <p class="edit-note" id="editStatusMsg"></p>
+      </div>
+    </div>
+  </div>
+
   <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
 
   <script src="reports.js"></script>

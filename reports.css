@@ -133,6 +133,232 @@
   word-break: break-word;
 }
 
+/* ヘッダー左側（ニックネーム + ステータスバッジ） */
+.report-card-header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+/* ステータスバッジ */
+.report-card-status.resolved {
+  display: inline-block;
+  background-color: rgba(78, 205, 196, 0.15);
+  color: var(--accent);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 10px;
+  border: 1px solid var(--accent-dark);
+  flex-shrink: 0;
+}
+
+/* 対応メモ */
+.report-card-admin-note {
+  background-color: var(--card-inner);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.report-card-admin-note-label {
+  color: var(--text-secondary);
+  font-weight: 700;
+  margin-right: 6px;
+}
+
+.report-card-admin-note-text {
+  color: var(--text-primary);
+  word-break: break-word;
+}
+
+/* カードフッター */
+.report-card-footer {
+  padding: 10px 16px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.report-card-edit-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-family: 'Noto Sans JP', sans-serif;
+  padding: 4px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.report-card-edit-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ===================================
+   編集モーダル
+   =================================== */
+
+.edit-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-overlay.active {
+  display: flex;
+}
+
+.edit-modal {
+  background-color: var(--card-background);
+  border-radius: 16px;
+  width: 90%;
+  max-width: 440px;
+  max-height: 85vh;
+  overflow-y: auto;
+  animation: fadeIn 0.3s ease;
+}
+
+.edit-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.edit-modal-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.edit-modal-close {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 4px;
+  line-height: 1;
+}
+
+.edit-modal-close:hover {
+  color: var(--text-primary);
+}
+
+.edit-modal-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.edit-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.edit-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-weight: 700;
+}
+
+.edit-required {
+  color: #ff6b6b;
+}
+
+.edit-textarea,
+.edit-input {
+  background-color: var(--card-inner);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 0.85rem;
+  font-family: 'Noto Sans JP', sans-serif;
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.2s ease;
+  resize: none;
+}
+
+.edit-textarea:focus,
+.edit-input:focus {
+  border-color: var(--accent);
+}
+
+.edit-textarea::placeholder,
+.edit-input::placeholder {
+  color: var(--text-muted);
+}
+
+.edit-select {
+  background-color: var(--card-inner);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 0.85rem;
+  font-family: 'Noto Sans JP', sans-serif;
+  color: var(--text-primary);
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.edit-select:focus {
+  border-color: var(--accent);
+}
+
+.edit-submit-btn {
+  background-color: var(--accent);
+  color: var(--background);
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  font-family: 'Noto Sans JP', sans-serif;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.edit-submit-btn:hover {
+  background-color: var(--accent-dark);
+}
+
+.edit-submit-btn:disabled {
+  background-color: var(--card-inner);
+  color: var(--text-muted);
+  cursor: not-allowed;
+}
+
+.edit-note {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.edit-note.success {
+  color: var(--accent);
+}
+
+.edit-note.error {
+  color: #ff6b6b;
+}
+
 /* レスポンシブ */
 @media (max-width: 600px) {
   .report-card-header {
@@ -145,5 +371,9 @@
 
   .report-card-nickname {
     font-size: 0.85rem;
+  }
+
+  .report-card-footer {
+    padding: 8px 14px;
   }
 }
