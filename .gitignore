@@ -10,6 +10,9 @@ test_screenshot.png
 PROGRESS.md
 HANDOFF.md
 
+# API keys (GitHubに公開しない)
+api-key.js
+
 # OS files
 .DS_Store
 Thumbs.db
