@@ -1,0 +1,17 @@
+# Wrangler (Cloudflare)
+.wrangler/
+
+# Temporary/debug files
+nul
+screenshot_landing_full.png
+test_screenshot.png
+
+# Work notes (session-specific)
+PROGRESS.md
+HANDOFF.md
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# NOTE: api-key.js はここに含めない（Cloudflare Pagesにはデプロイする）

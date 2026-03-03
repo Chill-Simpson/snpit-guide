@@ -16,7 +16,7 @@ const CONFIG = {
     messagingSenderId: '788074705330',
     appId: '1:788074705330:web:2fdb2bc36731bb37ac34ab'
   },
-  GEMINI_MODEL: 'gemini-2.5-flash',
+  GEMINI_MODEL: 'gemini-2.5-flash-lite',
   GEMINI_ENDPOINT: 'https://generativelanguage.googleapis.com/v1beta/models/',
   MAX_DAILY_QUESTIONS: 50,
   MAX_HISTORY_MESSAGES: 50 // 会話履歴に含める最大メッセージ数（25往復分）
