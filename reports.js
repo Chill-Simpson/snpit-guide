@@ -22,6 +22,15 @@ function escapeHtml(text) {
   return div.innerHTML;
 }
 
+// escapeHtml済みテキスト内の@メンションとURLをリンク化
+function linkify(html) {
+  // URLをリンク化（括弧がURLの一部と判定されないよう注意）
+  html = html.replace(/(https?:\/\/[^\s<）」。、]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>');
+  // @メンションをXリンク化（@の前が英数字でない場合のみ）
+  html = html.replace(/(^|[^a-zA-Z0-9])@([a-zA-Z0-9_]+)/g, '$1<a href="https://x.com/$2" target="_blank" rel="noopener">@$2</a>');
+  return html;
+}
+
 function formatDate(timestamp) {
   if (!timestamp) return '';
   const date = timestamp.toDate();
@@ -75,7 +84,7 @@ function createReportCard(docId, data) {
         </div>
         <div class="report-card-corrected">
           <div class="report-card-corrected-label">&#10003; 修正版の回答</div>
-          <div class="report-card-corrected-text">${escapeHtml(data.correctedAnswer)}</div>
+          <div class="report-card-corrected-text">${linkify(escapeHtml(data.correctedAnswer))}</div>
         </div>
         ${adminNote}
         <details class="report-card-details">
