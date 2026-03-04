@@ -48,42 +48,87 @@ function createReportCard(docId, data) {
       </div>`
     : '';
 
-  card.innerHTML = `
-    <div class="report-card-header">
-      <div class="report-card-header-left">
-        <span class="report-card-nickname">${escapeHtml(data.nickname)}</span>
-        ${statusBadge}
-      </div>
-      <span class="report-card-date">${formatDate(data.createdAt)}</span>
-    </div>
-    <div class="report-card-body">
-      <div class="report-card-field">
-        <span class="report-card-label">質問:</span>
-        <span class="report-card-value">${escapeHtml(data.userQuestion)}</span>
-      </div>
-      <div class="report-card-field">
-        <span class="report-card-label">AI回答:</span>
-        <span class="report-card-value">${escapeHtml(data.aiAnswer)}</span>
-      </div>
-      <div class="report-card-highlight">
-        <span class="report-card-highlight-icon">&#9888;</span>
-        <div>
-          <div class="report-card-highlight-label">間違いの指摘:</div>
-          <div class="report-card-highlight-text">${escapeHtml(data.whatIsWrong)}</div>
+  // 対応済み かつ 正しい情報がある場合は修正版レイアウト
+  const isResolved = data.status === 'resolved' && data.correctInfo;
+
+  if (isResolved) {
+    card.innerHTML = `
+      <div class="report-card-header">
+        <div class="report-card-header-left">
+          <span class="report-card-nickname">${escapeHtml(data.nickname)}</span>
+          ${statusBadge}
         </div>
+        <span class="report-card-date">${formatDate(data.createdAt)}</span>
       </div>
-      ${data.correctInfo ? `
-      <div class="report-card-field">
-        <span class="report-card-label">正しい情報:</span>
-        <span class="report-card-value">${escapeHtml(data.correctInfo)}</span>
+      <div class="report-card-body">
+        <div class="report-card-field">
+          <span class="report-card-label">質問:</span>
+          <span class="report-card-value">${escapeHtml(data.userQuestion)}</span>
+        </div>
+        <div class="report-card-corrected">
+          <div class="report-card-corrected-label">&#10003; 修正版の回答</div>
+          <div class="report-card-corrected-text">${escapeHtml(data.correctInfo)}</div>
+        </div>
+        ${adminNote}
+        <details class="report-card-details">
+          <summary class="report-card-details-toggle">報告の詳細を見る</summary>
+          <div class="report-card-details-content">
+            <div class="report-card-field">
+              <span class="report-card-label">AI回答（修正前）:</span>
+              <span class="report-card-value">${escapeHtml(data.aiAnswer)}</span>
+            </div>
+            <div class="report-card-highlight">
+              <span class="report-card-highlight-icon">&#9888;</span>
+              <div>
+                <div class="report-card-highlight-label">間違いの指摘:</div>
+                <div class="report-card-highlight-text">${escapeHtml(data.whatIsWrong)}</div>
+              </div>
+            </div>
+          </div>
+        </details>
       </div>
-      ` : ''}
-      ${adminNote}
-    </div>
-    <div class="report-card-footer">
-      <button class="report-card-edit-btn" onclick="openEditModal('${docId}')">編集</button>
-    </div>
-  `;
+      <div class="report-card-footer">
+        <button class="report-card-edit-btn" onclick="openEditModal('${docId}')">編集</button>
+      </div>
+    `;
+  } else {
+    card.innerHTML = `
+      <div class="report-card-header">
+        <div class="report-card-header-left">
+          <span class="report-card-nickname">${escapeHtml(data.nickname)}</span>
+          ${statusBadge}
+        </div>
+        <span class="report-card-date">${formatDate(data.createdAt)}</span>
+      </div>
+      <div class="report-card-body">
+        <div class="report-card-field">
+          <span class="report-card-label">質問:</span>
+          <span class="report-card-value">${escapeHtml(data.userQuestion)}</span>
+        </div>
+        <div class="report-card-field">
+          <span class="report-card-label">AI回答:</span>
+          <span class="report-card-value">${escapeHtml(data.aiAnswer)}</span>
+        </div>
+        <div class="report-card-highlight">
+          <span class="report-card-highlight-icon">&#9888;</span>
+          <div>
+            <div class="report-card-highlight-label">間違いの指摘:</div>
+            <div class="report-card-highlight-text">${escapeHtml(data.whatIsWrong)}</div>
+          </div>
+        </div>
+        ${data.correctInfo ? `
+        <div class="report-card-field">
+          <span class="report-card-label">正しい情報:</span>
+          <span class="report-card-value">${escapeHtml(data.correctInfo)}</span>
+        </div>
+        ` : ''}
+        ${adminNote}
+      </div>
+      <div class="report-card-footer">
+        <button class="report-card-edit-btn" onclick="openEditModal('${docId}')">編集</button>
+      </div>
+    `;
+  }
 
   return card;
 }

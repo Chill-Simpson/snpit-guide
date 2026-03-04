@@ -133,6 +133,71 @@
   word-break: break-word;
 }
 
+/* 修正版の回答ハイライト */
+.report-card-corrected {
+  background-color: rgba(78, 205, 196, 0.1);
+  border: 1px solid rgba(78, 205, 196, 0.3);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.report-card-corrected-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.report-card-corrected-text {
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  line-height: 1.6;
+  word-break: break-word;
+}
+
+/* 展開式セクション */
+.report-card-details {
+  border-top: 1px dashed var(--border);
+  padding-top: 8px;
+}
+
+.report-card-details-toggle {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 6px 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  user-select: none;
+}
+
+.report-card-details-toggle::-webkit-details-marker {
+  display: none;
+}
+
+.report-card-details-toggle::before {
+  content: '\25B6';
+  font-size: 0.6rem;
+  transition: transform 0.2s ease;
+}
+
+.report-card-details[open] > .report-card-details-toggle::before {
+  transform: rotate(90deg);
+}
+
+.report-card-details-toggle:hover {
+  color: var(--accent);
+}
+
+.report-card-details-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 10px;
+}
+
 /* ヘッダー左側（ニックネーム + ステータスバッジ） */
 .report-card-header-left {
   display: flex;
