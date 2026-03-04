@@ -48,8 +48,16 @@ function createReportCard(docId, data) {
       </div>`
     : '';
 
-  // 対応済み かつ 正しい情報がある場合は修正版レイアウト
-  const isResolved = data.status === 'resolved' && data.correctInfo;
+  // 対応済み かつ 修正版の回答がある場合は修正版レイアウト
+  const isResolved = data.status === 'resolved' && data.correctedAnswer;
+
+  // ユーザーが書いた正しい情報（展開部に表示）
+  const userCorrectInfo = data.correctInfo
+    ? `<div class="report-card-field">
+        <span class="report-card-label">正しい情報（報告者）:</span>
+        <span class="report-card-value">${escapeHtml(data.correctInfo)}</span>
+      </div>`
+    : '';
 
   if (isResolved) {
     card.innerHTML = `
@@ -67,7 +75,7 @@ function createReportCard(docId, data) {
         </div>
         <div class="report-card-corrected">
           <div class="report-card-corrected-label">&#10003; 修正版の回答</div>
-          <div class="report-card-corrected-text">${escapeHtml(data.correctInfo)}</div>
+          <div class="report-card-corrected-text">${escapeHtml(data.correctedAnswer)}</div>
         </div>
         ${adminNote}
         <details class="report-card-details">
@@ -84,6 +92,7 @@ function createReportCard(docId, data) {
                 <div class="report-card-highlight-text">${escapeHtml(data.whatIsWrong)}</div>
               </div>
             </div>
+            ${userCorrectInfo}
           </div>
         </details>
       </div>
@@ -204,6 +213,7 @@ function openEditModal(docId) {
 
     document.getElementById('editWhatIsWrong').value = editingData.whatIsWrong || '';
     document.getElementById('editCorrectInfo').value = editingData.correctInfo || '';
+    document.getElementById('editCorrectedAnswer').value = editingData.correctedAnswer || '';
     document.getElementById('editAdminNote').value = editingData.adminNote || '';
     document.getElementById('editStatusSelect').value = editingData.status || 'new';
     document.getElementById('editNickname').value = '';
@@ -225,6 +235,7 @@ function closeEditModal() {
 async function submitEdit() {
   const whatIsWrong = document.getElementById('editWhatIsWrong').value.trim();
   const correctInfo = document.getElementById('editCorrectInfo').value.trim();
+  const correctedAnswer = document.getElementById('editCorrectedAnswer').value.trim();
   const adminNote = document.getElementById('editAdminNote').value.trim();
   const status = document.getElementById('editStatusSelect').value;
   const editorNickname = document.getElementById('editNickname').value.trim();
@@ -258,6 +269,7 @@ async function submitEdit() {
     await db.collection('reports').doc(editingDocId).update({
       whatIsWrong: whatIsWrong,
       correctInfo: correctInfo,
+      correctedAnswer: correctedAnswer,
       adminNote: adminNote,
       status: status,
       nickname: updatedNickname,
