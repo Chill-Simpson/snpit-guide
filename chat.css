@@ -2,12 +2,91 @@
    チャットページ専用スタイル
    =================================== */
 
+/* 新しいチャットボタン */
+.new-chat-btn {
+  margin-left: auto;
+  background: none;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  border-radius: 8px;
+  padding: 6px 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.new-chat-btn:active {
+  background: var(--accent);
+  color: #fff;
+}
+
 .chat-container {
   display: flex;
   flex-direction: column;
   height: calc(100vh - 57px - 90px);
   max-width: 700px;
   margin: 0 auto;
+}
+
+/* お知らせバナー */
+.notif-banner {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #1a3a3a, #2a4a4a);
+  border-bottom: 1px solid var(--accent);
+  padding: 10px 12px;
+  gap: 8px;
+  animation: notifSlideDown 0.3s ease;
+}
+@keyframes notifSlideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.notif-banner-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  text-decoration: none;
+  color: inherit;
+  min-width: 0;
+}
+.notif-banner-icon {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+.notif-banner-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.notif-banner-title {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--accent);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.notif-banner-body {
+  font-size: 0.75rem;
+  color: #ccc;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.notif-banner-close {
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  flex-shrink: 0;
+}
+.notif-banner-close:active {
+  color: #fff;
 }
 
 /* メッセージエリア */
@@ -28,42 +107,76 @@
   justify-content: center;
   flex: 1;
   text-align: center;
-  padding: 20px;
+  padding: 8px 16px;
 }
 
 .welcome-icon {
-  font-size: 3.5rem;
-  margin-bottom: 12px;
+  margin-bottom: 4px;
+}
+.welcome-icon img {
+  width: 72px;
+  height: auto;
+  filter: drop-shadow(0 4px 12px rgba(81, 185, 157, 0.3));
+}
+.welcome-char-name {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.6);
+  margin: 0 0 4px;
 }
 
 .welcome-title {
-  font-size: 1.8rem;
+  font-size: 1.3rem;
   font-weight: 700;
   color: var(--accent);
-  margin-bottom: 8px;
+  margin-bottom: 2px;
 }
 
 .welcome-subtitle {
-  font-size: 1rem;
+  font-size: 0.85rem;
   color: var(--text-secondary);
-  margin-bottom: 28px;
+  margin-bottom: 10px;
 }
 
-.welcome-suggestions {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
+/* サジェスト横スライダー */
+.suggestions-slider {
+  width: 100%;
   max-width: 400px;
+  overflow: hidden;
+  position: relative;
+  touch-action: pan-y;
+}
+
+.suggestions-track {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
+.suggestions-slide {
+  min-width: 100%;
+  box-sizing: border-box;
+  padding: 0 4px;
+}
+
+.slide-label {
+  font-size: 0.75rem;
+  color: var(--accent);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.slide-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
 }
 
 .suggestion-btn {
   background-color: var(--card-background);
   color: var(--text-primary);
   border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 8px 16px;
-  font-size: 0.85rem;
+  border-radius: 16px;
+  padding: 6px 8px;
+  font-size: 0.72rem;
   font-family: 'Noto Sans JP', sans-serif;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -72,6 +185,55 @@
 .suggestion-btn:hover {
   border-color: var(--accent);
   background-color: var(--accent-glow);
+}
+
+.suggestions-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.suggestions-arrow {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--accent);
+  font-size: 20px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s, border-color 0.2s;
+  padding: 0;
+  line-height: 1;
+}
+
+.suggestions-arrow:hover {
+  background-color: var(--accent-glow);
+  border-color: var(--accent);
+}
+
+.suggestions-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.suggestions-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--border);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.suggestions-dot.active {
+  background-color: var(--accent);
 }
 
 /* メッセージ吹き出し */
@@ -150,6 +312,58 @@
   color: var(--background);
 }
 
+/* チャット内画像 */
+.chat-inline-image {
+  max-width: 48%;
+  border-radius: 8px;
+  margin: 4px 1%;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: top;
+}
+
+/* 画像拡大モーダル */
+.image-modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-modal-overlay.active {
+  display: flex;
+}
+
+.image-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 36px;
+  cursor: pointer;
+  z-index: 10000;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-modal-img {
+  max-width: 90%;
+  max-height: 85vh;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
 /* ローディングアニメーション */
 .typing-indicator {
   display: flex;
@@ -201,7 +415,7 @@
   background: transparent;
   border: none;
   color: var(--text-primary);
-  font-size: 0.9rem;
+  font-size: 16px;
   font-family: 'Noto Sans JP', sans-serif;
   resize: none;
   outline: none;
@@ -566,6 +780,72 @@
   background-color: rgba(255, 107, 107, 0.1);
 }
 
+/* 報告モード - インラインアクションボタン */
+.report-actions-inline {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.report-submit-inline {
+  background: rgba(76, 175, 80, 0.15);
+  border: 1px solid rgba(76, 175, 80, 0.4);
+  color: #4CAF50;
+  border-radius: 16px;
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  font-family: 'Noto Sans JP', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.report-submit-inline:hover {
+  background: rgba(76, 175, 80, 0.25);
+}
+
+.report-cancel-inline {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-family: 'Noto Sans JP', sans-serif;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.report-cancel-inline:hover {
+  color: #ff6b6b;
+}
+
+/* 報告モーダル - 会話ログ */
+.report-conversation-log {
+  max-height: 200px;
+  overflow-y: auto;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.report-log-user,
+.report-log-assistant {
+  margin-bottom: 6px;
+  padding: 4px 0;
+}
+
+.report-log-user {
+  color: var(--text-secondary);
+}
+
+.report-log-assistant {
+  color: var(--text-primary);
+}
+
+.report-log-role {
+  margin-right: 4px;
+}
+
 /* レスポンシブ */
 @media (max-width: 600px) {
   .chat-container {
@@ -584,7 +864,7 @@
     font-size: 1.5rem;
   }
 
-  .welcome-suggestions {
+  .suggestions-slider {
     max-width: 100%;
   }
 
@@ -599,4 +879,202 @@
     gap: 6px;
     margin: 0 12px 6px;
   }
+}
+
+/* 小さい画面（高さ700px以下）でウェルカム画面を縮小して収める */
+@media (max-height: 700px) {
+  .welcome-screen {
+    padding: 8px 20px;
+  }
+  .welcome-icon {
+    margin-bottom: 4px;
+  }
+  .welcome-icon img {
+    width: 64px;
+  }
+  .welcome-title {
+    font-size: 1.2rem;
+    margin-bottom: 2px;
+  }
+  .welcome-subtitle {
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+  }
+  .welcome-char-name {
+    font-size: 0.75rem;
+    margin: 0 0 2px;
+  }
+  .suggestion-btn {
+    font-size: 0.75rem;
+    padding: 5px 10px;
+  }
+  .suggestions-nav {
+    margin-bottom: 6px;
+  }
+  .slide-label {
+    margin-bottom: 4px;
+  }
+  .chat-input-area {
+    padding: 8px 16px;
+  }
+  .chat-disclaimer {
+    margin-top: 4px;
+  }
+}
+
+/* Push通知提案UI */
+/* Push通知ダイアログ */
+.push-dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  padding: 20px;
+}
+.push-dialog-overlay.active {
+  opacity: 1;
+}
+.push-dialog {
+  background: #1e3535;
+  border: 1px solid rgba(78, 205, 196, 0.3);
+  border-radius: 16px;
+  padding: 28px 24px;
+  max-width: 340px;
+  width: 100%;
+  text-align: center;
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+.push-dialog-overlay.active .push-dialog {
+  transform: scale(1);
+}
+.push-dialog-icon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
+.push-dialog-title {
+  color: var(--accent);
+  font-size: 1.1rem;
+  margin: 0 0 8px 0;
+}
+.push-dialog-text {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0 0 20px 0;
+}
+.push-dialog-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.push-dialog-btn {
+  padding: 12px 16px;
+  border-radius: 25px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border: none;
+  font-weight: bold;
+  transition: opacity 0.2s;
+}
+.push-dialog-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+.push-dialog-accept {
+  background: var(--accent);
+  color: #1A2B2B;
+}
+.push-dialog-dismiss {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--text-muted);
+}
+
+/* PWAガイドのステップ */
+.pwa-guide-steps {
+  text-align: left;
+  margin: 12px 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.pwa-guide-step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: #ddd;
+}
+.pwa-guide-num {
+  background: var(--accent);
+  color: #fff;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+/* 通知トグルスイッチ */
+.notification-toggle-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: default;
+}
+.notification-toggle-row span:nth-child(2) {
+  flex: 1;
+}
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  flex-shrink: 0;
+}
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #3a4a4a;
+  transition: 0.3s;
+  border-radius: 24px;
+}
+.toggle-slider:before {
+  content: "";
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background: white;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+.toggle-switch input:checked + .toggle-slider {
+  background: var(--accent);
+}
+.toggle-switch input:checked + .toggle-slider:before {
+  transform: translateX(20px);
 }

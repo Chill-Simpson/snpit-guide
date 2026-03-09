@@ -3,47 +3,96 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="SNPITガイド">
+  <link rel="apple-touch-icon" href="/images/icon-192.svg">
+  <meta name="theme-color" content="#1A2B2B">
   <title>ページが見つかりません - SNPITガイド</title>
+  <meta name="description" content="お探しのページは見つかりませんでした。SNPITガイドのトップページへお戻りください。">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Noto Sans JP', sans-serif;
-      background-color: #1A2B2B;
-      color: #E0E8E8;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      text-align: center;
-      padding: 20px;
-    }
-    .container { max-width: 400px; }
-    .icon { font-size: 4rem; margin-bottom: 16px; }
-    h1 { font-size: 1.5rem; margin-bottom: 8px; color: #4ECDC4; }
-    p { font-size: 0.95rem; color: #8FA8A8; margin-bottom: 24px; }
-    a {
-      display: inline-block;
-      padding: 12px 32px;
-      background-color: #4ECDC4;
-      color: #1A2B2B;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: 700;
-      font-size: 0.9rem;
-    }
-    a:hover { background-color: #3DBDB5; }
-  </style>
+  <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    .error-container {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 80px 20px;
+      text-align: center;
+    }
+    .error-icon { font-size: 4rem; margin-bottom: 16px; }
+    .error-title {
+      font-size: 1.8rem;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .error-message {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+    }
+    .error-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 280px;
+      margin: 0 auto;
+    }
+    .error-links a {
+      display: block;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+    .error-links .btn-main {
+      background-color: var(--accent);
+      color: var(--background);
+    }
+    .error-links .btn-main:hover {
+      background-color: var(--accent-dark);
+      opacity: 1;
+    }
+    .error-links .btn-sub {
+      background-color: var(--card-inner);
+      color: var(--text-primary);
+      border: 1px solid var(--border);
+    }
+    .error-links .btn-sub:hover {
+      background-color: var(--border);
+      opacity: 1;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <div class="icon">📸</div>
-    <h1>ページが見つかりません</h1>
-    <p>お探しのページは存在しないか、移動した可能性があります。</p>
-    <a href="/">トップページに戻る</a>
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">SNPITガイド</a>
+  </nav>
+
+  <div class="error-container">
+    <div class="error-icon">📸</div>
+    <h1 class="error-title">ページが見つかりません</h1>
+    <p class="error-message">お探しのページは存在しないか、移動した可能性があります。<br>以下のリンクからお探しの情報を見つけてください。</p>
+    <div class="error-links">
+      <a href="index.html" class="btn-main">トップページに戻る</a>
+      <a href="chat.html" class="btn-sub">スナピー（AI）に質問する</a>
+      <a href="beginners.html" class="btn-sub">初心者ガイドを読む</a>
+      <a href="faq.html" class="btn-sub">よくある質問を見る</a>
+    </div>
   </div>
+
+  <footer class="footer">
+    <p>SNPITガイド</p>
+    <p class="footer-note">このサイトは非公式のファンサイトです</p>
+    <div class="footer-links">
+      <a href="https://lp.snpit.xyz/" target="_blank" rel="noopener">SNPIT公式サイト</a>
+      <a href="privacy.html">プライバシーポリシー</a>
+    </div>
+  </footer>
 </body>
 </html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="SNPITガイド">
+  <link rel="apple-touch-icon" href="/images/icon-192.svg">
+  <meta name="theme-color" content="#1A2B2B">
+  <title>SNPIT用語集｜SNPITガイド</title>
+  <meta name="description" content="SNPITで使われる専門用語を初心者向けにわかりやすく解説。STP、SNPT、FP、Quality、バトルなどの用語をまとめています。">
+  <link rel="canonical" href="https://snpit-guide.pages.dev/glossary">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="SNPITガイド">
+  <meta property="og:title" content="SNPIT用語集｜SNPITガイド">
+  <meta property="og:description" content="SNPITで使われる専門用語を初心者向けにわかりやすく解説。">
+  <meta property="og:url" content="https://snpit-guide.pages.dev/glossary">
+  <meta property="og:image" content="https://snpit-guide.pages.dev/images/ogp.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="notification-toggle.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6789708198801982"
+     crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2CXFBGQWD4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2CXFBGQWD4');
+  </script>
+  <style>
+    .glossary-section {
+      background-color: var(--card-background);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+    .glossary-item {
+      border-bottom: 1px solid var(--border);
+      padding: 14px 0;
+    }
+    .glossary-item:last-child { border-bottom: none; }
+    .glossary-item:first-of-type { padding-top: 8px; }
+    .glossary-term {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+    .glossary-reading {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+    .glossary-def {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+    @media (max-width: 600px) {
+      .glossary-section { padding: 20px 16px; border-radius: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <button class="hamburger" onclick="toggleMenu()" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="index.html" class="nav-logo">SNPITガイド</a>
+  </nav>
+  <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+  <div class="slide-menu" id="slideMenu">
+    <div class="menu-header">
+      <span class="menu-title">SNPITガイド</span>
+      <button class="menu-close" onclick="toggleMenu()">&times;</button>
+    </div>
+    
+    <div class="menu-links">
+      <a href="index.html" class="menu-link"><span class="menu-link-icon">🏠</span>ホーム</a>
+      <a href="chat.html" class="menu-link menu-link-accent"><span class="menu-link-icon">💬</span>スナピー (AI)</a>
+      <a href="news.html" class="menu-link"><span class="menu-link-icon">📢</span>お知らせ</a>
+      <div class="menu-link notification-toggle-row" id="notificationToggleRow">
+        <span class="menu-link-icon">🔔</span>
+        <span>プッシュ通知</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="notificationToggle" onchange="toggleNotification(this)">
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+      <span class="menu-category">ガイド</span>
+      <a href="beginners.html" class="menu-link"><span class="menu-link-icon">📖</span>初心者ガイド</a>
+      <a href="strategy.html" class="menu-link"><span class="menu-link-icon">🎯</span>攻略ガイド</a>
+      <a href="battle-guide.html" class="menu-link"><span class="menu-link-icon">⚔️</span>バトル攻略</a>
+      <a href="tutorials.html" class="menu-link"><span class="menu-link-icon">📹</span>チュートリアル</a>
+      <span class="menu-category">データ</span>
+      <a href="levelup.html" class="menu-link"><span class="menu-link-icon">⬆️</span>レベルアップ早見表</a>
+      <a href="cameras.html" class="menu-link"><span class="menu-link-icon">📷</span>カメラ比較表</a>
+      <a href="exchange.html" class="menu-link"><span class="menu-link-icon">💱</span>FP交換ガイド</a>
+      <span class="menu-category">イベント</span>
+      <a href="bluelock.html" class="menu-link"><span class="menu-link-icon">⚽</span>ブルーロックコラボ</a>
+      <a href="kokaku.html" class="menu-link"><span class="menu-link-icon">🤖</span>攻殻機動隊コラボ</a>
+      <a href="shingeki.html" class="menu-link"><span class="menu-link-icon">⚔️</span>進撃の巨人コラボ</a>
+      <a href="railgun.html" class="menu-link"><span class="menu-link-icon">⚡</span>超電磁砲コラボ</a>
+      <a href="tensura.html" class="menu-link"><span class="menu-link-icon">🔵</span>転スラコラボ</a>
+      <a href="white-scorpion.html" class="menu-link"><span class="menu-link-icon">🦂</span>WHITE SCORPIONコラボ</a>
+      <a href="gr-toyota.html" class="menu-link"><span class="menu-link-icon">🏎️</span>TGRコラボ</a>
+      <a href="calbee.html" class="menu-link"><span class="menu-link-icon">🥔</span>カルビーコラボ</a>
+      <a href="his.html" class="menu-link"><span class="menu-link-icon">✈️</span>HISコラボ</a>
+      <span class="menu-category">ツール</span>
+      <a href="faq.html" class="menu-link"><span class="menu-link-icon">❓</span>よくある質問</a>
+      <a href="glossary.html" class="menu-link active"><span class="menu-link-icon">📚</span>用語集</a>
+      <a href="reports.html" class="menu-link"><span class="menu-link-icon">📋</span>報告一覧</a>
+
+    </div>
+  </div>
+  <script>
+  function toggleMenu() {
+    document.getElementById('slideMenu').classList.toggle('open');
+    document.getElementById('menuOverlay').classList.toggle('open');
+  }
+  </script>
+
+  <header class="header">
+    <h1 class="header-title">SNPIT用語集</h1>
+    <p class="header-subtitle">ゲーム内で使われる用語をわかりやすく解説</p>
+  </header>
+
+  <main class="main">
+
+    <section class="glossary-section">
+      <h2 class="section-title">
+        <span class="section-icon">🪙</span>
+        トークン・ポイント
+      </h2>
+
+      <div class="glossary-item">
+        <div class="glossary-term">FP（フリーポイント）</div>
+        <div class="glossary-reading">Free Point</div>
+        <p class="glossary-def">フリーカメラでの撮影やカジュアルバトル勝利で獲得できるポイント。1,000円分から電子マネーやBTCに交換可能。フリーカメラのレベルアップにも使用する。</p>
+      </div>
+
+      <div class="glossary-item">
+        <div class="glossary-term">STP（SNPITポイント）</div>
+        <div class="glossary-reading">SNPIT Point</div>
+        <p class="glossary-def">NFTカメラでの撮影、メインバトル勝利、投票参加で獲得できるポイント。カメラのレベルアップ、修理、ミント、バッジ購入など多用途に使用。SNPTに交換可能。</p>
+      </div>
+
+      <div class="glossary-item">
+        <div class="glossary-term">SNPT（SNPITトークン）</div>
+        <div class="glossary-reading">SNPIT Token</div>
+        <p class="glossary-def">SNPITの暗号資産（仮想通貨）。MEXC・Gate.io・Zaifに上場。STPからAMM機能（手数料5%）で交換可能。リアル店舗での支払いにも使える。</p>
+      </div>
+
+      <div class="glossary-item">
+        <div class="glossary-term">AMM</div>
+        <div class="glossary-reading">Automated Market Maker / 自動マーケットメイカー</div>
+        <p class="glossary-def">アプリ内でSTPとSNPTを自動的に交換する仕組み。取引所を使わずにアプリ内で交換できる。手数料は5%。</p>
+      </div>
+    </section>
+
+    <section class="glossary-section">
+      <h2 class="section-title">
+        <span class="section-icon">📷</span>
+        カメラ関連
+      </h2>
+
+      <div class="glossary-item">
+        <div class="glossary-term">フリーカメラ</div>
+        <p class="glossary-def">最初から無料でもらえるカメラ。FREEとLIMITEDの2種類がある。撮影でFPを獲得できる。NFTカメラのレアリティ（Common等）とは別体系。</p>
+      </div>
+
+      <div class="glossary-item">
+        <div class="glossary-term">NFTカメラ</div>
+        <div class="glossary-reading">Non-Fungible Token Camera</div>
+        <p class="glossary-def">購入が必要なカメラ。5段階のレアリティ（Common/Uncommon/Rare/Epic/Legendary）があり、撮影でSTPを獲得できる。</p>
+      </div>
+
+      <div class="glossary-item">
+        <div class="glossary-term">レアリティ</div>
+        <div class="glossary-reading">Rarity</div>
+        <p class="glossary-def">NFTカメラの希少度。Common（最低）→ Uncommon → Rare → Epic → Legendary（最高）の5段階。レアリティが高いほど初期ステータスが高く、レベルアップ時の割り振りポイントも多い。</p>
+      </div>
+
+      <div class="glossary-item">
+        <div class="glossary-term">フィルム</div>
+        <div class="glossary-reading">Film</div>
+        <p class="glossary-def">撮影に必要な消耗アイテム。1撮影で1枚消費。6時間ごとに0.5枚回復。1枚以上ないと撮影不可。上限はカメラの台数で決まる（レベルアップでは増えない）。</p>
+      </div>
+
+      <div class="glossary-item">
+        <div class="glossary-term">ブーストクーラー</div>
+        <div class="glossary-reading">Boost Cooler</div>
+        <p class="glossary-def">レベルアップ時のクールダウン（待ち時間）を省略できるアイテム。NFTカメラにのみ使用可能で、フリーカメラには使えない。</p>
+      </div>
+    </section>
+
+    <section class="glossary-section">
+      <h2 class="section-title">
+        <span class="section-icon">📊</span>
+        ステータス
+      </h2>
+
+      <div class="glossary-item">
+        <div class="glossary-term">Quality（クオリティ）</div>
+        <p class="glossary-def">写真の画質に影響するステータス。値が高いほど高品質な写真が撮れる。メインバトル参加にはQuality30以上の写真が必要。</p>
+      </div>
+
+      <div class="glossary-item">
+        <div class="glossary-term">Efficiency（エフィシェンシー）</div>
+        <p class="glossary-def">撮影時のトークン獲得量に影響するステータス。ジェネシスカメラ: E値×0.15固定 / 非ジェネシス: E値×0.08～0.15のSTPを1回の撮影で獲得。</p>
+      </div>
+
+      <div class="glossary-item">
+        <div class="glossary-term">Luck（ラック）</div>
+        <p class="glossary-def">ミステリーボックスの出現率に影響するステータス。値が高いほどレアなボックスが出やすくなる。</p>
+      </div>
+
+      <div class="glossary-item">
+        <div class="glossary-term">Battery（バッテリー）</div>
+        <p class="glossary-def">カメラの故障率に影響するステータス。値が高いほど故障しにくくなる。</p>
+      </div>
+    </section>
+
+    <section class="glossary-section">
+      <h2 class="section-title">
+        <span class="section-icon">⚔️</span>
+        バトル・ゲームプレイ
+      </h2>
+
+      <div class="glossary-item">
+        <div class="glossary-term">カジュアルバトル</div>
+        <p class="glossary-def">誰でも参加できるバトル。勝利するとFPがもらえる。気軽に参加できる初心者向けのバトル。</p>
+      </div>
+
+      <div class="glossary-item">
+        <div class="glossary-term">メインバトル</div>
+        <p class="glossary-def">Quality30以上の写真が必要なバトル。勝利するとSTPがもらえる。NFTカメラは不要で、フリーカメラでもQuality条件を満たせば参加可能。</p>
+      </div>
+
+      <div class="glossary-item">
+        <div class="glossary-term">ミステリーボックス</div>
+        <div class="glossary-reading">Mystery Box</div>
+        <p class="glossary-def">撮影時にランダムで出現する宝箱。開封するとアイテムやトークンが手に入る。Luckステータスが出現率に影響する。</p>
+      </div>
+
+      <div class="glossary-item">
+        <div class="glossary-term">ミント</div>
+        <div class="glossary-reading">Mint</div>
+        <p class="glossary-def">2台のNFTカメラを組み合わせて新しいカメラを生成すること。STPが必要。</p>
+      </div>
+
+      <div class="glossary-item">
+        <div class="glossary-term">バッジ</div>
+        <div class="glossary-reading">Badge</div>
+        <p class="glossary-def">カメラに装着して効果を得られるアイテム。STPで購入・アップグレードが可能。</p>
+      </div>
+    </section>
+
+    <section class="glossary-section">
+      <h2 class="section-title">
+        <span class="section-icon">🔗</span>
+        技術・ブロックチェーン
+      </h2>
+
+      <div class="glossary-item">
+        <div class="glossary-term">Snap to Earn</div>
+        <div class="glossary-reading">スナップ トゥ アーン</div>
+        <p class="glossary-def">「写真を撮って稼ぐ」という意味。SNPITが世界初のSnap to Earnアプリ。</p>
+      </div>
+
+      <div class="glossary-item">
+        <div class="glossary-term">Polygon</div>
+        <div class="glossary-reading">ポリゴン</div>
+        <p class="glossary-def">SNPITが動作するブロックチェーン。イーサリアムの処理を高速・低コストにする技術。ユーザーは意識する必要はない。</p>
+      </div>
+
+      <div class="glossary-item">
+        <div class="glossary-term">NFT</div>
+        <div class="glossary-reading">Non-Fungible Token / 非代替性トークン</div>
+        <p class="glossary-def">デジタルデータに唯一性を持たせる技術。SNPITではカメラがNFTとして扱われ、売買が可能。</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>SNPITガイド</p>
+    <p class="footer-note">このサイトは非公式のファンサイトです</p>
+    <p class="footer-author">運営: しんぷそん (<a href="https://x.com/chill_simpson_" target="_blank" rel="noopener">@chill_simpson_</a>)</p>
+    <div class="footer-links">
+      <a href="https://x.com/chill_simpson_" target="_blank" rel="noopener">X (Twitter)</a>
+      <a href="https://lp.snpit.xyz/" target="_blank" rel="noopener">SNPIT公式サイト</a>
+      <a href="privacy.html">プライバシーポリシー</a>
+      <a href="reports.html">報告一覧</a>
+    </div>
+  </footer>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
+  <script src="notification-toggle.js"></script>
+</body>
+</html>

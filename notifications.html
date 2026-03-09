@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="SNPITガイド">
+  <link rel="apple-touch-icon" href="/images/icon-192.svg">
+  <meta name="theme-color" content="#1A2B2B">
+  <title>通知管理 - SNPITガイド</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="notification-toggle.css">
+  <link rel="stylesheet" href="notifications.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="nav">
+    <button class="hamburger" onclick="toggleMenu()" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="index.html" class="nav-logo">SNPITガイド</a>
+  </nav>
+  <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+  <div class="slide-menu" id="slideMenu">
+    <div class="menu-header">
+      <span class="menu-title">SNPITガイド</span>
+      <button class="menu-close" onclick="toggleMenu()">&times;</button>
+    </div>
+
+    <div class="menu-links">
+      <a href="index.html" class="menu-link"><span class="menu-link-icon">🏠</span>ホーム</a>
+      <a href="chat.html" class="menu-link menu-link-accent"><span class="menu-link-icon">💬</span>スナピー (AI)</a>
+      <a href="news.html" class="menu-link"><span class="menu-link-icon">📢</span>お知らせ</a>
+      <div class="menu-link notification-toggle-row" id="notificationToggleRow">
+        <span class="menu-link-icon">🔔</span>
+        <span>プッシュ通知</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="notificationToggle" onchange="toggleNotification(this)">
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+      <span class="menu-category">ガイド</span>
+      <a href="beginners.html" class="menu-link"><span class="menu-link-icon">📖</span>初心者ガイド</a>
+      <a href="strategy.html" class="menu-link"><span class="menu-link-icon">🎯</span>攻略ガイド</a>
+      <a href="battle-guide.html" class="menu-link"><span class="menu-link-icon">⚔️</span>バトル攻略</a>
+      <a href="tutorials.html" class="menu-link"><span class="menu-link-icon">📹</span>チュートリアル</a>
+      <span class="menu-category">データ</span>
+      <a href="levelup.html" class="menu-link"><span class="menu-link-icon">⬆️</span>レベルアップ早見表</a>
+      <a href="cameras.html" class="menu-link"><span class="menu-link-icon">📷</span>カメラ比較表</a>
+      <a href="exchange.html" class="menu-link"><span class="menu-link-icon">💱</span>FP交換ガイド</a>
+      <span class="menu-category">イベント</span>
+      <a href="bluelock.html" class="menu-link"><span class="menu-link-icon">⚽</span>ブルーロックコラボ</a>
+      <a href="kokaku.html" class="menu-link"><span class="menu-link-icon">🤖</span>攻殻機動隊コラボ</a>
+      <a href="shingeki.html" class="menu-link"><span class="menu-link-icon">⚔️</span>進撃の巨人コラボ</a>
+      <a href="railgun.html" class="menu-link"><span class="menu-link-icon">⚡</span>超電磁砲コラボ</a>
+      <a href="tensura.html" class="menu-link"><span class="menu-link-icon">🔵</span>転スラコラボ</a>
+      <a href="white-scorpion.html" class="menu-link"><span class="menu-link-icon">🦂</span>WHITE SCORPIONコラボ</a>
+      <a href="gr-toyota.html" class="menu-link"><span class="menu-link-icon">🏎️</span>TGRコラボ</a>
+      <a href="calbee.html" class="menu-link"><span class="menu-link-icon">🥔</span>カルビーコラボ</a>
+      <a href="his.html" class="menu-link"><span class="menu-link-icon">✈️</span>HISコラボ</a>
+      <span class="menu-category">ツール</span>
+      <a href="faq.html" class="menu-link"><span class="menu-link-icon">❓</span>よくある質問</a>
+      <a href="glossary.html" class="menu-link"><span class="menu-link-icon">📚</span>用語集</a>
+      <a href="reports.html" class="menu-link"><span class="menu-link-icon">📋</span>報告一覧</a>
+
+    </div>
+  </div>
+  <script>
+  function toggleMenu() {
+    document.getElementById('slideMenu').classList.toggle('open');
+    document.getElementById('menuOverlay').classList.toggle('open');
+  }
+  </script>
+
+  <header class="header">
+    <h1 class="header-title">通知管理</h1>
+    <p class="header-subtitle">Push通知の送信・履歴管理</p>
+  </header>
+
+  <main class="main">
+    <!-- ログイン前 -->
+    <div id="loginSection">
+      <div class="notif-card">
+        <p class="notif-card-text">管理者としてログインしてください</p>
+        <button class="notif-btn notif-btn-primary" onclick="adminLogin()">管理者ログイン</button>
+        <p class="notif-status" id="loginStatus"></p>
+      </div>
+    </div>
+
+    <!-- ログイン後 -->
+    <div id="adminSection" style="display:none;">
+      <!-- 統計 -->
+      <div class="notif-card">
+        <div class="notif-stat">
+          <span class="notif-stat-label">登録ユーザー数</span>
+          <span class="notif-stat-value" id="tokenCount">-</span>
+        </div>
+      </div>
+
+      <!-- 通知送信フォーム -->
+      <div class="notif-card">
+        <h2 class="notif-card-title">通知を送信</h2>
+        <div class="notif-field">
+          <label class="notif-label">タイトル</label>
+          <input type="text" class="notif-input" id="notifTitle" placeholder="例: 新しい攻略法が追加されたよ！" maxlength="100">
+        </div>
+        <div class="notif-field">
+          <label class="notif-label">本文</label>
+          <textarea class="notif-textarea" id="notifBody" placeholder="例: FP獲得大作戦の新しい戦略を追加しました" rows="3" maxlength="300"></textarea>
+        </div>
+        <div class="notif-field">
+          <label class="notif-label">リンクURL</label>
+          <input type="text" class="notif-input" id="notifUrl" value="https://snpit-guide.pages.dev/chat" placeholder="https://snpit-guide.pages.dev/">
+        </div>
+        <button class="notif-btn notif-btn-primary" id="sendNotifBtn" onclick="sendNotification()">送信する</button>
+        <p class="notif-status" id="sendStatus"></p>
+      </div>
+
+      <!-- 送信履歴 -->
+      <div class="notif-card">
+        <h2 class="notif-card-title">送信履歴</h2>
+        <div id="notifHistory">
+          <p class="notif-card-text">読み込み中...</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>SNPITガイド</p>
+    <p class="footer-note">このサイトは非公式のファンサイトです</p>
+  </footer>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
+
+  <script src="notifications.js"></script>
+  <script src="notification-toggle.js"></script>
+</body>
+</html>

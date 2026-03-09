@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="SNPITガイド">
+  <link rel="apple-touch-icon" href="/images/icon-192.svg">
+  <meta name="theme-color" content="#1A2B2B">
+  <title>H.I.S.×SNPITコラボまとめ｜SNPITガイド</title>
+  <meta name="description" content="SNPIT×H.I.S. コラボの全情報まとめ。スナ旅・HISフリーカメラ・スタンプラリーアルバムNFT・ジェネシスカメラなど、旅×写真×Earnの新体験を詳しく解説。">
+  <link rel="canonical" href="https://snpit-guide.pages.dev/his">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <!-- OGP -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="SNPITガイド">
+  <meta property="og:title" content="H.I.S.×SNPITコラボまとめ｜SNPITガイド">
+  <meta property="og:description" content="SNPIT×H.I.S. コラボの全情報まとめ。スナ旅・HISフリーカメラ・スタンプラリーアルバムNFTなど、旅×写真×Earnの新体験を詳しく解説。">
+  <meta property="og:url" content="https://snpit-guide.pages.dev/his">
+  <meta property="og:image" content="https://snpit-guide.pages.dev/images/ogp.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="notification-toggle.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6789708198801982"
+     crossorigin="anonymous"></script>
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2CXFBGQWD4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2CXFBGQWD4');
+  </script>
+  <style>
+    .collab-hero {
+      text-align: center;
+      padding: 0 0 30px;
+      background: linear-gradient(180deg, #0a1520 0%, var(--background) 100%);
+    }
+    .collab-hero-banner {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      display: block;
+    }
+    .collab-hero-text {
+      padding: 20px 20px 0;
+    }
+    .collab-hero-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #1e88e5;
+      margin-bottom: 8px;
+      letter-spacing: 2px;
+    }
+    .collab-hero-sub {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+    .collab-period {
+      display: inline-block;
+      background: rgba(30, 136, 229, 0.15);
+      border: 1px solid rgba(30, 136, 229, 0.4);
+      color: #1e88e5;
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .collab-status {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .collab-status .status-label {
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+    }
+    .status-active {
+      background: rgba(76, 175, 80, 0.2);
+      color: #4caf50;
+    }
+    .status-ended {
+      background: rgba(158, 158, 158, 0.2);
+      color: #9e9e9e;
+    }
+    .info-card {
+      background-color: var(--card-background);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 16px;
+    }
+    .info-card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .info-card-title .icon {
+      font-size: 1.2rem;
+    }
+    .item-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+    .item-table th {
+      background-color: var(--card-inner);
+      color: var(--accent);
+      padding: 10px 12px;
+      text-align: left;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .item-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-primary);
+      vertical-align: top;
+    }
+    .item-table tr:last-child td {
+      border-bottom: none;
+    }
+    .item-table .item-name {
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .highlight-box {
+      background: rgba(30, 136, 229, 0.08);
+      border: 1px solid rgba(30, 136, 229, 0.3);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 16px;
+    }
+    .highlight-box p {
+      font-size: 0.9rem;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+    .highlight-box p:last-child {
+      margin-bottom: 0;
+    }
+    .method-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-weight: 700;
+      margin-right: 4px;
+    }
+    .tag-free {
+      background: rgba(76, 175, 80, 0.2);
+      color: #4caf50;
+      border: 1px solid rgba(76, 175, 80, 0.4);
+    }
+    .tag-sale {
+      background: rgba(30, 136, 229, 0.2);
+      color: #1e88e5;
+      border: 1px solid rgba(30, 136, 229, 0.4);
+    }
+    .tag-ended {
+      background: rgba(158, 158, 158, 0.2);
+      color: #9e9e9e;
+      border: 1px solid rgba(158, 158, 158, 0.4);
+    }
+    .tag-bonus {
+      background: rgba(255, 193, 7, 0.2);
+      color: #ffc107;
+      border: 1px solid rgba(255, 193, 7, 0.4);
+    }
+    .cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .tips-list {
+      list-style: none;
+      padding: 0;
+    }
+    .tips-list li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+      color: var(--text-primary);
+      display: flex;
+      gap: 8px;
+    }
+    .tips-list li:last-child {
+      border-bottom: none;
+    }
+    .tips-list .tip-icon {
+      flex-shrink: 0;
+    }
+    .item-image {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+      border-radius: 8px;
+      float: right;
+      margin: 0 0 8px 12px;
+    }
+    .info-card::after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+    .badge-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin-top: 8px;
+    }
+    .badge-table th {
+      background-color: var(--card-inner);
+      color: var(--accent);
+      padding: 8px 12px;
+      text-align: left;
+      font-weight: 700;
+    }
+    .badge-table td {
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-primary);
+    }
+    .badge-table tr:last-child td {
+      border-bottom: none;
+    }
+    .special-note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 8px;
+      font-style: italic;
+    }
+    .copyright-note {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 24px;
+      padding: 12px;
+    }
+    @media (max-width: 600px) {
+      .collab-hero {
+        padding: 0 0 24px;
+      }
+      .collab-hero-title {
+        font-size: 1.4rem;
+      }
+      .item-image {
+        width: 90px;
+        height: 90px;
+      }
+      .info-card {
+        padding: 16px;
+      }
+      .item-table, .badge-table {
+        font-size: 0.8rem;
+      }
+      .item-table th, .item-table td,
+      .badge-table th, .badge-table td {
+        padding: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ナビゲーション -->
+  <nav class="nav">
+    <button class="hamburger" onclick="toggleMenu()" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="index.html" class="nav-logo">SNPITガイド</a>
+  </nav>
+  <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+  <div class="slide-menu" id="slideMenu">
+    <div class="menu-header">
+      <span class="menu-title">SNPITガイド</span>
+      <button class="menu-close" onclick="toggleMenu()">&times;</button>
+    </div>
+
+    <div class="menu-links">
+      <a href="index.html" class="menu-link"><span class="menu-link-icon">🏠</span>ホーム</a>
+      <a href="chat.html" class="menu-link menu-link-accent"><span class="menu-link-icon">💬</span>スナピー (AI)</a>
+      <a href="news.html" class="menu-link"><span class="menu-link-icon">📢</span>お知らせ</a>
+      <div class="menu-link notification-toggle-row" id="notificationToggleRow">
+        <span class="menu-link-icon">🔔</span>
+        <span>プッシュ通知</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="notificationToggle" onchange="toggleNotification(this)">
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+      <span class="menu-category">ガイド</span>
+      <a href="beginners.html" class="menu-link"><span class="menu-link-icon">📖</span>初心者ガイド</a>
+      <a href="strategy.html" class="menu-link"><span class="menu-link-icon">🎯</span>攻略ガイド</a>
+      <a href="battle-guide.html" class="menu-link"><span class="menu-link-icon">⚔️</span>バトル攻略</a>
+      <a href="tutorials.html" class="menu-link"><span class="menu-link-icon">📹</span>チュートリアル</a>
+      <span class="menu-category">データ</span>
+      <a href="levelup.html" class="menu-link"><span class="menu-link-icon">⬆️</span>レベルアップ早見表</a>
+      <a href="cameras.html" class="menu-link"><span class="menu-link-icon">📷</span>カメラ比較表</a>
+      <a href="exchange.html" class="menu-link"><span class="menu-link-icon">💱</span>FP交換ガイド</a>
+      <span class="menu-category">イベント</span>
+      <a href="bluelock.html" class="menu-link"><span class="menu-link-icon">⚽</span>ブルーロックコラボ</a>
+      <a href="kokaku.html" class="menu-link"><span class="menu-link-icon">🤖</span>攻殻機動隊コラボ</a>
+      <a href="shingeki.html" class="menu-link"><span class="menu-link-icon">⚔️</span>進撃の巨人コラボ</a>
+      <a href="railgun.html" class="menu-link"><span class="menu-link-icon">⚡</span>超電磁砲コラボ</a>
+      <a href="tensura.html" class="menu-link"><span class="menu-link-icon">🔵</span>転スラコラボ</a>
+      <a href="white-scorpion.html" class="menu-link"><span class="menu-link-icon">🦂</span>WHITE SCORPIONコラボ</a>
+      <a href="gr-toyota.html" class="menu-link"><span class="menu-link-icon">🏎️</span>TGRコラボ</a>
+      <a href="calbee.html" class="menu-link"><span class="menu-link-icon">🥔</span>カルビーコラボ</a>
+      <a href="his.html" class="menu-link"><span class="menu-link-icon">✈️</span>HISコラボ</a>
+      <a href="his.html" class="menu-link active"><span class="menu-link-icon">✈️</span>HISコラボ</a>
+      <span class="menu-category">ツール</span>
+      <a href="faq.html" class="menu-link"><span class="menu-link-icon">❓</span>よくある質問</a>
+      <a href="glossary.html" class="menu-link"><span class="menu-link-icon">📚</span>用語集</a>
+      <a href="reports.html" class="menu-link"><span class="menu-link-icon">📋</span>報告一覧</a>
+
+    </div>
+  </div>
+  <script>
+  function toggleMenu() {
+    document.getElementById('slideMenu').classList.toggle('open');
+    document.getElementById('menuOverlay').classList.toggle('open');
+  }
+  </script>
+
+  <!-- ヒーロー -->
+  <section class="collab-hero">
+    <img src="images/collab/his/mv_snpit_1920.jpg" alt="H.I.S. × SNPIT コラボ" class="collab-hero-banner">
+    <div class="collab-hero-text">
+      <div class="collab-period" id="collabPeriod">2024年5月〜 継続中</div>
+      <div class="collab-status" id="collabStatus"></div>
+    </div>
+  </section>
+
+  <main class="main">
+
+    <!-- コラボ概要 -->
+    <section class="section">
+      <h2 class="section-heading">コラボ概要</h2>
+      <div class="highlight-box">
+        <p>H.I.S.とSNPITの業務提携による「旅×写真×Earn」の新体験！</p>
+        <p>旅行×地域活性化をテーマに、SNPITアプリから「スナ旅」としてHIS旅行予約が可能に。</p>
+        <p>HISフリーカメラの無料配布、全国スタンプラリーアルバムNFT、ジェネシスカメラなど多彩なコラボアイテムが展開中。</p>
+        <p>業務提携開始は2024年5月。コラボは現在も継続中です。</p>
+      </div>
+      <div class="cta-buttons">
+        <a href="https://lp.snpit.xyz/his" target="_blank" rel="noopener" class="btn btn-accent">公式特設サイト</a>
+      </div>
+      <a href="chat.html" class="snappy-card">
+        <span class="snappy-card-icon">💬</span>
+        <div class="snappy-card-body">
+          <span class="snappy-card-title">スナピーに聞く</span>
+          <span class="snappy-card-desc">コラボの詳細、何でも答えるよ！</span>
+        </div>
+        <span class="snappy-card-arrow">›</span>
+      </a>
+    </section>
+
+    <!-- HISフリーカメラ -->
+    <section class="section">
+      <h2 class="section-heading">HISフリーカメラ</h2>
+      <div class="info-card">
+        <div class="info-card-title"><span class="icon">📷</span>HISフリーカメラ <span class="method-tag tag-free">無料配布中</span></div>
+        <img src="images/collab/his/genesis_01.jpg" alt="HISフリーカメラ" class="item-image">
+        <table class="item-table">
+          <tr><th>配布期間</th><td>2025/1/21〜 未定（配布中）</td></tr>
+          <tr><th>入手条件</th><td>SNPITダウンロードのみ</td></tr>
+          <tr><th>特徴</th><td>初期フリーカメラより撮影ポイント獲得効率が高い</td></tr>
+          <tr><th>装着枠</th><td>ストラップなどアイテムを2点装着可能</td></tr>
+        </table>
+        <p class="special-note">※ まだSNPITを始めていない方は、まずこのフリーカメラから始めるのがおすすめです。</p>
+      </div>
+    </section>
+
+    <!-- スタンプラリーアルバムNFT -->
+    <section class="section">
+      <h2 class="section-heading">HISスタンプラリーアルバムNFT</h2>
+      <div class="info-card">
+        <div class="info-card-title"><span class="icon">📕</span>スタンプラリーアルバムNFT <span class="method-tag tag-sale">販売中</span></div>
+        <img src="images/collab/his/stamp-rally_01.jpg" alt="スタンプラリーアルバムNFT" class="item-image">
+        <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:12px;">全国7エリア（北海道、東北、関東、中部、関西、中国四国、九州沖縄）、50都道府県を巡るスタンプラリー形式のアルバムNFT。</p>
+        <table class="item-table">
+          <tr><th>販売開始</th><td>2025/9/25〜（常設販売）</td></tr>
+          <tr><th>格納枚数</th><td>各アルバムに写真10枚格納可能</td></tr>
+          <tr><th>通常価格</th><td>7,000円 / 180POL / 4,500SNPT</td></tr>
+          <tr><th>セット価格</th><td>45,000円 / 1,160POL / 29,000SNPT（7冊セット）</td></tr>
+        </table>
+      </div>
+
+      <div class="info-card">
+        <div class="info-card-title"><span class="icon">🏅</span>バッジシステム</div>
+        <img src="images/collab/his/stamp-rally_02.jpg" alt="バッジシステム" class="item-image">
+        <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:12px;">各エリアの全県を制覇すると「バッジ」を獲得できます。</p>
+        <table class="badge-table">
+          <tr><th>バッジ</th><th>条件</th></tr>
+          <tr><td style="color:#ffd700; font-weight:700;">🥇 金バッジ</td><td>全10枚が「バトル勝利写真」</td></tr>
+          <tr><td style="color:#c0c0c0; font-weight:700;">🥈 銀バッジ</td><td>1枚でも未勝利写真あり</td></tr>
+          <tr><td style="color:#1e88e5; font-weight:700;">🔵 青バッジ</td><td>二次流通写真を含む</td></tr>
+        </table>
+        <p style="font-size:0.85rem; color:var(--text-secondary); margin-top:12px;">7エリア全バッジで「全国踏破の証」をGET！</p>
+      </div>
+    </section>
+
+    <!-- HISガチャ -->
+    <section class="section">
+      <h2 class="section-heading">HISガチャ</h2>
+      <div class="info-card">
+        <div class="info-card-title"><span class="icon">🎰</span>HISガチャ <span class="method-tag tag-bonus">バッジ特典</span></div>
+        <img src="images/collab/his/gatcha_01.jpg" alt="HISガチャ" class="item-image">
+        <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:12px;">バッジ保有者は毎月25日にガチャコインを自動取得。10枚で1回ガチャが回せます。</p>
+        <table class="badge-table">
+          <tr><th>バッジ種別</th><th>コイン数/月</th></tr>
+          <tr><td style="color:#ffd700; font-weight:700;">金バッジ</td><td>30枚/月</td></tr>
+          <tr><td style="color:#c0c0c0; font-weight:700;">銀バッジ</td><td>20枚/月</td></tr>
+          <tr><td style="color:#1e88e5; font-weight:700;">青バッジ</td><td>10枚/月</td></tr>
+        </table>
+        <div class="highlight-box" style="margin-top:12px;">
+          <p>10枚で1回ガチャ可能</p>
+          <p>7エリア全バッジで最大420回/月！</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 全国踏破の証 金銀青カメラ -->
+    <section class="section">
+      <h2 class="section-heading">全国踏破の証 金銀青カメラ</h2>
+      <div class="info-card">
+        <div class="info-card-title"><span class="icon">🏆</span>金カメラ</div>
+        <table class="item-table">
+          <tr><th>入手条件</th><td>7つの金バッジで抽選参加権を獲得</td></tr>
+          <tr><th>抽選頻度</th><td>3ヶ月に1度、1台ずつ排出</td></tr>
+        </table>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title"><span class="icon">🥈</span>銀カメラ</div>
+        <table class="item-table">
+          <tr><th>入手条件</th><td>金+銀合わせて7つのバッジで抽選参加権を獲得</td></tr>
+          <tr><th>抽選頻度</th><td>3ヶ月に1度、1台ずつ排出</td></tr>
+        </table>
+      </div>
+      <div class="highlight-box">
+        <p>全国踏破をいち早く達成するほど当選チャンスUP！</p>
+        <p>早期達成が有利な先行者優遇システムです。</p>
+      </div>
+    </section>
+
+    <!-- HISジェネシスカメラ -->
+    <section class="section">
+      <h2 class="section-heading">HISジェネシスカメラ</h2>
+      <div class="info-card">
+        <div class="info-card-title"><span class="icon">📸</span>HISジェネシスカメラ <span class="method-tag tag-ended">販売終了</span></div>
+        <img src="images/collab/his/genesis_02.jpg" alt="HISジェネシスカメラ" class="item-image">
+        <table class="item-table">
+          <tr><th>販売数</th><td>401個限定（ALNFT保有者121個、抽選280個）</td></tr>
+          <tr><th>価格</th><td>550POL</td></tr>
+          <tr><th>デザイン</th><td>全10種類</td></tr>
+          <tr><th>発売期間</th><td>2024/10/5〜（終了）</td></tr>
+        </table>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title"><span class="icon">🎡</span>ルーレット機能</div>
+        <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:12px;">月1回無料でルーレットを回せます。都道府県+ボーナス対象+上昇率が決まります。</p>
+        <table class="item-table">
+          <tr><th>回数</th><td>月1回無料（STPで最大10回やり直し可能）</td></tr>
+          <tr><th>決定内容</th><td>都道府県 × ボーナス対象 × 上昇率</td></tr>
+          <tr><th>例</th><td>東京 × 撮影時 × 20%UP</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <!-- スナ旅 -->
+    <section class="section">
+      <h2 class="section-heading">スナ旅（旅行予約）</h2>
+      <div class="info-card">
+        <div class="info-card-title"><span class="icon">✈️</span>スナ旅 <span class="method-tag tag-sale">利用可能</span></div>
+        <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:12px;">SNPITアプリのマーケットページからHIS旅行予約が可能。旅行するだけでお得な特典がもらえます。</p>
+        <table class="item-table">
+          <tr><th>予約方法</th><td>SNPITアプリ内マーケットページから</td></tr>
+          <tr><th>特典1</th><td>スペアフィルム5枚 × 旅行日数</td></tr>
+          <tr><th>特典2</th><td>HISガチャコイン10枚 × 旅行日数</td></tr>
+        </table>
+        <div class="highlight-box" style="margin-top:12px;">
+          <p>例: 3泊4日の旅行なら → スペアフィルム20枚 + ガチャコイン40枚！</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- おすすめ・攻略Tips -->
+    <section class="section">
+      <h2 class="section-heading">おすすめ・攻略Tips</h2>
+      <div class="info-card">
+        <ul class="tips-list">
+          <li><span class="tip-icon">1.</span>まずはHISフリーカメラ（無料）を入手して効率よくスタートしよう</li>
+          <li><span class="tip-icon">2.</span>アルバムNFTは全国旅行のモチベーションに。旅好きなら必携</li>
+          <li><span class="tip-icon">3.</span>金バッジ狙いならバトル勝利写真だけで10枚埋めること</li>
+          <li><span class="tip-icon">4.</span>ガチャコインは毎月自動配布。バッジを早く集めるほど長期的にお得</li>
+          <li><span class="tip-icon">5.</span>金銀カメラ抽選は先行者有利。全国踏破の競争は今がチャンス</li>
+          <li><span class="tip-icon">6.</span>スナ旅で旅行予約するとフィルム＆ガチャコイン特典あり</li>
+        </ul>
+      </div>
+      <div class="cta-buttons">
+        <a href="https://lp.snpit.xyz/his" target="_blank" rel="noopener" class="btn btn-accent">公式特設サイトで詳細を見る</a>
+      </div>
+      <a href="chat.html" class="snappy-card">
+        <span class="snappy-card-icon">💬</span>
+        <div class="snappy-card-body">
+          <span class="snappy-card-title">スナピーに聞く</span>
+          <span class="snappy-card-desc">SNPITのこと、何でも答えるよ！</span>
+        </div>
+        <span class="snappy-card-arrow">›</span>
+      </a>
+    </section>
+
+    <p class="copyright-note">&copy; H.I.S. Co., Ltd. All Rights Reserved.</p>
+
+  </main>
+
+  <!-- フッター -->
+  <footer class="footer">
+    <p>SNPITガイド</p>
+    <p class="footer-note">このサイトは非公式のファンサイトです</p>
+    <p class="footer-author">運営: しんぷそん (<a href="https://x.com/chill_simpson_" target="_blank" rel="noopener">@chill_simpson_</a>)</p>
+    <div class="footer-links">
+      <a href="https://x.com/chill_simpson_" target="_blank" rel="noopener">X (Twitter)</a>
+      <a href="https://lp.snpit.xyz/" target="_blank" rel="noopener">SNPIT公式サイト</a>
+      <a href="privacy.html">プライバシーポリシー</a>
+      <a href="reports.html">報告一覧</a>
+    </div>
+  </footer>
+
+  <script>
+    // コラボ期間のステータス表示（継続中のため常に「開催中」）
+    (function() {
+      const start = new Date('2024-05-01T00:00:00+09:00');
+      const now = new Date();
+      const el = document.getElementById('collabStatus');
+      if (now >= start) {
+        el.innerHTML = '<span class="status-label status-active">開催中</span> コラボは継続中です！';
+      }
+    })();
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
+  <script src="notification-toggle.js"></script>
+</body>
+</html>

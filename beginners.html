@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="SNPITガイド">
+  <link rel="apple-touch-icon" href="/images/icon-192.svg">
+  <meta name="theme-color" content="#1A2B2B">
+  <title>SNPIT初心者ガイド｜始め方から稼ぎ方まで徹底解説｜SNPITガイド</title>
+  <meta name="description" content="SNPITの始め方を初心者向けに解説。アプリのダウンロードから写真撮影、バトル、トークン獲得まで、ゼロから分かるガイドです。">
+  <link rel="canonical" href="https://snpit-guide.pages.dev/beginners">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="SNPITガイド">
+  <meta property="og:title" content="SNPIT初心者ガイド｜始め方から稼ぎ方まで徹底解説">
+  <meta property="og:description" content="SNPITの始め方を初心者向けに解説。アプリのダウンロードから写真撮影、バトル、トークン獲得まで、ゼロから分かるガイドです。">
+  <meta property="og:url" content="https://snpit-guide.pages.dev/beginners">
+  <meta property="og:image" content="https://snpit-guide.pages.dev/images/ogp.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="notification-toggle.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6789708198801982"
+     crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2CXFBGQWD4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2CXFBGQWD4');
+  </script>
+  <style>
+    .guide-section {
+      background-color: var(--card-background);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+    .guide-section p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+    .guide-section p:last-child { margin-bottom: 0; }
+    .guide-section ul {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 12px;
+    }
+    .guide-section li {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      padding: 4px 0 4px 1.2em;
+      position: relative;
+    }
+    .guide-section li::before {
+      content: "\30FB";
+      position: absolute;
+      left: 0;
+    }
+    .info-box {
+      background-color: var(--accent-glow);
+      border: 1px solid var(--accent-dark);
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin: 12px 0;
+    }
+    .info-box p {
+      color: var(--text-primary) !important;
+      font-size: 0.9rem;
+      margin: 0;
+    }
+    .token-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+      font-size: 0.85rem;
+    }
+    .token-table th, .token-table td {
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      text-align: left;
+    }
+    .token-table th {
+      background-color: var(--card-inner);
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .token-table td {
+      color: var(--text-secondary);
+    }
+    .hero-image {
+      width: 100%;
+      max-width: 220px;
+      display: block;
+      margin: 0 auto 24px;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+    .section-image-small {
+      width: 120px;
+      border-radius: 12px;
+      float: right;
+      margin: 0 0 12px 16px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    }
+    .section-clear { clear: both; }
+    @media (max-width: 600px) {
+      .guide-section { padding: 20px 16px; border-radius: 12px; }
+      .token-table { font-size: 0.8rem; }
+      .token-table th, .token-table td { padding: 8px; }
+      .section-image-small { width: 100px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <button class="hamburger" onclick="toggleMenu()" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="index.html" class="nav-logo">SNPITガイド</a>
+  </nav>
+  <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+  <div class="slide-menu" id="slideMenu">
+    <div class="menu-header">
+      <span class="menu-title">SNPITガイド</span>
+      <button class="menu-close" onclick="toggleMenu()">&times;</button>
+    </div>
+    
+    <div class="menu-links">
+      <a href="index.html" class="menu-link"><span class="menu-link-icon">🏠</span>ホーム</a>
+      <a href="chat.html" class="menu-link menu-link-accent"><span class="menu-link-icon">💬</span>スナピー (AI)</a>
+      <a href="news.html" class="menu-link"><span class="menu-link-icon">📢</span>お知らせ</a>
+      <div class="menu-link notification-toggle-row" id="notificationToggleRow">
+        <span class="menu-link-icon">🔔</span>
+        <span>プッシュ通知</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="notificationToggle" onchange="toggleNotification(this)">
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+      <span class="menu-category">ガイド</span>
+      <a href="beginners.html" class="menu-link active"><span class="menu-link-icon">📖</span>初心者ガイド</a>
+      <a href="strategy.html" class="menu-link"><span class="menu-link-icon">🎯</span>攻略ガイド</a>
+      <a href="battle-guide.html" class="menu-link"><span class="menu-link-icon">⚔️</span>バトル攻略</a>
+      <a href="tutorials.html" class="menu-link"><span class="menu-link-icon">📹</span>チュートリアル</a>
+      <span class="menu-category">データ</span>
+      <a href="levelup.html" class="menu-link"><span class="menu-link-icon">⬆️</span>レベルアップ早見表</a>
+      <a href="cameras.html" class="menu-link"><span class="menu-link-icon">📷</span>カメラ比較表</a>
+      <a href="exchange.html" class="menu-link"><span class="menu-link-icon">💱</span>FP交換ガイド</a>
+      <span class="menu-category">イベント</span>
+      <a href="bluelock.html" class="menu-link"><span class="menu-link-icon">⚽</span>ブルーロックコラボ</a>
+      <a href="kokaku.html" class="menu-link"><span class="menu-link-icon">🤖</span>攻殻機動隊コラボ</a>
+      <a href="shingeki.html" class="menu-link"><span class="menu-link-icon">⚔️</span>進撃の巨人コラボ</a>
+      <a href="railgun.html" class="menu-link"><span class="menu-link-icon">⚡</span>超電磁砲コラボ</a>
+      <a href="tensura.html" class="menu-link"><span class="menu-link-icon">🔵</span>転スラコラボ</a>
+      <a href="white-scorpion.html" class="menu-link"><span class="menu-link-icon">🦂</span>WHITE SCORPIONコラボ</a>
+      <a href="gr-toyota.html" class="menu-link"><span class="menu-link-icon">🏎️</span>TGRコラボ</a>
+      <a href="calbee.html" class="menu-link"><span class="menu-link-icon">🥔</span>カルビーコラボ</a>
+      <a href="his.html" class="menu-link"><span class="menu-link-icon">✈️</span>HISコラボ</a>
+      <span class="menu-category">ツール</span>
+      <a href="faq.html" class="menu-link"><span class="menu-link-icon">❓</span>よくある質問</a>
+      <a href="glossary.html" class="menu-link"><span class="menu-link-icon">📚</span>用語集</a>
+      <a href="reports.html" class="menu-link"><span class="menu-link-icon">📋</span>報告一覧</a>
+    
+    </div>
+  </div>
+  <script>
+  function toggleMenu() {
+    document.getElementById('slideMenu').classList.toggle('open');
+    document.getElementById('menuOverlay').classList.toggle('open');
+  }
+  </script>
+
+  <header class="header">
+    <h1 class="header-title">初心者ガイド</h1>
+    <p class="header-subtitle">SNPITの始め方から稼ぎ方まで</p>
+  </header>
+
+  <main class="main">
+    <img src="images/guide/snap_lifestyle.png" alt="SNPITゲームプレイ" class="hero-image">
+
+    <section class="guide-section">
+      <h2 class="section-title">
+        <span class="section-icon">📸</span>
+        SNPITとは？
+      </h2>
+      <p>SNPIT（スナップイット）は、世界初の「Snap to Earn」アプリです。写真を撮るだけでトークン（ポイント）を稼ぐことができます。</p>
+      <p>キャッチコピーは「Snap, Battle, Connect（撮る、戦う、繋がる）」。無料で始められ、Google Playで100万ダウンロードを突破しています。</p>
+      <div class="info-box">
+        <p>開発はSNPIT Studio FZCO。Polygonチェーン上で動作する本格的なWeb3アプリですが、暗号資産の知識がなくても楽しめます。</p>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <h2 class="section-title">
+        <span class="section-icon">🚀</span>
+        始め方（3ステップ）
+      </h2>
+      <div class="tutorial-steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-text">App Store / Google PlayでSNPITをダウンロード</div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-text">メールアドレスで登録</div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-text">フリーカメラで写真を撮って、すぐにポイント獲得！</div>
+        </div>
+      </div>
+      <div class="info-box">
+        <p>フリーカメラは最初から1台もらえます。NFT（課金）カメラを買わなくても、すぐにプレイ開始できます。</p>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <h2 class="section-title">
+        <span class="section-icon">💰</span>
+        稼ぎ方の基本
+      </h2>
+      <img src="images/guide/ui_snap.png" alt="SNPITスナップ画面" class="section-image-small">
+      <p>SNPITでは主に3つの方法でトークンを稼げます。</p>
+      <table class="token-table">
+        <thead>
+          <tr>
+            <th>方法</th>
+            <th>もらえるもの</th>
+            <th>必要なもの</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>写真撮影（フリーカメラ）</td>
+            <td>FP（フリーポイント）</td>
+            <td>フリーカメラ + フィルム</td>
+          </tr>
+          <tr>
+            <td>写真撮影（NFTカメラ）</td>
+            <td>STP（SNPITポイント）</td>
+            <td>NFTカメラ + フィルム</td>
+          </tr>
+          <tr>
+            <td>バトルで勝利</td>
+            <td>FPまたはSTP</td>
+            <td>メインバトルはQuality30以上のカメラで撮影した写真が必要。カジュアルバトルは制限なし</td>
+          </tr>
+          <tr>
+            <td>投票に参加</td>
+            <td>STP</td>
+            <td>誰でも参加可能（NFT未保有7票/日、NFT保有+5票、サブスク+2票）</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="guide-section">
+      <h2 class="section-title">
+        <span class="section-icon">🪙</span>
+        トークン（ポイント）の種類
+      </h2>
+      <table class="token-table">
+        <thead>
+          <tr>
+            <th>名前</th>
+            <th>説明</th>
+            <th>交換先</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>FP（フリーポイント）</td>
+            <td>フリーカメラで獲得。カジュアルバトル勝利でも獲得可能</td>
+            <td>電子マネー / BTC（1,000円～交換可）</td>
+          </tr>
+          <tr>
+            <td>STP（SNPITポイント）</td>
+            <td>NFTカメラで獲得。メインバトル勝利・投票でも獲得</td>
+            <td>SNPT（暗号資産）に交換可</td>
+          </tr>
+          <tr>
+            <td>SNPT（SNPITトークン）</td>
+            <td>暗号資産。MEXC・Gate.io・Zaifに上場</td>
+            <td>取引所で売買可能</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="info-box">
+        <p>FP・STPの残高はアプリ上部ヘッダー右上に常時表示。獲得履歴はプロフィール → 設定 →「履歴」で確認できます。</p>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <h2 class="section-title">
+        <span class="section-icon">🎞️</span>
+        フィルムの仕組み
+      </h2>
+      <p>写真を撮るにはフィルムが必要です。1回の撮影で1枚消費します。</p>
+      <ul>
+        <li>初期フィルム上限：2枚（フリーカメラ1台の場合）</li>
+        <li>回復速度：6時間ごとに0.5枚回復</li>
+        <li>撮影には1枚以上必要（0.5枚では撮影できない）</li>
+        <li>フィルム上限を増やすには、カメラの台数を増やす必要あり</li>
+      </ul>
+      <div class="info-box">
+        <p>レベルアップではフィルム上限は増えません。カメラの台数だけがフィルム上限に影響します。</p>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <h2 class="section-title">
+        <span class="section-icon">⚔️</span>
+        バトルの仕組み
+      </h2>
+      <img src="images/guide/ui_battle2.png" alt="SNPITバトル画面" class="section-image-small">
+      <p>撮影した写真を使って他のプレイヤーと対戦できます。バトルには2種類あります。</p>
+      <table class="token-table">
+        <thead>
+          <tr>
+            <th>バトル種類</th>
+            <th>参加条件</th>
+            <th>報酬</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>カジュアルバトル</td>
+            <td>誰でも参加可能</td>
+            <td>FP</td>
+          </tr>
+          <tr>
+            <td>メインバトル</td>
+            <td>Quality30以上のカメラで撮影した写真</td>
+            <td>STP</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>クオリティは、カメラのQualityステータスで決まります。フリーカメラでもレベルを上げればQuality30に到達可能です。</p>
+    </section>
+
+    <section class="guide-section">
+      <h2 class="section-title">
+        <span class="section-icon">⬆️</span>
+        カメラのレベルアップ
+      </h2>
+      <img src="images/guide/item_levelup.png" alt="レベルアップ" class="section-image-small">
+      <p>カメラはレベルアップすることでステータスを強化できます。最大レベルは31です。</p>
+      <ul>
+        <li>NFTカメラ：レベルアップにSTPが必要</li>
+        <li>フリーカメラ：レベルアップにFPが必要（合計約564FP）</li>
+        <li>レベルアップ所要時間：レベルが上がるごとに1時間ずつ増加</li>
+        <li>全レベル合計：約495時間（連続で約20日）</li>
+      </ul>
+      <p>カメラには4つのステータスがあり、レベルアップ時にポイントを割り振れます。</p>
+      <table class="token-table">
+        <thead>
+          <tr>
+            <th>ステータス</th>
+            <th>効果</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Quality（画質）</td><td>写真のクオリティが上がる。バトル参加条件にも影響</td></tr>
+          <tr><td>Efficiency（効率）</td><td>撮影時の獲得ポイント量が増える</td></tr>
+          <tr><td>Luck（運）</td><td>ミステリーボックスの出現率に影響</td></tr>
+          <tr><td>Battery（バッテリー）</td><td>故障率が下がる・バッテリー消費に影響</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="guide-section">
+      <h2 class="section-title">
+        <span class="section-icon">💬</span>
+        もっと詳しく知りたい？
+      </h2>
+      <a href="chat.html" class="snappy-card">
+      <span class="snappy-card-icon">💬</span>
+      <div class="snappy-card-body">
+        <span class="snappy-card-title">スナピーに聞く</span>
+        <span class="snappy-card-desc">SNPITのこと、何でも答えるよ！</span>
+      </div>
+      <span class="snappy-card-arrow">›</span>
+    </a>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>SNPITガイド</p>
+    <p class="footer-note">このサイトは非公式のファンサイトです</p>
+    <p class="footer-author">運営: しんぷそん (<a href="https://x.com/chill_simpson_" target="_blank" rel="noopener">@chill_simpson_</a>)</p>
+    <div class="footer-links">
+      <a href="https://x.com/chill_simpson_" target="_blank" rel="noopener">X (Twitter)</a>
+      <a href="https://lp.snpit.xyz/" target="_blank" rel="noopener">SNPIT公式サイト</a>
+      <a href="privacy.html">プライバシーポリシー</a>
+      <a href="reports.html">報告一覧</a>
+    </div>
+  </footer>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
+  <script src="notification-toggle.js"></script>
+</body>
+</html>

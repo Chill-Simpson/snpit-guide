@@ -198,6 +198,40 @@
   padding-top: 10px;
 }
 
+/* 会話ログ */
+.report-card-conversation {
+  margin-top: 4px;
+}
+
+.report-card-conversation-log {
+  margin-top: 6px;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  padding: 8px 12px;
+  max-height: 300px;
+  overflow-y: auto;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.report-card-conversation-log .report-log-user,
+.report-card-conversation-log .report-log-assistant {
+  margin-bottom: 6px;
+  padding: 2px 0;
+}
+
+.report-card-conversation-log .report-log-user {
+  color: var(--text-secondary, #a0a0a0);
+}
+
+.report-card-conversation-log .report-log-assistant {
+  color: var(--text-primary, #e0e0e0);
+}
+
+.report-card-conversation-log .report-log-role {
+  margin-right: 4px;
+}
+
 /* ヘッダー左側（ニックネーム + ステータスバッジ） */
 .report-card-header-left {
   display: flex;

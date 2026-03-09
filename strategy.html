@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="SNPITガイド">
+  <link rel="apple-touch-icon" href="/images/icon-192.svg">
+  <meta name="theme-color" content="#1A2B2B">
+  <title>SNPIT攻略ガイド｜効率的な稼ぎ方とステータス振り分け｜SNPITガイド</title>
+  <meta name="description" content="SNPITで効率よく稼ぐための攻略情報。おすすめステータス振り分け、レベルアップ戦略、無課金・課金別の立ち回りを解説。">
+  <link rel="canonical" href="https://snpit-guide.pages.dev/strategy">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="SNPITガイド">
+  <meta property="og:title" content="SNPIT攻略ガイド｜効率的な稼ぎ方とステータス振り分け">
+  <meta property="og:description" content="SNPITで効率よく稼ぐための攻略情報。おすすめステータス振り分け、レベルアップ戦略を解説。">
+  <meta property="og:url" content="https://snpit-guide.pages.dev/strategy">
+  <meta property="og:image" content="https://snpit-guide.pages.dev/images/ogp.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="notification-toggle.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6789708198801982"
+     crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2CXFBGQWD4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2CXFBGQWD4');
+  </script>
+  <style>
+    .guide-section {
+      background-color: var(--card-background);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+    .guide-section p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+    .guide-section p:last-child { margin-bottom: 0; }
+    .guide-section ul, .guide-section ol {
+      padding-left: 1.5em;
+      margin-bottom: 12px;
+    }
+    .guide-section li {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      padding: 4px 0;
+    }
+    .guide-section h3 {
+      font-size: 1.05rem;
+      color: var(--accent);
+      margin: 20px 0 10px;
+    }
+    .info-box {
+      background-color: var(--accent-glow);
+      border: 1px solid var(--accent-dark);
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin: 12px 0;
+    }
+    .info-box p {
+      color: var(--text-primary) !important;
+      font-size: 0.9rem;
+      margin: 0;
+    }
+    .warn-box {
+      background-color: rgba(255, 193, 7, 0.1);
+      border: 1px solid rgba(255, 193, 7, 0.3);
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin: 12px 0;
+    }
+    .warn-box p {
+      color: var(--text-primary) !important;
+      font-size: 0.9rem;
+      margin: 0;
+    }
+    .strategy-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+      font-size: 0.85rem;
+    }
+    .strategy-table th, .strategy-table td {
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      text-align: left;
+    }
+    .strategy-table th {
+      background-color: var(--card-inner);
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .strategy-table td { color: var(--text-secondary); }
+    .hero-image {
+      width: 100%;
+      max-width: 220px;
+      display: block;
+      margin: 0 auto 24px;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+    .section-image {
+      width: 100%;
+      border-radius: 12px;
+      margin: 12px 0;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    }
+    .section-image-small {
+      width: 120px;
+      border-radius: 12px;
+      float: right;
+      margin: 0 0 12px 16px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    }
+    .section-clear::after { content: ''; display: table; clear: both; }
+    @media (max-width: 600px) {
+      .guide-section { padding: 20px 16px; border-radius: 12px; }
+      .strategy-table { font-size: 0.8rem; }
+      .strategy-table th, .strategy-table td { padding: 8px; }
+      .hero-image { max-width: 180px; }
+      .section-image-small { width: 100px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <button class="hamburger" onclick="toggleMenu()" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="index.html" class="nav-logo">SNPITガイド</a>
+  </nav>
+  <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+  <div class="slide-menu" id="slideMenu">
+    <div class="menu-header">
+      <span class="menu-title">SNPITガイド</span>
+      <button class="menu-close" onclick="toggleMenu()">&times;</button>
+    </div>
+    
+    <div class="menu-links">
+      <a href="index.html" class="menu-link"><span class="menu-link-icon">🏠</span>ホーム</a>
+      <a href="chat.html" class="menu-link menu-link-accent"><span class="menu-link-icon">💬</span>スナピー (AI)</a>
+      <a href="news.html" class="menu-link"><span class="menu-link-icon">📢</span>お知らせ</a>
+      <div class="menu-link notification-toggle-row" id="notificationToggleRow">
+        <span class="menu-link-icon">🔔</span>
+        <span>プッシュ通知</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="notificationToggle" onchange="toggleNotification(this)">
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+      <span class="menu-category">ガイド</span>
+      <a href="beginners.html" class="menu-link"><span class="menu-link-icon">📖</span>初心者ガイド</a>
+      <a href="strategy.html" class="menu-link active"><span class="menu-link-icon">🎯</span>攻略ガイド</a>
+      <a href="battle-guide.html" class="menu-link"><span class="menu-link-icon">⚔️</span>バトル攻略</a>
+      <a href="tutorials.html" class="menu-link"><span class="menu-link-icon">📹</span>チュートリアル</a>
+      <span class="menu-category">データ</span>
+      <a href="levelup.html" class="menu-link"><span class="menu-link-icon">⬆️</span>レベルアップ早見表</a>
+      <a href="cameras.html" class="menu-link"><span class="menu-link-icon">📷</span>カメラ比較表</a>
+      <a href="exchange.html" class="menu-link"><span class="menu-link-icon">💱</span>FP交換ガイド</a>
+      <span class="menu-category">イベント</span>
+      <a href="bluelock.html" class="menu-link"><span class="menu-link-icon">⚽</span>ブルーロックコラボ</a>
+      <a href="kokaku.html" class="menu-link"><span class="menu-link-icon">🤖</span>攻殻機動隊コラボ</a>
+      <a href="shingeki.html" class="menu-link"><span class="menu-link-icon">⚔️</span>進撃の巨人コラボ</a>
+      <a href="railgun.html" class="menu-link"><span class="menu-link-icon">⚡</span>超電磁砲コラボ</a>
+      <a href="tensura.html" class="menu-link"><span class="menu-link-icon">🔵</span>転スラコラボ</a>
+      <a href="white-scorpion.html" class="menu-link"><span class="menu-link-icon">🦂</span>WHITE SCORPIONコラボ</a>
+      <a href="gr-toyota.html" class="menu-link"><span class="menu-link-icon">🏎️</span>TGRコラボ</a>
+      <a href="calbee.html" class="menu-link"><span class="menu-link-icon">🥔</span>カルビーコラボ</a>
+      <a href="his.html" class="menu-link"><span class="menu-link-icon">✈️</span>HISコラボ</a>
+      <span class="menu-category">ツール</span>
+      <a href="faq.html" class="menu-link"><span class="menu-link-icon">❓</span>よくある質問</a>
+      <a href="glossary.html" class="menu-link"><span class="menu-link-icon">📚</span>用語集</a>
+      <a href="reports.html" class="menu-link"><span class="menu-link-icon">📋</span>報告一覧</a>
+    
+    </div>
+  </div>
+  <script>
+  function toggleMenu() {
+    document.getElementById('slideMenu').classList.toggle('open');
+    document.getElementById('menuOverlay').classList.toggle('open');
+  }
+  </script>
+
+  <header class="header">
+    <h1 class="header-title">攻略ガイド</h1>
+    <p class="header-subtitle">効率的な稼ぎ方とステータス振り分け</p>
+  </header>
+
+  <main class="main">
+    <img src="images/guide/ui_snap.png" alt="SNPITアプリ画面" class="hero-image" loading="lazy">
+
+    <section class="guide-section">
+      <h2 class="section-title">
+        <span class="section-icon">🎯</span>
+        無課金プレイヤーの基本戦略
+      </h2>
+      <p>無課金（フリーカメラのみ）でも十分に稼げます。以下の順番で進めるのがおすすめです。</p>
+      <ol>
+        <li><strong>まずはレベルを上げる</strong> - フリーカメラをコツコツレベルアップ。合計約564FPで最大レベル31に到達</li>
+        <li><strong>Qualityを最優先で振る</strong> - Quality30に到達すればメインバトルに参加可能になる</li>
+        <li><strong>毎日撮影を欠かさない</strong> - フィルムが溜まったらすぐ撮影。1日2回が基本ペース</li>
+        <li><strong>カジュアルバトルに毎日エントリー</strong> - 勝利でFPが貯まり、レベルアップが加速</li>
+        <li><strong>Quality30達成後はメインバトルへ</strong> - STPを稼いでSNPTに交換</li>
+      </ol>
+      <div class="info-box">
+        <p>フリーカメラでもメインバトルに参加できます。「NFTカメラが必要」は誤解です！Quality30以上のカメラで撮影した写真があればOK。</p>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <h2 class="section-title">
+        <span class="section-icon">📊</span>
+        おすすめステータス振り分け
+      </h2>
+      <img src="images/guide/camera_3d_green.png" alt="NFTカメラ" class="section-image-small" loading="lazy">
+      <p>レベルアップ時に得られるポイントの振り分け方で、稼ぎ効率が大きく変わります。</p>
+
+      <h3>無課金（フリーカメラ）の場合</h3>
+      <table class="strategy-table">
+        <thead>
+          <tr><th>段階</th><th>振り分け方針</th><th>理由</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>序盤（Lv1～15）</td><td>Quality全振り</td><td>まずはQuality30を目指してメインバトル参加権を獲得</td></tr>
+          <tr><td>中盤（Lv16～25）</td><td>Efficiency重視</td><td>撮影ごとのFP獲得量を増やして効率アップ</td></tr>
+          <tr><td>終盤（Lv26～31）</td><td>Luck全振り</td><td>ミステリーボックス狙い（フリーカメラは故障しない）</td></tr>
+        </tbody>
+      </table>
+
+      <h3>課金（NFTカメラ）の場合</h3>
+      <table class="strategy-table">
+        <thead>
+          <tr><th>目的</th><th>振り分け</th><th>説明</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>稼ぎ重視</td><td>Efficiency全振り</td><td>ジェネシスカメラ: E値×0.15固定 / 非ジェネシス: E値×0.08～0.15のSTPを毎回獲得</td></tr>
+          <tr><td>バトル重視</td><td>Quality重視</td><td>高品質写真でバトル勝率アップ</td></tr>
+          <tr><td>バランス型</td><td>Quality + Efficiency半々</td><td>バトルも撮影も両方楽しみたい方向け</td></tr>
+          <tr><td>宝箱狙い</td><td>Luck重視</td><td>ミステリーボックスからレアアイテムを狙う</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="guide-section">
+      <h2 class="section-title">
+        <span class="section-icon">⚡</span>
+        効率的なレベルアップ戦略
+      </h2>
+      <img src="images/guide/item_levelup.png" alt="レベルアップアイテム" class="section-image-small" loading="lazy">
+      <p>レベルアップには時間とコストがかかります。効率よく進めるコツをまとめました。</p>
+      <ul>
+        <li><strong>レベルアップはすぐ開始</strong> - クールダウン中も撮影・バトルはできる。待ち時間を無駄にしない</li>
+        <li><strong>5の倍数レベルに注意</strong> - Lv5, 10, 15...は特別コスト（20FPずつ加算）が発生。FPを貯めてから挑む</li>
+        <li><strong>寝る前にレベルアップ開始</strong> - 高レベルほど待ち時間が長い（最大30時間）。寝ている間に進める</li>
+        <li><strong>フリーカメラは約20日でMAX</strong> - 連続でレベル上げし続ければ約495時間（約20日）で完了</li>
+      </ul>
+      <div class="warn-box">
+        <p>ブーストクーラー（待ち時間省略アイテム）はNFTカメラ専用です。フリーカメラには使えないので、地道に待ちましょう。</p>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <h2 class="section-title">
+        <span class="section-icon">💰</span>
+        FP換金を最速にするコツ
+      </h2>
+      <img src="images/guide/ui_exchange.png" alt="BTC交換画面" class="section-image-small" loading="lazy">
+      <p>FPを最速で1,000円分（最低交換額）まで貯めるためのポイントです。</p>
+      <ul>
+        <li><strong>毎日2回撮影</strong> - フィルムは6時間で0.5枚回復。朝と夜の2回撮影が基本</li>
+        <li><strong>カジュアルバトルに毎回エントリー</strong> - 撮影した写真はすぐバトルに出す。勝てばFP追加獲得</li>
+        <li><strong>レベルアップ中もバトルは可能</strong> - カメラがレベルアップ中でも、撮影済みの写真でバトル参加できる</li>
+        <li><strong>FPはレベルアップにも使う</strong> - 最初はレベルアップ優先。Quality30に到達してからメインバトルで本格的に稼ぐ</li>
+      </ul>
+    </section>
+
+    <section class="guide-section">
+      <h2 class="section-title">
+        <span class="section-icon">🛡️</span>
+        故障を防ぐコツ
+      </h2>
+      <div class="info-box">
+        <p>※ フリーカメラは故障しません。以下はNFTカメラ向けの情報です。</p>
+      </div>
+      <p>200枚以上撮影するとカメラが故障するリスクがあります。</p>
+      <table class="strategy-table">
+        <thead>
+          <tr><th>撮影枚数</th><th>故障確率</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1～200枚</td><td>0%（安全）</td></tr>
+          <tr><td>201～300枚</td><td>0.3%</td></tr>
+          <tr><td>301～400枚</td><td>1%</td></tr>
+          <tr><td>401枚以上</td><td>3%</td></tr>
+        </tbody>
+      </table>
+      <ul>
+        <li><strong>Battery値を上げる</strong> - Battery値が高いほど故障率が下がる</li>
+        <li><strong>修理コストを把握</strong> - Common=200STP, Uncommon=400STP, Rare=600STP, Epic=800STP, Legendary=1000STP</li>
+        <li><strong>故障したら写真撮影・ミント不可</strong> - 早めに修理するのがおすすめ</li>
+      </ul>
+    </section>
+
+    <section class="guide-section">
+      <h2 class="section-title">
+        <span class="section-icon">💬</span>
+        もっと詳しく聞きたい？
+      </h2>
+      <a href="chat.html" class="snappy-card">
+      <span class="snappy-card-icon">💬</span>
+      <div class="snappy-card-body">
+        <span class="snappy-card-title">スナピーに聞く</span>
+        <span class="snappy-card-desc">SNPITのこと、何でも答えるよ！</span>
+      </div>
+      <span class="snappy-card-arrow">›</span>
+    </a>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>SNPITガイド</p>
+    <p class="footer-note">このサイトは非公式のファンサイトです</p>
+    <p class="footer-author">運営: しんぷそん (<a href="https://x.com/chill_simpson_" target="_blank" rel="noopener">@chill_simpson_</a>)</p>
+    <div class="footer-links">
+      <a href="https://x.com/chill_simpson_" target="_blank" rel="noopener">X (Twitter)</a>
+      <a href="https://lp.snpit.xyz/" target="_blank" rel="noopener">SNPIT公式サイト</a>
+      <a href="privacy.html">プライバシーポリシー</a>
+      <a href="reports.html">報告一覧</a>
+    </div>
+  </footer>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
+  <script src="notification-toggle.js"></script>
+</body>
+</html>

@@ -2,7 +2,14 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="SNPITガイド">
+  <link rel="apple-touch-icon" href="/images/icon-192.svg">
+  <meta name="theme-color" content="#1A2B2B">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <title>スナピー - SNPIT AIアシスタント</title>
   <meta name="description" content="SNPITのことなら何でも聞けるAIチャットボット。始め方、バトル、トークンの疑問をスナピーが回答します。">
   <link rel="canonical" href="https://snpit-guide.pages.dev/chat">
@@ -37,6 +44,11 @@
       <span></span><span></span><span></span>
     </button>
     <a href="index.html" class="nav-logo">SNPITガイド</a>
+    <button class="new-chat-btn" onclick="resetChat()" aria-label="新しいチャット">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+      </svg>
+    </button>
   </nav>
   <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
   <div class="slide-menu" id="slideMenu">
@@ -44,11 +56,43 @@
       <span class="menu-title">SNPITガイド</span>
       <button class="menu-close" onclick="toggleMenu()">&times;</button>
     </div>
+    
     <div class="menu-links">
       <a href="index.html" class="menu-link"><span class="menu-link-icon">🏠</span>ホーム</a>
+      <a href="chat.html" class="menu-link menu-link-accent active"><span class="menu-link-icon">💬</span>スナピー (AI)</a>
+      <a href="news.html" class="menu-link"><span class="menu-link-icon">📢</span>お知らせ</a>
+      <div class="menu-link notification-toggle-row" id="notificationToggleRow">
+        <span class="menu-link-icon">🔔</span>
+        <span>プッシュ通知</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="notificationToggle" onchange="toggleNotification(this)">
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+      <span class="menu-category">ガイド</span>
+      <a href="beginners.html" class="menu-link"><span class="menu-link-icon">📖</span>初心者ガイド</a>
+      <a href="strategy.html" class="menu-link"><span class="menu-link-icon">🎯</span>攻略ガイド</a>
+      <a href="battle-guide.html" class="menu-link"><span class="menu-link-icon">⚔️</span>バトル攻略</a>
       <a href="tutorials.html" class="menu-link"><span class="menu-link-icon">📹</span>チュートリアル</a>
-      <a href="chat.html" class="menu-link active menu-link-accent"><span class="menu-link-icon">💬</span>スナピー (AI)</a>
+      <span class="menu-category">データ</span>
+      <a href="levelup.html" class="menu-link"><span class="menu-link-icon">⬆️</span>レベルアップ早見表</a>
+      <a href="cameras.html" class="menu-link"><span class="menu-link-icon">📷</span>カメラ比較表</a>
+      <a href="exchange.html" class="menu-link"><span class="menu-link-icon">💱</span>FP交換ガイド</a>
+      <span class="menu-category">イベント</span>
+      <a href="bluelock.html" class="menu-link"><span class="menu-link-icon">⚽</span>ブルーロックコラボ</a>
+      <a href="kokaku.html" class="menu-link"><span class="menu-link-icon">🤖</span>攻殻機動隊コラボ</a>
+      <a href="shingeki.html" class="menu-link"><span class="menu-link-icon">⚔️</span>進撃の巨人コラボ</a>
+      <a href="railgun.html" class="menu-link"><span class="menu-link-icon">⚡</span>超電磁砲コラボ</a>
+      <a href="tensura.html" class="menu-link"><span class="menu-link-icon">🔵</span>転スラコラボ</a>
+      <a href="white-scorpion.html" class="menu-link"><span class="menu-link-icon">🦂</span>WHITE SCORPIONコラボ</a>
+      <a href="gr-toyota.html" class="menu-link"><span class="menu-link-icon">🏎️</span>TGRコラボ</a>
+      <a href="calbee.html" class="menu-link"><span class="menu-link-icon">🥔</span>カルビーコラボ</a>
+      <a href="his.html" class="menu-link"><span class="menu-link-icon">✈️</span>HISコラボ</a>
+      <span class="menu-category">ツール</span>
+      <a href="faq.html" class="menu-link"><span class="menu-link-icon">❓</span>よくある質問</a>
+      <a href="glossary.html" class="menu-link"><span class="menu-link-icon">📚</span>用語集</a>
       <a href="reports.html" class="menu-link"><span class="menu-link-icon">📋</span>報告一覧</a>
+    
     </div>
   </div>
   <script>
@@ -56,26 +100,48 @@
     document.getElementById('slideMenu').classList.toggle('open');
     document.getElementById('menuOverlay').classList.toggle('open');
   }
+  // ウェルカム画面のキャラクターをランダム表示
+  document.addEventListener('DOMContentLoaded', function() {
+    const chars = [
+      { file: 'toroa.png', name: 'Toroa（トロア）' },
+      { file: 'esis.png', name: 'Esis（イシス）' },
+      { file: 'nymph.png', name: 'Nymph（ニュンフ）' },
+      { file: 'clipper.png', name: 'Clipper（クリッパー）' }
+    ];
+    const pick = chars[Math.floor(Math.random() * chars.length)];
+    document.getElementById('welcomeChar').src = 'images/' + pick.file;
+    document.getElementById('welcomeCharName').textContent = pick.name;
+  });
   </script>
 
   <!-- バナー広告枠 -->
   <div class="banner-ad" id="bannerAd">
-    <span class="banner-ad-placeholder">広告スペース</span>
-    <!-- TODO: AdSense/nend審査通過後にここに広告コードを差し込む -->
+    <!-- SNPITガイド_メイン -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-6789708198801982"
+         data-ad-slot="8335647672"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
   </div>
 
   <!-- 広告オーバーレイ（リワード動画広告用） -->
   <div class="ad-overlay" id="adOverlay">
     <div class="ad-container">
       <div class="ad-content" id="adContent">
-        <!-- TODO: 実際の広告SDKのコンテンツがここに入る -->
-        <div class="ad-placeholder">
-          <div class="ad-placeholder-icon">📺</div>
-          <p class="ad-placeholder-text">広告</p>
-        </div>
+        <!-- AdSense広告がJSから動的に挿入される -->
       </div>
       <div class="ad-timer" id="adTimer">広告終了まで 5秒</div>
     </div>
+  </div>
+
+  <!-- 画像拡大モーダル -->
+  <div class="image-modal-overlay" id="imageModalOverlay" onclick="closeImageModal()">
+    <button class="image-modal-close" onclick="closeImageModal()">&times;</button>
+    <img id="imageModalImg" class="image-modal-img" alt="拡大画像">
   </div>
 
   <!-- 誤回答報告モーダル -->
@@ -87,24 +153,12 @@
       </div>
       <div class="report-modal-body">
         <div class="report-field">
-          <label class="report-label">あなたの質問</label>
-          <div class="report-readonly" id="reportQuestion"></div>
-        </div>
-        <div class="report-field">
-          <label class="report-label">スナピーの回答</label>
-          <div class="report-readonly" id="reportAnswer"></div>
-        </div>
-        <div class="report-field">
           <label class="report-label">ニックネーム <span class="report-required">*</span></label>
           <input type="text" class="report-input" id="reportNickname" placeholder="例: しんぷそん" maxlength="20">
         </div>
-        <div class="report-field">
-          <label class="report-label">どこが間違っていますか？ <span class="report-required">*</span></label>
-          <textarea class="report-textarea" id="reportWhatIsWrong" placeholder="例: 1勝=3FPではなく5FPに変わりました" maxlength="500" rows="3"></textarea>
-        </div>
-        <div class="report-field">
-          <label class="report-label">正しい情報（分かれば）</label>
-          <textarea class="report-textarea" id="reportCorrectInfo" placeholder="例: 2025年12月のアップデートで変更" maxlength="500" rows="2"></textarea>
+        <div class="report-field" id="reportConversationLogField">
+          <label class="report-label">会話ログ（自動記録）</label>
+          <div class="report-conversation-log" id="reportConversationLog"></div>
         </div>
         <p class="report-usage-note">いただいた報告はAIの回答改善に活用させていただきます</p>
         <button class="report-submit-btn" id="reportSubmitBtn" onclick="submitReport()">送信する</button>
@@ -114,19 +168,130 @@
   </div>
 
   <div class="chat-container">
+    <!-- お知らせバナー -->
+    <div class="notif-banner" id="notifBanner" style="display:none;">
+      <a class="notif-banner-content" id="notifBannerLink" href="#">
+        <span class="notif-banner-icon">📢</span>
+        <div class="notif-banner-text">
+          <span class="notif-banner-title" id="notifBannerTitle"></span>
+          <span class="notif-banner-body" id="notifBannerBody"></span>
+        </div>
+      </a>
+      <button class="notif-banner-close" id="notifBannerClose" aria-label="閉じる">&times;</button>
+    </div>
     <!-- チャットメッセージエリア -->
     <div class="chat-messages" id="chatMessages">
       <!-- ウェルカムメッセージ -->
       <div class="welcome-screen" id="welcomeScreen">
-        <div class="welcome-icon">📸</div>
-        <h2 class="welcome-title">スナピー</h2>
+        <div class="welcome-icon"><img id="welcomeChar" src="" alt="guild character"></div>
+        <p class="welcome-char-name" id="welcomeCharName"></p>
+        <h2 class="welcome-title">スナピーAI</h2>
         <p class="welcome-subtitle">SNPITのことなら何でも聞いてね！</p>
-        <div class="welcome-suggestions">
-          <button class="suggestion-btn" onclick="sendSuggestion('SNPITって何？')">SNPITって何？</button>
-          <button class="suggestion-btn" onclick="sendSuggestion('無料で始める方法は？')">無料で始める方法は？</button>
-          <button class="suggestion-btn" onclick="sendSuggestion('カジュアルバトルの報酬は？')">カジュアルバトルの報酬は？</button>
-          <button class="suggestion-btn" onclick="sendSuggestion('FPはどうやって交換するの？')">FPはどうやって交換するの？</button>
-          <button class="suggestion-btn" onclick="sendSuggestion('無料アカウントで効率よく稼ぐには？')">無料アカウントで効率よく稼ぐには？</button>
+        <div class="suggestions-slider" id="suggestionsSlider">
+          <div class="suggestions-nav">
+            <button class="suggestions-arrow suggestions-arrow-left" id="suggestionsArrowLeft" aria-label="前へ">&#8249;</button>
+            <div class="suggestions-dots" id="suggestionsDots"></div>
+            <button class="suggestions-arrow suggestions-arrow-right" id="suggestionsArrowRight" aria-label="次へ">&#8250;</button>
+          </div>
+          <div class="suggestions-track" id="suggestionsTrack">
+            <!-- 1. はじめかた -->
+            <div class="suggestions-slide">
+              <div class="slide-label">はじめかた</div>
+              <div class="slide-buttons">
+                <button class="suggestion-btn" onclick="sendSuggestion('SNPITって何？')">SNPITって何？</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('無料で始める方法は？')">無料で始める方法は？</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('フリーカメラってどんな種類があるの？')">フリーカメラの種類は？</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('フィルムはどうやって回復するの？')">フィルムの回復方法は？</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('SNPITを始めた最初は二枚しか撮れないよね？')">最初は2枚しか撮れない？</button>
+              </div>
+            </div>
+            <!-- 2. バトル・稼ぐ -->
+            <div class="suggestions-slide">
+              <div class="slide-label">バトル・稼ぐ</div>
+              <div class="slide-buttons">
+                <button class="suggestion-btn" onclick="sendSuggestion('カジュアルバトルの報酬は？')">カジュアルバトルの報酬は？</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('無料アカウントで効率よく稼ぐには？')">無料で効率よく稼ぐには？</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('フリーカメラでメインバトルに参加できる？')">フリーカメラでメインバトルは？</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('写真にいいねしたらどうなる？')">写真にいいねしたら？</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('ミラクルショットに当たってるかはどうやって確認するの？')">ミラクルショットの確認方法は？</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('Choose itってどんなバトル？')">Choose itって何？</button>
+              </div>
+            </div>
+            <!-- 3. レベルアップ・強化 -->
+            <div class="suggestions-slide">
+              <div class="slide-label">レベルアップ・強化</div>
+              <div class="slide-buttons">
+                <button class="suggestion-btn" onclick="sendSuggestion('フリーカメラのレベルをあげるにはどうしたらいいの？')">フリーカメラのレベル上げ方法は？</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('フリーカメラのレベル1から31まで全部のFPコストを教えて')">レベルMAXまでのFPコストは？</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('ラッキールーレットって何？')">ラッキールーレットって何？</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('フリーカメラをレベルMAXにするのに何日くらいかかる？')">レベルMAXまで何日かかる？</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('課金カメラとは何ですか？')">課金カメラ（NFT）とは？</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('ブーストクーラーって何？')">ブーストクーラーって何？</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('カメラの属性って何？')">カメラの属性について</button>
+              </div>
+            </div>
+            <!-- 4. 育成・戦略 -->
+            <div class="suggestions-slide">
+              <div class="slide-label">育成・戦略</div>
+              <div class="slide-buttons">
+                <button class="suggestion-btn" onclick="sendSuggestion('コモンカメラのステータスどう振ればいい？')">ステータスの振り方は？</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('コモンカメラのQualityは最大いくつまで上げられる？')">Qualityの上限は？</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('属性が一致してるかどうやって確認するの？')">属性一致の確認方法は？</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('ジェネシスカメラって何が特別なの？')">ジェネシスカメラとは？</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('NFTカメラを日本円で買えますか？')">日本円でカメラ購入？</button>
+              </div>
+            </div>
+            <!-- 5. ブルーロックコラボ -->
+            <div class="suggestions-slide">
+              <div class="slide-label">ブルーロックコラボ</div>
+              <div class="slide-buttons">
+                <button class="suggestion-btn" onclick="sendSuggestion('ブルーロックコラボの内容を教えて')">コラボの内容は？</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('ブルーロックコラボで何がもらえる？おすすめのアイテムは？')">おすすめアイテムは？</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('ブルーロックコラボのガチャの排出率を教えて')">ガチャの排出率は？</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('ブルーロックコラボで無課金でも楽しめる？')">無課金でも楽しめる？</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('潔 世一スキンと糸師 凛スキンの特殊合成って何？どうやって作るの？')">特殊合成って何？</button>
+              </div>
+            </div>
+            <!-- 6. コラボアイテム詳細 -->
+            <div class="suggestions-slide">
+              <div class="slide-label">ブルーロック装備アイテム</div>
+              <div class="slide-buttons">
+                <button class="suggestion-btn" onclick="sendSuggestion('ブルーロックコラボにはどんな装備品がある？全種類の名前と簡単な特徴を教えて')">どんな装備品がある？</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('潔 世一スキンの性能をgradeごとに詳しく教えて')">潔 世一スキン</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('蜂楽 廻スキンの性能をgradeごとに詳しく教えて')">蜂楽 廻スキン</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('凪 誠士郎スキンの性能をgradeごとに詳しく教えて')">凪 誠士郎スキン</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('潔 世一ストラップの性能をgradeごとに詳しく教えて')">潔 世一ストラップ</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('蜂楽 廻ストラップの性能をgradeごとに詳しく教えて')">蜂楽 廻ストラップ</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('千切豹馬ストラップの性能をgradeごとに詳しく教えて')">千切豹馬ストラップ</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('御影玲王ストラップの性能をgradeごとに詳しく教えて')">御影玲王ストラップ</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('糸師 凛ストラップの性能をgradeごとに詳しく教えて')">糸師 凛ストラップ</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('糸師 凛スキン（STPガチャ）の性能をgradeごとに詳しく教えて')">糸師 凛スキン</button>
+              </div>
+            </div>
+            <!-- 7. みんなの攻略法 -->
+            <div class="suggestions-slide">
+              <div class="slide-label">みんなの攻略法</div>
+              <div class="slide-buttons">
+                <button class="suggestion-btn" onclick="sendSuggestion('FP獲得大作戦って何？')">FP獲得大作戦とは？</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('無課金でどのくらい稼げるの？')">無課金でいくら稼げる？</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('ブルーロックコラボの内容を教えて')">ブルーロックコラボは？</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('SNPITを今から始めるのは遅い？')">今から始めても遅くない？</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('プラチナ+ステーキングって何？どんな特典があるの？')">プラチナ+ステーキングとは？</button>
+              </div>
+            </div>
+            <!-- 8. FP・ウォレット・ステーキング -->
+            <div class="suggestions-slide">
+              <div class="slide-label">FP・ウォレット</div>
+              <div class="slide-buttons">
+                <button class="suggestion-btn" onclick="sendSuggestion('FPはどうやって交換するの？')">FPの交換方法は？</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('FPを交換した後の流れは？')">FP交換した後の流れは？</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('ウォレットの履歴ってどこで確認できるの？')">ウォレット履歴の確認方法は？</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('ステーキングって何？どうやるの？')">ステーキングとは？</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('ステーキング途中でやめたらどうなる？')">ステーキングの途中解約は？</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('SNPTはどこで買えるの？')">SNPTの購入方法は？</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -148,7 +313,7 @@
           </svg>
         </button>
       </div>
-      <p class="chat-disclaimer">スナピーはAIです。回答が正確でない場合があります。</p>
+      <p class="chat-disclaimer">スナピーはAIです。回答が正確でない場合があります。<span id="questionCount"></span></p>
     </div>
   </div>
 
@@ -156,6 +321,7 @@
   <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
 
   <script src="api-key.js"></script>
   <script src="chat.js"></script>

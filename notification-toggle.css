@@ -1,0 +1,145 @@
+/* 通知トグルスイッチ（全ページ共通） */
+.notification-toggle-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: default;
+}
+.notification-toggle-row span:nth-child(2) {
+  flex: 1;
+}
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  flex-shrink: 0;
+}
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #3a4a4a;
+  transition: 0.3s;
+  border-radius: 24px;
+}
+.toggle-slider:before {
+  content: "";
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background: #888;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+input:checked + .toggle-slider {
+  background: var(--accent, #4ECDC4);
+}
+input:checked + .toggle-slider:before {
+  transform: translateX(20px);
+  background: #fff;
+}
+
+/* PWAガイドダイアログ */
+.push-dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  opacity: 0;
+  transition: opacity 0.3s;
+  padding: 20px;
+}
+.push-dialog-overlay.active {
+  opacity: 1;
+}
+.push-dialog {
+  background: #1a2b2b;
+  border: 1px solid #3a4a4a;
+  border-radius: 16px;
+  padding: 28px 24px;
+  max-width: 340px;
+  width: 100%;
+  text-align: center;
+}
+.push-dialog-icon {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+}
+.push-dialog-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 8px;
+  color: #fff;
+}
+.push-dialog-text {
+  font-size: 0.85rem;
+  color: #aaa;
+  margin: 0 0 20px;
+  line-height: 1.5;
+}
+.push-dialog-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.push-dialog-btn {
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.push-dialog-btn:active {
+  opacity: 0.8;
+}
+.push-dialog-dismiss {
+  background: transparent;
+  color: #999;
+  border: 1px solid #999;
+}
+.pwa-guide-steps {
+  text-align: left;
+  margin: 12px 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.pwa-guide-step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: #ddd;
+}
+.pwa-guide-num {
+  background: var(--accent, #4ECDC4);
+  color: #fff;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}

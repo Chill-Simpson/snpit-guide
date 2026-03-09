@@ -37,7 +37,9 @@ function formatDate(timestamp) {
   const y = date.getFullYear();
   const m = String(date.getMonth() + 1).padStart(2, '0');
   const d = String(date.getDate()).padStart(2, '0');
-  return `${y}/${m}/${d}`;
+  const h = String(date.getHours()).padStart(2, '0');
+  const min = String(date.getMinutes()).padStart(2, '0');
+  return `${y}/${m}/${d} ${h}:${min}`;
 }
 
 function createReportCard(docId, data) {
@@ -68,6 +70,21 @@ function createReportCard(docId, data) {
       </div>`
     : '';
 
+  // 会話ログ（展開部に表示）
+  const conversationLogHtml = data.conversationLog && data.conversationLog.length > 0
+    ? `<div class="report-card-conversation">
+        <div class="report-card-label">会話ログ:</div>
+        <div class="report-card-conversation-log">
+          ${data.conversationLog.map(msg => {
+            // |||REPORT|||...|||END_REPORT||| のタグ部分を除去
+            let text = msg.text.replace(/\|\|\|REPORT\|\|\|[\s\S]*?\|\|\|END_REPORT\|\|\|/g, '').trim();
+            if (!text) return '';
+            return `<div class="report-log-${msg.role}"><span class="report-log-role">${msg.role === 'user' ? '👤' : '📸'}</span> ${escapeHtml(text)}</div>`;
+          }).filter(Boolean).join('')}
+        </div>
+      </div>`
+    : '';
+
   if (isResolved) {
     card.innerHTML = `
       <div class="report-card-header">
@@ -94,6 +111,7 @@ function createReportCard(docId, data) {
               <span class="report-card-label">AI回答（修正前）:</span>
               <span class="report-card-value">${escapeHtml(data.aiAnswer)}</span>
             </div>
+            ${data.whatIsWrong ? `
             <div class="report-card-highlight">
               <span class="report-card-highlight-icon">&#9888;</span>
               <div>
@@ -101,7 +119,9 @@ function createReportCard(docId, data) {
                 <div class="report-card-highlight-text">${escapeHtml(data.whatIsWrong)}</div>
               </div>
             </div>
+            ` : ''}
             ${userCorrectInfo}
+            ${conversationLogHtml}
           </div>
         </details>
       </div>
@@ -127,6 +147,7 @@ function createReportCard(docId, data) {
           <span class="report-card-label">AI回答:</span>
           <span class="report-card-value">${escapeHtml(data.aiAnswer)}</span>
         </div>
+        ${data.whatIsWrong ? `
         <div class="report-card-highlight">
           <span class="report-card-highlight-icon">&#9888;</span>
           <div>
@@ -134,12 +155,14 @@ function createReportCard(docId, data) {
             <div class="report-card-highlight-text">${escapeHtml(data.whatIsWrong)}</div>
           </div>
         </div>
+        ` : ''}
         ${data.correctInfo ? `
         <div class="report-card-field">
           <span class="report-card-label">正しい情報:</span>
           <span class="report-card-value">${escapeHtml(data.correctInfo)}</span>
         </div>
         ` : ''}
+        ${conversationLogHtml}
         ${adminNote}
       </div>
       <div class="report-card-footer">
@@ -256,11 +279,12 @@ async function submitEdit() {
     statusEl.className = 'edit-note error';
     return;
   }
-  if (!whatIsWrong) {
-    statusEl.textContent = '間違いの内容を入力してください';
-    statusEl.className = 'edit-note error';
-    return;
-  }
+  // whatIsWrongは新フォーマットでは会話ログに含まれるため必須でない
+  // if (!whatIsWrong) {
+  //   statusEl.textContent = '間違いの内容を入力してください';
+  //   statusEl.className = 'edit-note error';
+  //   return;
+  // }
 
   submitBtn.disabled = true;
   statusEl.textContent = '保存中...';

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="SNPITガイド">
+  <link rel="apple-touch-icon" href="/images/icon-192.svg">
+  <meta name="theme-color" content="#1A2B2B">
+  <title>プライバシーポリシー・著作権表記 - SNPITガイド</title>
+  <meta name="description" content="SNPITガイドのプライバシーポリシー、お問い合わせ先、著作権・素材利用に関する表記です。">
+  <link rel="canonical" href="https://snpit-guide.pages.dev/privacy">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <!-- OGP -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="SNPITガイド">
+  <meta property="og:title" content="プライバシーポリシー・著作権表記 - SNPITガイド">
+  <meta property="og:description" content="SNPITガイドのプライバシーポリシー、お問い合わせ先、著作権・素材利用に関する表記です。">
+  <meta property="og:url" content="https://snpit-guide.pages.dev/privacy">
+  <meta property="og:image" content="https://snpit-guide.pages.dev/images/ogp.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="notification-toggle.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2CXFBGQWD4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2CXFBGQWD4');
+  </script>
+  <style>
+    .privacy-section {
+      background-color: var(--card-background);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+    .privacy-section h3 {
+      font-size: 1.1rem;
+      color: var(--accent);
+      margin: 20px 0 10px;
+    }
+    .privacy-section h3:first-of-type {
+      margin-top: 12px;
+    }
+    .privacy-section p,
+    .privacy-section li {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+    .privacy-section ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .privacy-section li {
+      padding: 4px 0 4px 1.2em;
+      position: relative;
+    }
+    .privacy-section li::before {
+      content: "・";
+      position: absolute;
+      left: 0;
+    }
+    .privacy-section a {
+      color: var(--accent);
+    }
+    .contact-box {
+      background-color: var(--card-inner);
+      border-radius: 8px;
+      padding: 16px;
+      margin-top: 12px;
+      text-align: center;
+    }
+    .contact-box a {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+    .official-link-card {
+      display: block;
+      background-color: var(--card-inner);
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin: 8px 0;
+      color: var(--text-primary);
+      font-size: 0.9rem;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+    }
+    .official-link-card:hover {
+      border-color: var(--accent);
+      opacity: 1;
+    }
+    .official-link-card .link-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 4px;
+    }
+    .highlight-box {
+      background-color: var(--accent-glow);
+      border: 1px solid var(--accent-dark);
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin: 12px 0;
+    }
+    .highlight-box p {
+      color: var(--text-primary) !important;
+      font-size: 0.9rem;
+      margin: 0;
+    }
+    @media (max-width: 600px) {
+      .privacy-section {
+        padding: 20px 16px;
+        border-radius: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <button class="hamburger" onclick="toggleMenu()" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="index.html" class="nav-logo">SNPITガイド</a>
+  </nav>
+  <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+  <div class="slide-menu" id="slideMenu">
+    <div class="menu-header">
+      <span class="menu-title">SNPITガイド</span>
+      <button class="menu-close" onclick="toggleMenu()">&times;</button>
+    </div>
+    
+    <div class="menu-links">
+      <a href="index.html" class="menu-link"><span class="menu-link-icon">🏠</span>ホーム</a>
+      <a href="chat.html" class="menu-link menu-link-accent"><span class="menu-link-icon">💬</span>スナピー (AI)</a>
+      <a href="news.html" class="menu-link"><span class="menu-link-icon">📢</span>お知らせ</a>
+      <div class="menu-link notification-toggle-row" id="notificationToggleRow">
+        <span class="menu-link-icon">🔔</span>
+        <span>プッシュ通知</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="notificationToggle" onchange="toggleNotification(this)">
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+      <span class="menu-category">ガイド</span>
+      <a href="beginners.html" class="menu-link"><span class="menu-link-icon">📖</span>初心者ガイド</a>
+      <a href="strategy.html" class="menu-link"><span class="menu-link-icon">🎯</span>攻略ガイド</a>
+      <a href="battle-guide.html" class="menu-link"><span class="menu-link-icon">⚔️</span>バトル攻略</a>
+      <a href="tutorials.html" class="menu-link"><span class="menu-link-icon">📹</span>チュートリアル</a>
+      <span class="menu-category">データ</span>
+      <a href="levelup.html" class="menu-link"><span class="menu-link-icon">⬆️</span>レベルアップ早見表</a>
+      <a href="cameras.html" class="menu-link"><span class="menu-link-icon">📷</span>カメラ比較表</a>
+      <a href="exchange.html" class="menu-link"><span class="menu-link-icon">💱</span>FP交換ガイド</a>
+      <span class="menu-category">イベント</span>
+      <a href="bluelock.html" class="menu-link"><span class="menu-link-icon">⚽</span>ブルーロックコラボ</a>
+      <a href="kokaku.html" class="menu-link"><span class="menu-link-icon">🤖</span>攻殻機動隊コラボ</a>
+      <a href="shingeki.html" class="menu-link"><span class="menu-link-icon">⚔️</span>進撃の巨人コラボ</a>
+      <a href="gr-toyota.html" class="menu-link"><span class="menu-link-icon">🏎️</span>TGRコラボ</a>
+      <span class="menu-category">ツール</span>
+      <a href="faq.html" class="menu-link"><span class="menu-link-icon">❓</span>よくある質問</a>
+      <a href="glossary.html" class="menu-link"><span class="menu-link-icon">📚</span>用語集</a>
+      <a href="reports.html" class="menu-link"><span class="menu-link-icon">📋</span>報告一覧</a>
+    
+    </div>
+  </div>
+  <script>
+  function toggleMenu() {
+    document.getElementById('slideMenu').classList.toggle('open');
+    document.getElementById('menuOverlay').classList.toggle('open');
+  }
+  </script>
+
+  <header class="header">
+    <h1 class="header-title">プライバシーポリシー</h1>
+    <p class="header-subtitle">個人情報の取り扱い・著作権表記・お問い合わせ</p>
+  </header>
+
+  <main class="main">
+
+    <!-- プライバシーポリシー -->
+    <section class="privacy-section">
+      <h2 class="section-title">
+        <span class="section-icon">🔒</span>
+        プライバシーポリシー
+      </h2>
+      <p>当サイト「SNPITガイド」（以下「当サイト」）は、ユーザーのプライバシーを尊重し、個人情報の保護に努めます。</p>
+
+      <h3>アクセス解析ツール（Google Analytics）</h3>
+      <p>当サイトでは、Googleが提供するアクセス解析ツール「Google Analytics（GA4）」を使用しています。Google Analyticsはデータの収集のためにCookieを使用しますが、このデータは匿名で収集されており、個人を特定するものではありません。</p>
+      <p>詳しくは<a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">Googleのサービスを使用するサイトやアプリから収集した情報のGoogleによる使用</a>をご覧ください。</p>
+
+      <h3>広告配信（Google AdSense）</h3>
+      <p>当サイトでは、Google AdSenseによる広告を掲載しています。Google AdSenseでは、ユーザーの興味に応じた広告を配信するためにCookieを使用する場合があります。</p>
+      <p>Cookieの使用を無効にしたい場合は、<a href="https://adssettings.google.com/" target="_blank" rel="noopener">Googleの広告設定</a>から変更できます。</p>
+
+      <h3>誤回答報告機能（Firebase）</h3>
+      <p>当サイトのAIチャット「スナピー」には、回答の間違いを報告する機能があります。報告時に保存されるのは「質問内容」「AIの回答」「間違いの指摘内容」のみで、お名前やメールアドレスなどの個人情報は一切収集しておりません。</p>
+
+      <h3>個人情報について</h3>
+      <p>当サイトでは、ユーザーを個人的に特定できる情報（氏名、メールアドレス、住所など）は収集しておりません。</p>
+    </section>
+
+    <!-- お問い合わせ -->
+    <section class="privacy-section">
+      <h2 class="section-title">
+        <span class="section-icon">📩</span>
+        お問い合わせ
+      </h2>
+      <p>当サイトへのお問い合わせは、X（旧Twitter）のDMよりお願いいたします。</p>
+      <div class="contact-box">
+        <a href="https://x.com/chill_simpson_" target="_blank" rel="noopener">@chill_simpson_ にDMを送る</a>
+      </div>
+    </section>
+
+    <!-- 著作権・素材利用について -->
+    <section class="privacy-section">
+      <h2 class="section-title">
+        <span class="section-icon">📝</span>
+        著作権・素材利用について
+      </h2>
+      <p>当サイトは、SNPIT（運営: SNPIT STUDIO FZCO）の<strong>非公式ファンサイト</strong>です。SNPIT公式が運営・後援するサイトではありません。</p>
+
+      <h3>SNPIT素材の利用について</h3>
+      <p>当サイトで使用しているSNPIT関連の画像・ロゴ等の素材は、SNPIT公式の「デザインガイドライン」に基づいて使用しています。公式ガイドラインでは以下のように定められています：</p>
+
+      <div class="highlight-box">
+        <p>「SNPITはクリエイターの二次創作を歓迎します！ SNPITのロゴや素材は、NFTの所有権に関係なく、個人的な作品にご自由にお使いください。また、二次創作物の収益化も可能です。」</p>
+        <p style="margin-top: 8px;">「年間1,000万円の収益を上限として、無許諾で自由に展開することができます。1,000万円を超える場合は、原則として許可が必要となります。」</p>
+      </div>
+
+      <p>当サイトは上記ガイドラインの範囲内で素材を利用しております。</p>
+
+      <h3>禁止事項の遵守</h3>
+      <p>公式ガイドラインで定められた以下の禁止事項を遵守しています：</p>
+      <ul>
+        <li>オフィシャルロゴや素材の改変（色、形など）は行っておりません</li>
+        <li>SNPITが支援や後援を行っていることを示唆する表現は行っておりません</li>
+        <li>ブランドイメージを損なう表現は含んでおりません</li>
+      </ul>
+
+      <h3>公式リンク</h3>
+      <a href="https://lp.snpit.xyz/design-resource" target="_blank" rel="noopener" class="official-link-card">
+        <span class="link-label">デザインリソース・ガイドライン</span>
+        lp.snpit.xyz/design-resource
+      </a>
+      <a href="https://lp.snpit.xyz/guidelines" target="_blank" rel="noopener" class="official-link-card">
+        <span class="link-label">ユーザーガイドライン</span>
+        lp.snpit.xyz/guidelines
+      </a>
+      <a href="https://lp.snpit.xyz/terms" target="_blank" rel="noopener" class="official-link-card">
+        <span class="link-label">利用規約（Terms of Use）</span>
+        lp.snpit.xyz/terms
+      </a>
+      <a href="https://lp.snpit.xyz/privacy" target="_blank" rel="noopener" class="official-link-card">
+        <span class="link-label">プライバシーポリシー（公式）</span>
+        lp.snpit.xyz/privacy
+      </a>
+    </section>
+
+    <!-- 免責事項 -->
+    <section class="privacy-section">
+      <h2 class="section-title">
+        <span class="section-icon">⚠️</span>
+        免責事項
+      </h2>
+      <p>当サイトに掲載されている情報は、可能な限り正確を期しておりますが、正確性や完全性を保証するものではありません。</p>
+      <p>当サイトの利用により生じたいかなる損害についても、当サイト運営者は一切の責任を負いかねます。</p>
+      <p>当サイトの情報は予告なく変更・削除される場合があります。あらかじめご了承ください。</p>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>SNPITガイド</p>
+    <p class="footer-note">このサイトは非公式のファンサイトです</p>
+    <p class="footer-author">運営: しんぷそん (<a href="https://x.com/chill_simpson_" target="_blank" rel="noopener">@chill_simpson_</a>)</p>
+    <div class="footer-links">
+      <a href="https://x.com/chill_simpson_" target="_blank" rel="noopener">X (Twitter)</a>
+      <a href="https://lp.snpit.xyz/" target="_blank" rel="noopener">SNPIT公式サイト</a>
+      <a href="privacy.html">プライバシーポリシー</a>
+      <a href="reports.html">報告一覧</a>
+    </div>
+  </footer>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
+  <script src="notification-toggle.js"></script>
+</body>
+</html>

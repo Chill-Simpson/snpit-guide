@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="SNPITガイド">
+  <link rel="apple-touch-icon" href="/images/icon-192.svg">
+  <meta name="theme-color" content="#1A2B2B">
+  <title>攻殻機動隊 S.A.C.×SNPITコラボまとめ｜SNPITガイド</title>
+  <meta name="description" content="SNPIT×攻殻機動隊 S.A.C. コラボの全情報まとめ。草薙素子・バトー・トグサなどコラボアイテム一覧、入手方法、grade別ステータスを詳しく解説。">
+  <link rel="canonical" href="https://snpit-guide.pages.dev/kokaku">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <!-- OGP -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="SNPITガイド">
+  <meta property="og:title" content="攻殻機動隊 S.A.C.×SNPITコラボまとめ｜SNPITガイド">
+  <meta property="og:description" content="SNPIT×攻殻機動隊 S.A.C. コラボの全情報まとめ。コラボアイテム一覧、入手方法、grade別ステータスを詳しく解説。">
+  <meta property="og:url" content="https://snpit-guide.pages.dev/kokaku">
+  <meta property="og:image" content="https://snpit-guide.pages.dev/images/ogp.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="notification-toggle.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6789708198801982"
+     crossorigin="anonymous"></script>
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2CXFBGQWD4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2CXFBGQWD4');
+  </script>
+  <style>
+    .collab-hero {
+      text-align: center;
+      padding: 0 0 30px;
+      background: linear-gradient(180deg, #0a1a2a 0%, var(--background) 100%);
+    }
+    .collab-hero-banner {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      display: block;
+    }
+    .collab-hero-text {
+      padding: 20px 20px 0;
+    }
+    .collab-hero-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #00bcd4;
+      margin-bottom: 8px;
+      letter-spacing: 2px;
+    }
+    .collab-hero-sub {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+    .collab-period {
+      display: inline-block;
+      background: rgba(0, 188, 212, 0.15);
+      border: 1px solid rgba(0, 188, 212, 0.4);
+      color: #00bcd4;
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .collab-status {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .collab-status .status-label {
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+    }
+    .status-ended {
+      background: rgba(158, 158, 158, 0.2);
+      color: #9e9e9e;
+    }
+    .info-card {
+      background-color: var(--card-background);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 16px;
+    }
+    .info-card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .info-card-title .icon {
+      font-size: 1.2rem;
+    }
+    .item-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+    .item-table th {
+      background-color: var(--card-inner);
+      color: var(--accent);
+      padding: 10px 12px;
+      text-align: left;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .item-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-primary);
+      vertical-align: top;
+    }
+    .item-table tr:last-child td {
+      border-bottom: none;
+    }
+    .item-table .item-name {
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .highlight-box {
+      background: rgba(0, 188, 212, 0.08);
+      border: 1px solid rgba(0, 188, 212, 0.3);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 16px;
+    }
+    .highlight-box p {
+      font-size: 0.9rem;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+    .highlight-box p:last-child {
+      margin-bottom: 0;
+    }
+    .method-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-weight: 700;
+      margin-right: 4px;
+    }
+    .tag-medal {
+      background: rgba(255, 193, 7, 0.2);
+      color: #ffc107;
+      border: 1px solid rgba(255, 193, 7, 0.4);
+    }
+    .tag-login {
+      background: rgba(76, 175, 80, 0.2);
+      color: #4caf50;
+      border: 1px solid rgba(76, 175, 80, 0.4);
+    }
+    .tag-stp {
+      background: rgba(156, 39, 176, 0.2);
+      color: #ce93d8;
+      border: 1px solid rgba(156, 39, 176, 0.4);
+    }
+    .tag-special {
+      background: rgba(244, 67, 54, 0.2);
+      color: #ef5350;
+      border: 1px solid rgba(244, 67, 54, 0.4);
+    }
+    .cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .tips-list {
+      list-style: none;
+      padding: 0;
+    }
+    .tips-list li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+      color: var(--text-primary);
+      display: flex;
+      gap: 8px;
+    }
+    .tips-list li:last-child {
+      border-bottom: none;
+    }
+    .tips-list .tip-icon {
+      flex-shrink: 0;
+    }
+    .item-image {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+      border-radius: 8px;
+      float: right;
+      margin: 0 0 8px 12px;
+    }
+    .info-card::after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+    .gacha-image {
+      display: block;
+      width: 140px;
+      height: auto;
+      margin: 0 auto 12px;
+      border-radius: 8px;
+    }
+    .special-note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 8px;
+      font-style: italic;
+    }
+    .copyright-note {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 24px;
+      padding: 12px;
+    }
+    @media (max-width: 600px) {
+      .collab-hero {
+        padding: 0 0 24px;
+      }
+      .collab-hero-title {
+        font-size: 1.4rem;
+      }
+      .item-image {
+        width: 90px;
+        height: 90px;
+      }
+      .info-card {
+        padding: 16px;
+      }
+      .item-table {
+        font-size: 0.8rem;
+      }
+      .item-table th, .item-table td {
+        padding: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ナビゲーション -->
+  <nav class="nav">
+    <button class="hamburger" onclick="toggleMenu()" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="index.html" class="nav-logo">SNPITガイド</a>
+  </nav>
+  <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+  <div class="slide-menu" id="slideMenu">
+    <div class="menu-header">
+      <span class="menu-title">SNPITガイド</span>
+      <button class="menu-close" onclick="toggleMenu()">&times;</button>
+    </div>
+
+    <div class="menu-links">
+      <a href="index.html" class="menu-link"><span class="menu-link-icon">🏠</span>ホーム</a>
+      <a href="chat.html" class="menu-link menu-link-accent"><span class="menu-link-icon">💬</span>スナピー (AI)</a>
+      <a href="news.html" class="menu-link"><span class="menu-link-icon">📢</span>お知らせ</a>
+      <div class="menu-link notification-toggle-row" id="notificationToggleRow">
+        <span class="menu-link-icon">🔔</span>
+        <span>プッシュ通知</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="notificationToggle" onchange="toggleNotification(this)">
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+      <span class="menu-category">ガイド</span>
+      <a href="beginners.html" class="menu-link"><span class="menu-link-icon">📖</span>初心者ガイド</a>
+      <a href="strategy.html" class="menu-link"><span class="menu-link-icon">🎯</span>攻略ガイド</a>
+      <a href="battle-guide.html" class="menu-link"><span class="menu-link-icon">⚔️</span>バトル攻略</a>
+      <a href="tutorials.html" class="menu-link"><span class="menu-link-icon">📹</span>チュートリアル</a>
+      <span class="menu-category">データ</span>
+      <a href="levelup.html" class="menu-link"><span class="menu-link-icon">⬆️</span>レベルアップ早見表</a>
+      <a href="cameras.html" class="menu-link"><span class="menu-link-icon">📷</span>カメラ比較表</a>
+      <a href="exchange.html" class="menu-link"><span class="menu-link-icon">💱</span>FP交換ガイド</a>
+      <span class="menu-category">イベント</span>
+      <a href="bluelock.html" class="menu-link"><span class="menu-link-icon">⚽</span>ブルーロックコラボ</a>
+      <a href="kokaku.html" class="menu-link active"><span class="menu-link-icon">🤖</span>攻殻機動隊コラボ</a>
+      <a href="shingeki.html" class="menu-link"><span class="menu-link-icon">⚔️</span>進撃の巨人コラボ</a>
+      <a href="railgun.html" class="menu-link"><span class="menu-link-icon">⚡</span>超電磁砲コラボ</a>
+      <a href="tensura.html" class="menu-link"><span class="menu-link-icon">🔵</span>転スラコラボ</a>
+      <a href="white-scorpion.html" class="menu-link"><span class="menu-link-icon">🦂</span>WHITE SCORPIONコラボ</a>
+      <a href="gr-toyota.html" class="menu-link"><span class="menu-link-icon">🏎️</span>TGRコラボ</a>
+      <a href="calbee.html" class="menu-link"><span class="menu-link-icon">🥔</span>カルビーコラボ</a>
+      <a href="his.html" class="menu-link"><span class="menu-link-icon">✈️</span>HISコラボ</a>
+      <span class="menu-category">ツール</span>
+      <a href="faq.html" class="menu-link"><span class="menu-link-icon">❓</span>よくある質問</a>
+      <a href="glossary.html" class="menu-link"><span class="menu-link-icon">📚</span>用語集</a>
+      <a href="reports.html" class="menu-link"><span class="menu-link-icon">📋</span>報告一覧</a>
+
+    </div>
+  </div>
+  <script>
+  function toggleMenu() {
+    document.getElementById('slideMenu').classList.toggle('open');
+    document.getElementById('menuOverlay').classList.toggle('open');
+  }
+  </script>
+
+  <!-- ヒーロー -->
+  <section class="collab-hero">
+    <img src="images/collab/kokaku/collab_items_banner.png" alt="攻殻機動隊 S.A.C. × SNPIT コラボ" class="collab-hero-banner">
+    <div class="collab-hero-text">
+      <div class="collab-period" id="collabPeriod">2025/12/22(月) 9:00 〜 2026/1/4(日) 9:00</div>
+      <div class="collab-status" id="collabStatus"></div>
+    </div>
+  </section>
+
+  <main class="main">
+
+    <!-- コラボ概要 -->
+    <section class="section">
+      <h2 class="section-heading">コラボ概要</h2>
+      <div class="highlight-box">
+        <p>「攻殻機動隊 STAND ALONE COMPLEX」とSNPITの期間限定コラボ！</p>
+        <p>草薙素子・バトー・トグサなど人気キャラクターのカメラスキン＆ストラップが登場。</p>
+        <p>特殊効果「追跡捜査」やバトル報酬倍率など、攻殻ならではの実戦向きアイテムが揃っています。</p>
+        <p>決済通貨はSNPIT Medal（アプリ内で購入可能）。</p>
+      </div>
+      <div class="cta-buttons">
+        <a href="https://lp.snpit.xyz/kokaku" target="_blank" rel="noopener" class="btn btn-accent">公式特設サイト</a>
+      </div>
+      <a href="chat.html" class="snappy-card">
+        <span class="snappy-card-icon">💬</span>
+        <div class="snappy-card-body">
+          <span class="snappy-card-title">スナピーに聞く</span>
+          <span class="snappy-card-desc">コラボの詳細、何でも答えるよ！</span>
+        </div>
+        <span class="snappy-card-arrow">›</span>
+      </a>
+    </section>
+
+    <!-- 入手方法まとめ -->
+    <section class="section">
+      <h2 class="section-heading">入手方法</h2>
+      <div class="info-card">
+        <div class="info-card-title"><span class="icon">🎰</span>Medalコラボガチャ</div>
+        <img src="images/collab/kokaku/gacha_box.png" alt="コラボガチャマシン" class="item-image">
+        <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:8px;">10 Medal/1回、100 Medal/10回</p>
+        <ul class="tips-list">
+          <li><span class="tip-icon">🎯</span>200回で「草薙素子スキン」確定GET（1回限り）</li>
+          <li><span class="tip-icon">📦</span>カメラスキン3種（草薙素子・バトー・トグサ） + カメラストラップ6種が排出</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title"><span class="icon">📅</span>ログインボーナス（無料）</div>
+        <ul class="tips-list">
+          <li><span class="tip-icon">🆓</span>期間中10日ログインで「アオイスキン」を無料GET</li>
+          <li><span class="tip-icon">📸</span>画質+30、[追跡捜査]効果付き</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title"><span class="icon">💎</span>STP Premium Gacha</div>
+        <ul class="tips-list">
+          <li><span class="tip-icon">⭐</span>「笑い男スキン」（排出率0.5%）が追加</li>
+          <li><span class="tip-icon">🔧</span>アクセサリースロット+1〜+3（grade別）</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title"><span class="icon">🔥</span>特殊合成</div>
+        <ul class="tips-list">
+          <li><span class="tip-icon">⚡</span>草薙素子スキン + 笑い男スキン → 「タチコマスキン」（合成ランク5・最高）</li>
+          <li><span class="tip-icon">💪</span>両方のステータスを兼ね備えた最強アイテム</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- カメラスキン一覧 -->
+    <section class="section">
+      <h2 class="section-heading">カメラスキン（5種）</h2>
+
+      <div class="info-card">
+        <div class="info-card-title">草薙素子スキン <span class="method-tag tag-medal">Medalガチャ</span></div>
+        <img src="images/collab/kokaku/skin_motoko.png" alt="草薙素子スキン" class="item-image">
+        <table class="item-table">
+          <tr><th>排出率</th><td>1%（200回で確定）</td></tr>
+          <tr><th>合成ランク</th><td>4（g2まで強化可能）</td></tr>
+        </table>
+        <table class="item-table" style="margin-top:8px;">
+          <tr><th>Grade</th><th>画質</th><th>運</th><th>電池</th><th>デッキ(Lv31)</th></tr>
+          <tr><td>Base</td><td>+10</td><td>+10</td><td>+10</td><td>+3%</td></tr>
+          <tr><td>g1</td><td>+20</td><td>+20</td><td>+20</td><td>+4.5%</td></tr>
+          <tr><td>g2</td><td>+40</td><td>+40</td><td>+40</td><td>+6%</td></tr>
+        </table>
+      </div>
+
+      <div class="info-card">
+        <div class="info-card-title">バトースキン <span class="method-tag tag-medal">Medalガチャ</span></div>
+        <img src="images/collab/kokaku/skin_batou.png" alt="バトースキン" class="item-image">
+        <table class="item-table">
+          <tr><th>排出率</th><td>1%</td></tr>
+          <tr><th>合成ランク</th><td>4（g2まで強化可能）</td></tr>
+          <tr><th>特殊効果</th><td>★2メインバトル勝利時、勝利報酬の基礎値の倍率分を追加獲得（撮影時・勝利時の両方で装着必須）</td></tr>
+        </table>
+        <table class="item-table" style="margin-top:8px;">
+          <tr><th>Grade</th><th>画質</th><th>効率</th><th>電池</th><th>勝利報酬倍率</th></tr>
+          <tr><td>Base</td><td>+2</td><td>+5</td><td>+1</td><td>4倍</td></tr>
+          <tr><td>g1</td><td>+12</td><td>+15</td><td>+11</td><td>5倍</td></tr>
+          <tr><td>g2</td><td>+32</td><td>+35</td><td>+31</td><td>6倍</td></tr>
+        </table>
+      </div>
+
+      <div class="info-card">
+        <div class="info-card-title">トグサスキン <span class="method-tag tag-medal">Medalガチャ</span></div>
+        <img src="images/collab/kokaku/skin_togusa.png" alt="トグサスキン" class="item-image">
+        <table class="item-table">
+          <tr><th>排出率</th><td>1%</td></tr>
+          <tr><th>合成ランク</th><td>4（g2まで強化可能）</td></tr>
+          <tr><th>特殊効果</th><td>[追跡捜査] メインバトル時、自身に勝利した相手写真の勝利報酬STPを獲得し続ける</td></tr>
+        </table>
+        <table class="item-table" style="margin-top:8px;">
+          <tr><th>Grade</th><th>画質</th><th>運</th><th>追跡捜査</th></tr>
+          <tr><td>Base</td><td>+20</td><td>+5</td><td>3%</td></tr>
+          <tr><td>g1</td><td>+30</td><td>+15</td><td>4%</td></tr>
+          <tr><td>g2</td><td>+50</td><td>+35</td><td>5%</td></tr>
+        </table>
+        <p class="special-note">※ [追跡捜査]はFPを得るカメラの場合無効。同効果複数装着時は最高値のみ有効。</p>
+      </div>
+
+      <div class="info-card">
+        <div class="info-card-title">アオイスキン <span class="method-tag tag-login">ログインボーナス</span></div>
+        <img src="images/collab/kokaku/skin_aoi.png" alt="アオイスキン" class="item-image">
+        <table class="item-table">
+          <tr><th>入手方法</th><td>期間中10日ログイン（無料）</td></tr>
+          <tr><th>合成ランク</th><td>0（合成不可）</td></tr>
+          <tr><th>ステータス</th><td>画質+30</td></tr>
+          <tr><th>特殊効果</th><td>[追跡捜査] 勝利報酬STPを1%獲得し続ける</td></tr>
+        </table>
+        <p class="special-note">※ [追跡捜査]はFPを得るカメラの場合無効。同効果複数装着時は最高値のみ有効。</p>
+      </div>
+    </section>
+
+    <!-- カメラストラップ一覧 -->
+    <section class="section">
+      <h2 class="section-heading">カメラストラップ（6種）</h2>
+
+      <div class="info-card">
+        <div class="info-card-title">草薙素子ストラップ <span class="method-tag tag-medal">Medalガチャ</span></div>
+        <img src="images/collab/kokaku/strap_motoko.png" alt="草薙素子ストラップ" class="item-image">
+        <table class="item-table">
+          <tr><th>排出率</th><td>2%</td></tr>
+          <tr><th>合成ランク</th><td>3（g4まで強化可能）</td></tr>
+        </table>
+        <table class="item-table" style="margin-top:8px;">
+          <tr><th>Grade</th><th>画質</th><th>運</th></tr>
+          <tr><td>Base</td><td>+7</td><td>+1</td></tr>
+          <tr><td>g1</td><td>+9</td><td>+3</td></tr>
+          <tr><td>g2</td><td>+13</td><td>+7</td></tr>
+          <tr><td>g3</td><td>+19</td><td>+13</td></tr>
+          <tr><td>g4</td><td>+27</td><td>+21</td></tr>
+        </table>
+      </div>
+
+      <div class="info-card">
+        <div class="info-card-title">バトーストラップ <span class="method-tag tag-medal">Medalガチャ</span></div>
+        <img src="images/collab/kokaku/strap_batou.png" alt="バトーストラップ" class="item-image">
+        <table class="item-table">
+          <tr><th>排出率</th><td>4%</td></tr>
+          <tr><th>合成ランク</th><td>3（g4まで強化可能）</td></tr>
+          <tr><th>特殊効果</th><td>フォーカス機能</td></tr>
+        </table>
+        <table class="item-table" style="margin-top:8px;">
+          <tr><th>Grade</th><th>画質</th></tr>
+          <tr><td>Base</td><td>+12</td></tr>
+          <tr><td>g1</td><td>+14</td></tr>
+          <tr><td>g2</td><td>+18</td></tr>
+          <tr><td>g3</td><td>+24</td></tr>
+          <tr><td>g4</td><td>+32</td></tr>
+        </table>
+      </div>
+
+      <div class="info-card">
+        <div class="info-card-title">トグサストラップ <span class="method-tag tag-medal">Medalガチャ</span></div>
+        <img src="images/collab/kokaku/strap_togusa.png" alt="トグサストラップ" class="item-image">
+        <table class="item-table">
+          <tr><th>排出率</th><td>16%</td></tr>
+          <tr><th>合成ランク</th><td>2（g4まで強化可能）</td></tr>
+        </table>
+        <table class="item-table" style="margin-top:8px;">
+          <tr><th>Grade</th><th>画質</th><th>運</th></tr>
+          <tr><td>Base</td><td>+3</td><td>+3</td></tr>
+          <tr><td>g1</td><td>+4</td><td>+4</td></tr>
+          <tr><td>g2</td><td>+6</td><td>+6</td></tr>
+          <tr><td>g3</td><td>+9</td><td>+9</td></tr>
+          <tr><td>g4</td><td>+13</td><td>+13</td></tr>
+        </table>
+      </div>
+
+      <div class="info-card">
+        <div class="info-card-title">サイトーストラップ <span class="method-tag tag-medal">Medalガチャ</span></div>
+        <img src="images/collab/kokaku/strap_saito.png" alt="サイトーストラップ" class="item-image">
+        <table class="item-table">
+          <tr><th>排出率</th><td>16%</td></tr>
+          <tr><th>合成ランク</th><td>2（g4まで強化可能）</td></tr>
+        </table>
+        <table class="item-table" style="margin-top:8px;">
+          <tr><th>Grade</th><th>画質</th><th>効率</th><th>電池</th></tr>
+          <tr><td>Base</td><td>+2</td><td>+2</td><td>+2</td></tr>
+          <tr><td>g1</td><td>+3</td><td>+3</td><td>+3</td></tr>
+          <tr><td>g2</td><td>+5</td><td>+5</td><td>+5</td></tr>
+          <tr><td>g3</td><td>+8</td><td>+8</td><td>+8</td></tr>
+          <tr><td>g4</td><td>+12</td><td>+12</td><td>+12</td></tr>
+        </table>
+      </div>
+
+      <div class="info-card">
+        <div class="info-card-title">荒巻大輔ストラップ <span class="method-tag tag-medal">Medalガチャ</span></div>
+        <img src="images/collab/kokaku/strap_aramaki.png" alt="荒巻大輔ストラップ" class="item-image">
+        <table class="item-table">
+          <tr><th>排出率</th><td>4%</td></tr>
+          <tr><th>合成ランク</th><td>3（g4まで強化可能）</td></tr>
+          <tr><th>特殊効果</th><td>[追跡捜査]</td></tr>
+        </table>
+        <table class="item-table" style="margin-top:8px;">
+          <tr><th>Grade</th><th>追跡捜査</th></tr>
+          <tr><td>Base</td><td>1%</td></tr>
+          <tr><td>g1</td><td>1.2%</td></tr>
+          <tr><td>g2</td><td>1.4%</td></tr>
+          <tr><td>g3</td><td>1.6%</td></tr>
+          <tr><td>g4</td><td>1.8%</td></tr>
+        </table>
+        <p class="special-note">※ [追跡捜査]はFPを得るカメラの場合無効。同効果複数装着時は最高値のみ有効。</p>
+      </div>
+
+      <div class="info-card">
+        <div class="info-card-title">タチコマストラップ <span class="method-tag tag-medal">Medalガチャ</span></div>
+        <img src="images/collab/kokaku/strap_tachikoma.png" alt="タチコマストラップ" class="item-image">
+        <table class="item-table">
+          <tr><th>排出率</th><td>4%</td></tr>
+          <tr><th>合成ランク</th><td>3（g4まで強化可能）</td></tr>
+          <tr><th>特殊効果</th><td>グリッド表示</td></tr>
+        </table>
+        <table class="item-table" style="margin-top:8px;">
+          <tr><th>Grade</th><th>運</th></tr>
+          <tr><td>Base</td><td>+12</td></tr>
+          <tr><td>g1</td><td>+14</td></tr>
+          <tr><td>g2</td><td>+18</td></tr>
+          <tr><td>g3</td><td>+24</td></tr>
+          <tr><td>g4</td><td>+32</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <!-- 特殊合成スキン -->
+    <section class="section">
+      <h2 class="section-heading">特殊合成スキン</h2>
+      <div class="info-card">
+        <div class="info-card-title">タチコマスキン <span class="method-tag tag-special">特殊合成</span></div>
+        <img src="images/collab/kokaku/skin_tachikoma.png" alt="タチコマスキン" class="item-image">
+        <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:12px;">草薙素子スキン + 笑い男スキン（STPガチャ）を合成して入手</p>
+        <table class="item-table">
+          <tr><th>合成ランク</th><td>5（最高ランク・g2まで強化可能）</td></tr>
+        </table>
+        <table class="item-table" style="margin-top:8px;">
+          <tr><th>Grade</th><th>画質</th><th>運</th><th>電池</th><th>アクセスロット</th><th>デッキ(Lv31)</th></tr>
+          <tr><td>Base</td><td>+10</td><td>+10</td><td>+10</td><td>+1</td><td>+3%</td></tr>
+          <tr><td>g1</td><td>+20</td><td>+20</td><td>+20</td><td>+2</td><td>+4.5%</td></tr>
+          <tr><td>g2</td><td>+40</td><td>+40</td><td>+40</td><td>+3</td><td>+6%</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <!-- STPガチャスキン -->
+    <section class="section">
+      <h2 class="section-heading">STP Premium Gacha限定</h2>
+      <div class="info-card">
+        <div class="info-card-title">笑い男スキン <span class="method-tag tag-stp">STPガチャ</span></div>
+        <img src="images/collab/kokaku/skin_waraiotoko.png" alt="笑い男スキン" class="item-image">
+        <table class="item-table">
+          <tr><th>排出率</th><td>0.5%</td></tr>
+          <tr><th>合成ランク</th><td>4（g2まで強化可能）</td></tr>
+        </table>
+        <table class="item-table" style="margin-top:8px;">
+          <tr><th>Grade</th><th>アクセサリースロット</th></tr>
+          <tr><td>Base</td><td>+1</td></tr>
+          <tr><td>g1</td><td>+2</td></tr>
+          <tr><td>g2</td><td>+3</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <!-- おすすめ・攻略Tips -->
+    <section class="section">
+      <h2 class="section-heading">おすすめ・攻略Tips</h2>
+      <div class="info-card">
+        <ul class="tips-list">
+          <li><span class="tip-icon">1.</span>まずは毎日ログインしてアオイスキン（無料・画質+30）を確保しよう</li>
+          <li><span class="tip-icon">2.</span>Medalガチャ200回で草薙素子スキン確定。バランスの良いステータスで万能型</li>
+          <li><span class="tip-icon">3.</span>バトースキンの★2勝利報酬倍率（最大6倍）はSTP稼ぎに最強クラス</li>
+          <li><span class="tip-icon">4.</span>トグサスキンの「追跡捜査」は負けた相手からもSTPを回収できるユニーク効果</li>
+          <li><span class="tip-icon">5.</span>余裕があれば笑い男スキン（STPガチャ）を狙って特殊合成でタチコマスキンに</li>
+          <li><span class="tip-icon">6.</span>荒巻ストラップの追跡捜査（最大1.8%）はトグサスキンと重複不可。最高値のみ有効</li>
+          <li><span class="tip-icon">7.</span>バトーストラップのフォーカス機能 + 高画質は写真のクオリティアップに有効</li>
+        </ul>
+      </div>
+      <div class="cta-buttons">
+        <a href="https://lp.snpit.xyz/kokaku" target="_blank" rel="noopener" class="btn btn-accent">公式特設サイトで詳細を見る</a>
+      </div>
+      <a href="chat.html" class="snappy-card">
+        <span class="snappy-card-icon">💬</span>
+        <div class="snappy-card-body">
+          <span class="snappy-card-title">スナピーに聞く</span>
+          <span class="snappy-card-desc">SNPITのこと、何でも答えるよ！</span>
+        </div>
+        <span class="snappy-card-arrow">›</span>
+      </a>
+    </section>
+
+    <p class="copyright-note">©士郎正宗・Production I.G／講談社・攻殻機動隊製作委員会</p>
+
+  </main>
+
+  <!-- フッター -->
+  <footer class="footer">
+    <p>SNPITガイド</p>
+    <p class="footer-note">このサイトは非公式のファンサイトです</p>
+    <p class="footer-author">運営: しんぷそん (<a href="https://x.com/chill_simpson_" target="_blank" rel="noopener">@chill_simpson_</a>)</p>
+    <div class="footer-links">
+      <a href="https://x.com/chill_simpson_" target="_blank" rel="noopener">X (Twitter)</a>
+      <a href="https://lp.snpit.xyz/" target="_blank" rel="noopener">SNPIT公式サイト</a>
+      <a href="privacy.html">プライバシーポリシー</a>
+      <a href="reports.html">報告一覧</a>
+    </div>
+  </footer>
+
+  <script>
+    // コラボ期間のステータス表示
+    (function() {
+      const start = new Date('2025-12-22T09:00:00+09:00');
+      const end = new Date('2026-01-04T09:00:00+09:00');
+      const now = new Date();
+      const el = document.getElementById('collabStatus');
+      if (now < start) {
+        el.innerHTML = '<span class="status-label status-before">開催前</span> もうすぐ始まります！';
+      } else if (now <= end) {
+        el.innerHTML = '<span class="status-label status-active">開催中</span> 今すぐ参加しよう！';
+      } else {
+        el.innerHTML = '<span class="status-label status-ended">終了</span> このコラボは終了しました';
+      }
+    })();
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
+  <script src="notification-toggle.js"></script>
+</body>
+</html>

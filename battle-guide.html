@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="SNPITガイド">
+  <link rel="apple-touch-icon" href="/images/icon-192.svg">
+  <meta name="theme-color" content="#1A2B2B">
+  <title>バトル攻略ガイド｜勝率を上げる写真の撮り方｜SNPITガイド</title>
+  <meta name="description" content="SNPITのバトルで勝率を上げるためのコツと戦略。カジュアルバトル・メインバトルの違い、写真の撮り方、エントリーのポイントを解説。">
+  <link rel="canonical" href="https://snpit-guide.pages.dev/battle-guide">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="SNPITガイド">
+  <meta property="og:title" content="バトル攻略ガイド｜SNPITガイド">
+  <meta property="og:description" content="SNPITのバトルで勝率を上げるコツと戦略を解説。">
+  <meta property="og:url" content="https://snpit-guide.pages.dev/battle-guide">
+  <meta property="og:image" content="https://snpit-guide.pages.dev/images/ogp.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="notification-toggle.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6789708198801982"
+     crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2CXFBGQWD4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2CXFBGQWD4');
+  </script>
+  <style>
+    .guide-section {
+      background-color: var(--card-background);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+    .guide-section p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+    .guide-section p:last-child { margin-bottom: 0; }
+    .guide-section ul, .guide-section ol {
+      padding-left: 1.5em;
+      margin-bottom: 12px;
+    }
+    .guide-section li {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      padding: 4px 0;
+    }
+    .guide-section h3 {
+      font-size: 1.05rem;
+      color: var(--accent);
+      margin: 20px 0 10px;
+    }
+    .battle-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+      font-size: 0.85rem;
+    }
+    .battle-table th, .battle-table td {
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      text-align: left;
+    }
+    .battle-table th {
+      background-color: var(--card-inner);
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .battle-table td { color: var(--text-secondary); }
+    .info-box {
+      background-color: var(--accent-glow);
+      border: 1px solid var(--accent-dark);
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin: 12px 0;
+    }
+    .info-box p {
+      color: var(--text-primary) !important;
+      font-size: 0.9rem;
+      margin: 0;
+    }
+    .warn-box {
+      background-color: rgba(255, 193, 7, 0.1);
+      border: 1px solid rgba(255, 193, 7, 0.3);
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin: 12px 0;
+    }
+    .warn-box p {
+      color: var(--text-primary) !important;
+      font-size: 0.9rem;
+      margin: 0;
+    }
+    .tip-card {
+      background-color: var(--card-inner);
+      border-radius: 12px;
+      padding: 16px;
+      margin: 12px 0;
+    }
+    .tip-card-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .tip-card p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin: 0;
+    }
+    .hero-image {
+      width: 100%;
+      max-width: 220px;
+      display: block;
+      margin: 0 auto 24px;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+    .section-image-small {
+      width: 120px;
+      border-radius: 12px;
+      float: right;
+      margin: 0 0 12px 16px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    }
+    .battle-photos {
+      display: flex;
+      gap: 8px;
+      margin: 16px 0;
+      justify-content: center;
+    }
+    .battle-photos img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    }
+    .section-clear { clear: both; }
+    @media (max-width: 600px) {
+      .guide-section { padding: 20px 16px; border-radius: 12px; }
+      .battle-table { font-size: 0.8rem; }
+      .battle-table th, .battle-table td { padding: 8px; }
+      .section-image-small { width: 100px; }
+      .battle-photos img { width: 80px; height: 80px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <button class="hamburger" onclick="toggleMenu()" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="index.html" class="nav-logo">SNPITガイド</a>
+  </nav>
+  <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+  <div class="slide-menu" id="slideMenu">
+    <div class="menu-header">
+      <span class="menu-title">SNPITガイド</span>
+      <button class="menu-close" onclick="toggleMenu()">&times;</button>
+    </div>
+    
+    <div class="menu-links">
+      <a href="index.html" class="menu-link"><span class="menu-link-icon">🏠</span>ホーム</a>
+      <a href="chat.html" class="menu-link menu-link-accent"><span class="menu-link-icon">💬</span>スナピー (AI)</a>
+      <a href="news.html" class="menu-link"><span class="menu-link-icon">📢</span>お知らせ</a>
+      <div class="menu-link notification-toggle-row" id="notificationToggleRow">
+        <span class="menu-link-icon">🔔</span>
+        <span>プッシュ通知</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="notificationToggle" onchange="toggleNotification(this)">
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+      <span class="menu-category">ガイド</span>
+      <a href="beginners.html" class="menu-link"><span class="menu-link-icon">📖</span>初心者ガイド</a>
+      <a href="strategy.html" class="menu-link"><span class="menu-link-icon">🎯</span>攻略ガイド</a>
+      <a href="battle-guide.html" class="menu-link active"><span class="menu-link-icon">⚔️</span>バトル攻略</a>
+      <a href="tutorials.html" class="menu-link"><span class="menu-link-icon">📹</span>チュートリアル</a>
+      <span class="menu-category">データ</span>
+      <a href="levelup.html" class="menu-link"><span class="menu-link-icon">⬆️</span>レベルアップ早見表</a>
+      <a href="cameras.html" class="menu-link"><span class="menu-link-icon">📷</span>カメラ比較表</a>
+      <a href="exchange.html" class="menu-link"><span class="menu-link-icon">💱</span>FP交換ガイド</a>
+      <span class="menu-category">イベント</span>
+      <a href="bluelock.html" class="menu-link"><span class="menu-link-icon">⚽</span>ブルーロックコラボ</a>
+      <a href="kokaku.html" class="menu-link"><span class="menu-link-icon">🤖</span>攻殻機動隊コラボ</a>
+      <a href="shingeki.html" class="menu-link"><span class="menu-link-icon">⚔️</span>進撃の巨人コラボ</a>
+      <a href="railgun.html" class="menu-link"><span class="menu-link-icon">⚡</span>超電磁砲コラボ</a>
+      <a href="tensura.html" class="menu-link"><span class="menu-link-icon">🔵</span>転スラコラボ</a>
+      <a href="white-scorpion.html" class="menu-link"><span class="menu-link-icon">🦂</span>WHITE SCORPIONコラボ</a>
+      <a href="gr-toyota.html" class="menu-link"><span class="menu-link-icon">🏎️</span>TGRコラボ</a>
+      <a href="calbee.html" class="menu-link"><span class="menu-link-icon">🥔</span>カルビーコラボ</a>
+      <a href="his.html" class="menu-link"><span class="menu-link-icon">✈️</span>HISコラボ</a>
+      <span class="menu-category">ツール</span>
+      <a href="faq.html" class="menu-link"><span class="menu-link-icon">❓</span>よくある質問</a>
+      <a href="glossary.html" class="menu-link"><span class="menu-link-icon">📚</span>用語集</a>
+      <a href="reports.html" class="menu-link"><span class="menu-link-icon">📋</span>報告一覧</a>
+    
+    </div>
+  </div>
+  <script>
+  function toggleMenu() {
+    document.getElementById('slideMenu').classList.toggle('open');
+    document.getElementById('menuOverlay').classList.toggle('open');
+  }
+  </script>
+
+  <header class="header">
+    <h1 class="header-title">バトル攻略ガイド</h1>
+    <p class="header-subtitle">勝率を上げる写真の撮り方とコツ</p>
+  </header>
+
+  <main class="main">
+    <img src="images/guide/ui_battle.png" alt="SNPITバトル画面" class="hero-image">
+
+    <section class="guide-section">
+      <h2 class="section-title">
+        <span class="section-icon">⚔️</span>
+        バトルの基本
+      </h2>
+      <p>SNPITのバトルは、自分の写真と他プレイヤーの写真を対戦させ、投票で勝敗が決まる仕組みです。</p>
+      <table class="battle-table">
+        <thead>
+          <tr><th>種類</th><th>カジュアルバトル</th><th>メインバトル</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>参加条件</td><td>なし（誰でもOK）</td><td>Quality30以上の写真</td></tr>
+          <tr><td>報酬</td><td>FP</td><td>STP</td></tr>
+          <tr><td>エントリー数</td><td>無制限（広告視聴で回復可能）</td><td>最大7回/日</td></tr>
+          <tr><td>NFTカメラ</td><td>不要</td><td>不要（Q30の写真があればOK）</td></tr>
+          <tr><td>勝敗決定</td><td>他プレイヤーの投票</td><td>他プレイヤーの投票</td></tr>
+          <tr><td>キャンセル</td><td colspan="2">エントリーから1時間経過後にキャンセル可能</td></tr>
+        </tbody>
+      </table>
+      <div class="info-box">
+        <p>メインバトルにNFTカメラは不要です。フリーカメラでもQuality30以上のカメラで撮影した写真があれば参加できます。</p>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <h2 class="section-title">
+        <span class="section-icon">📸</span>
+        勝てる写真の撮り方
+      </h2>
+      <p>バトルの勝敗は他プレイヤーの投票で決まります。つまり「人の目を引く写真」が勝ちやすいです。</p>
+      <div class="battle-photos">
+        <img src="images/guide/battle_photo1.jpg" alt="バトル写真例1">
+        <img src="images/guide/battle_photo2.jpg" alt="バトル写真例2">
+        <img src="images/guide/battle_photo3.jpg" alt="バトル写真例3">
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-card-title">1. 被写体を明確にする</div>
+        <p>何を撮ったかがすぐ分かる写真が強い。雑然とした写真より、1つの被写体にフォーカスした写真の方が投票されやすいです。</p>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-card-title">2. 明るくカラフルに</div>
+        <p>暗い写真よりも明るい写真が目を引きます。日中の屋外撮影や、色鮮やかな被写体がおすすめです。</p>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-card-title">3. 構図を意識する</div>
+        <p>写真の基本「三分割法」を意識。被写体を中央ではなく少しずらすと、バランスの良い写真になります。</p>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-card-title">4. 食べ物・風景・動物は人気</div>
+        <p>投票者が「いいな」と感じるジャンルは強い。美味しそうな料理、きれいな風景、かわいい動物は鉄板です。</p>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-card-title">5. ユニークさで差をつける</div>
+        <p>他の人が撮らない珍しいアングルや被写体で差をつけましょう。見慣れた構図より、意外性のある写真が投票を集めます。</p>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <h2 class="section-title">
+        <span class="section-icon">🎯</span>
+        エントリーのコツ
+      </h2>
+      <ul>
+        <li><strong>毎日エントリーを欠かさない</strong> - 撮影した写真はすぐバトルに出す。出さなければ0ポイント</li>
+        <li><strong>複数回エントリーで確率アップ</strong> - 1日最大7回までエントリー可能。数を出すほど勝つチャンスが増える</li>
+        <li><strong>自信のある写真を優先</strong> - エントリー枠が限られている場合は、ベストショットから出す</li>
+        <li><strong>レベルアップ中もOK</strong> - カメラがレベルアップ中でも、撮影済みの写真でバトル参加可能</li>
+        <li><strong>エントリーキャンセルは1時間後から</strong> - エントリーから1時間経過するとキャンセル可能。より良い写真が撮れたら入れ替えよう</li>
+      </ul>
+    </section>
+
+    <section class="guide-section">
+      <h2 class="section-title">
+        <span class="section-icon">🗳️</span>
+        投票に参加しよう
+      </h2>
+      <img src="images/guide/ui_vote.png" alt="SNPIT投票画面" class="section-image-small">
+      <p>メインバトルの投票は誰でも参加できます。投票した写真が勝利するとSTPがもらえます。</p>
+      <table class="battle-table">
+        <thead>
+          <tr><th>条件</th><th>1日の投票数</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>NFT未保有</td><td>7票</td></tr>
+          <tr><td>NFT保有</td><td>12票（+5票）</td></tr>
+          <tr><td>サブスク加入</td><td>さらに+2票</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="guide-section">
+      <h2 class="section-title">
+        <span class="section-icon">📊</span>
+        バトル戦略まとめ
+      </h2>
+      <h3>無課金プレイヤー</h3>
+      <ol>
+        <li>まずフリーカメラのQualityを30まで上げる</li>
+        <li>カジュアルバトルでFPを稼ぎながらレベルアップ</li>
+        <li>Q30到達後はメインバトルにも参加してSTPを稼ぐ</li>
+        <li>写真の質を意識して撮影、勝率を上げていく</li>
+      </ol>
+
+      <h3>課金プレイヤー</h3>
+      <ol>
+        <li>NFTカメラのQualityを優先的に上げる</li>
+        <li>メインバトル + 投票でSTPを二重に稼ぐ</li>
+        <li>複数カメラで撮影枚数を増やし、エントリー数を最大化</li>
+        <li>高Efficiencyで撮影ごとのSTP獲得量も最大化</li>
+      </ol>
+    </section>
+
+    <section class="guide-section">
+      <h2 class="section-title">
+        <span class="section-icon">💬</span>
+        もっと詳しく聞きたい？
+      </h2>
+      <a href="chat.html" class="snappy-card">
+      <span class="snappy-card-icon">💬</span>
+      <div class="snappy-card-body">
+        <span class="snappy-card-title">スナピーに聞く</span>
+        <span class="snappy-card-desc">SNPITのこと、何でも答えるよ！</span>
+      </div>
+      <span class="snappy-card-arrow">›</span>
+    </a>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>SNPITガイド</p>
+    <p class="footer-note">このサイトは非公式のファンサイトです</p>
+    <p class="footer-author">運営: しんぷそん (<a href="https://x.com/chill_simpson_" target="_blank" rel="noopener">@chill_simpson_</a>)</p>
+    <div class="footer-links">
+      <a href="https://x.com/chill_simpson_" target="_blank" rel="noopener">X (Twitter)</a>
+      <a href="https://lp.snpit.xyz/" target="_blank" rel="noopener">SNPIT公式サイト</a>
+      <a href="privacy.html">プライバシーポリシー</a>
+      <a href="reports.html">報告一覧</a>
+    </div>
+  </footer>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
+  <script src="notification-toggle.js"></script>
+</body>
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="SNPITガイド">
+  <link rel="apple-touch-icon" href="/images/icon-192.svg">
+  <meta name="theme-color" content="#1A2B2B">
+  <title>レベルアップ早見表｜コスト・時間・ステータス一覧｜SNPITガイド</title>
+  <meta name="description" content="SNPITのレベルアップに必要なコスト・待ち時間・獲得ステータスポイントを一覧表で確認。フリーカメラ・NFTカメラ両対応。">
+  <link rel="canonical" href="https://snpit-guide.pages.dev/levelup">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="SNPITガイド">
+  <meta property="og:title" content="レベルアップ早見表｜SNPITガイド">
+  <meta property="og:description" content="SNPITのレベルアップに必要なコスト・待ち時間を一覧表で確認。">
+  <meta property="og:url" content="https://snpit-guide.pages.dev/levelup">
+  <meta property="og:image" content="https://snpit-guide.pages.dev/images/ogp.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="notification-toggle.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6789708198801982"
+     crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2CXFBGQWD4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2CXFBGQWD4');
+  </script>
+  <style>
+    .guide-section {
+      background-color: var(--card-background);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+    .guide-section p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+    .guide-section p:last-child { margin-bottom: 0; }
+    .level-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+      font-size: 0.8rem;
+    }
+    .level-table th, .level-table td {
+      padding: 8px 6px;
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+    .level-table th {
+      background-color: var(--card-inner);
+      color: var(--accent);
+      font-weight: 700;
+      position: sticky;
+      top: 0;
+    }
+    .level-table td { color: var(--text-secondary); }
+    .level-table tr:nth-child(5n) td {
+      background-color: rgba(255, 193, 7, 0.08);
+      font-weight: 700;
+    }
+    .table-scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .info-box {
+      background-color: var(--accent-glow);
+      border: 1px solid var(--accent-dark);
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin: 12px 0;
+    }
+    .info-box p {
+      color: var(--text-primary) !important;
+      font-size: 0.9rem;
+      margin: 0;
+    }
+    .summary-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+      font-size: 0.85rem;
+    }
+    .summary-table th, .summary-table td {
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      text-align: left;
+    }
+    .summary-table th {
+      background-color: var(--card-inner);
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .summary-table td { color: var(--text-secondary); }
+    .hero-image {
+      width: 100%;
+      max-width: 220px;
+      display: block;
+      margin: 0 auto 24px;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+    .section-image-small {
+      width: 120px;
+      border-radius: 12px;
+      float: right;
+      margin: 0 0 12px 16px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    }
+    @media (max-width: 600px) {
+      .guide-section { padding: 20px 16px; border-radius: 12px; }
+      .level-table { font-size: 0.75rem; }
+      .level-table th, .level-table td { padding: 6px 4px; }
+      .hero-image { max-width: 180px; }
+      .section-image-small { width: 100px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <button class="hamburger" onclick="toggleMenu()" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="index.html" class="nav-logo">SNPITガイド</a>
+  </nav>
+  <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+  <div class="slide-menu" id="slideMenu">
+    <div class="menu-header">
+      <span class="menu-title">SNPITガイド</span>
+      <button class="menu-close" onclick="toggleMenu()">&times;</button>
+    </div>
+    
+    <div class="menu-links">
+      <a href="index.html" class="menu-link"><span class="menu-link-icon">🏠</span>ホーム</a>
+      <a href="chat.html" class="menu-link menu-link-accent"><span class="menu-link-icon">💬</span>スナピー (AI)</a>
+      <a href="news.html" class="menu-link"><span class="menu-link-icon">📢</span>お知らせ</a>
+      <div class="menu-link notification-toggle-row" id="notificationToggleRow">
+        <span class="menu-link-icon">🔔</span>
+        <span>プッシュ通知</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="notificationToggle" onchange="toggleNotification(this)">
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+      <span class="menu-category">ガイド</span>
+      <a href="beginners.html" class="menu-link"><span class="menu-link-icon">📖</span>初心者ガイド</a>
+      <a href="strategy.html" class="menu-link"><span class="menu-link-icon">🎯</span>攻略ガイド</a>
+      <a href="battle-guide.html" class="menu-link"><span class="menu-link-icon">⚔️</span>バトル攻略</a>
+      <a href="tutorials.html" class="menu-link"><span class="menu-link-icon">📹</span>チュートリアル</a>
+      <span class="menu-category">データ</span>
+      <a href="levelup.html" class="menu-link active"><span class="menu-link-icon">⬆️</span>レベルアップ早見表</a>
+      <a href="cameras.html" class="menu-link"><span class="menu-link-icon">📷</span>カメラ比較表</a>
+      <a href="exchange.html" class="menu-link"><span class="menu-link-icon">💱</span>FP交換ガイド</a>
+      <span class="menu-category">イベント</span>
+      <a href="bluelock.html" class="menu-link"><span class="menu-link-icon">⚽</span>ブルーロックコラボ</a>
+      <a href="kokaku.html" class="menu-link"><span class="menu-link-icon">🤖</span>攻殻機動隊コラボ</a>
+      <a href="shingeki.html" class="menu-link"><span class="menu-link-icon">⚔️</span>進撃の巨人コラボ</a>
+      <a href="railgun.html" class="menu-link"><span class="menu-link-icon">⚡</span>超電磁砲コラボ</a>
+      <a href="tensura.html" class="menu-link"><span class="menu-link-icon">🔵</span>転スラコラボ</a>
+      <a href="white-scorpion.html" class="menu-link"><span class="menu-link-icon">🦂</span>WHITE SCORPIONコラボ</a>
+      <a href="gr-toyota.html" class="menu-link"><span class="menu-link-icon">🏎️</span>TGRコラボ</a>
+      <a href="calbee.html" class="menu-link"><span class="menu-link-icon">🥔</span>カルビーコラボ</a>
+      <a href="his.html" class="menu-link"><span class="menu-link-icon">✈️</span>HISコラボ</a>
+      <span class="menu-category">ツール</span>
+      <a href="faq.html" class="menu-link"><span class="menu-link-icon">❓</span>よくある質問</a>
+      <a href="glossary.html" class="menu-link"><span class="menu-link-icon">📚</span>用語集</a>
+      <a href="reports.html" class="menu-link"><span class="menu-link-icon">📋</span>報告一覧</a>
+    
+    </div>
+  </div>
+  <script>
+  function toggleMenu() {
+    document.getElementById('slideMenu').classList.toggle('open');
+    document.getElementById('menuOverlay').classList.toggle('open');
+  }
+  </script>
+
+  <header class="header">
+    <h1 class="header-title">レベルアップ早見表</h1>
+    <p class="header-subtitle">コスト・待ち時間・ステータスポイント一覧</p>
+  </header>
+
+  <main class="main">
+    <img src="images/guide/ui_snap.png" alt="SNPITカメラ画面" class="hero-image" loading="lazy">
+
+    <section class="guide-section">
+      <h2 class="section-title">
+        <span class="section-icon">📋</span>
+        レベルアップの基本ルール
+      </h2>
+      <p>レベルアップにはコスト（FPまたはSTP）と待ち時間（クールダウン）がかかります。</p>
+      <table class="summary-table">
+        <thead>
+          <tr><th>項目</th><th>フリーカメラ</th><th>NFTカメラ</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>最大レベル</td><td>31</td><td>31</td></tr>
+          <tr><td>コスト通貨</td><td>FP</td><td>STP</td></tr>
+          <tr><td>総コスト</td><td>約564 FP</td><td>レアリティにより異なる</td></tr>
+          <tr><td>総待ち時間</td><td>約495時間（約20日）</td><td>同じ（ブーストクーラーで短縮可）</td></tr>
+          <tr><td>ブーストクーラー</td><td>使用不可</td><td>使用可能</td></tr>
+        </tbody>
+      </table>
+      <div class="info-box">
+        <p>5の倍数レベル（5, 10, 15, 20, 25, 30）は特別コストが加算されます。FPを多めに貯めてから挑みましょう。</p>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <h2 class="section-title">
+        <span class="section-icon">⬆️</span>
+        フリーカメラ レベルアップ一覧
+      </h2>
+      <p>各レベルのコスト・待ち時間・獲得ステータスポイントの一覧です。</p>
+      <div class="table-scroll">
+        <table class="level-table">
+          <thead>
+            <tr><th>Lv</th><th>コスト(FP)</th><th>待ち時間</th><th>ステータスPt</th><th>累計コスト</th><th>累計時間</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1→2</td><td>0.4</td><td>2時間</td><td>+2</td><td>0.4</td><td>2h</td></tr>
+            <tr><td>2→3</td><td>0.8</td><td>3時間</td><td>+2</td><td>1.2</td><td>5h</td></tr>
+            <tr><td>3→4</td><td>1.2</td><td>4時間</td><td>+2</td><td>2.4</td><td>9h</td></tr>
+            <tr><td>4→5</td><td>1.6</td><td>5時間</td><td>+2</td><td>4.0</td><td>14h</td></tr>
+            <tr><td>5→6</td><td>20.0</td><td>6時間</td><td>+2</td><td>24.0</td><td>20h</td></tr>
+            <tr><td>6→7</td><td>2.4</td><td>7時間</td><td>+2</td><td>26.4</td><td>27h</td></tr>
+            <tr><td>7→8</td><td>2.8</td><td>8時間</td><td>+2</td><td>29.2</td><td>35h</td></tr>
+            <tr><td>8→9</td><td>3.2</td><td>9時間</td><td>+2</td><td>32.4</td><td>44h</td></tr>
+            <tr><td>9→10</td><td>3.6</td><td>10時間</td><td>+2</td><td>36.0</td><td>54h</td></tr>
+            <tr><td>10→11</td><td>40.0</td><td>11時間</td><td>+2</td><td>76.0</td><td>65h</td></tr>
+            <tr><td>11→12</td><td>4.4</td><td>12時間</td><td>+2</td><td>80.4</td><td>77h</td></tr>
+            <tr><td>12→13</td><td>4.8</td><td>13時間</td><td>+2</td><td>85.2</td><td>90h</td></tr>
+            <tr><td>13→14</td><td>5.2</td><td>14時間</td><td>+2</td><td>90.4</td><td>104h</td></tr>
+            <tr><td>14→15</td><td>5.6</td><td>15時間</td><td>+2</td><td>96.0</td><td>119h</td></tr>
+            <tr><td>15→16</td><td>60.0</td><td>16時間</td><td>+2</td><td>156.0</td><td>135h</td></tr>
+            <tr><td>16→17</td><td>6.4</td><td>17時間</td><td>+2</td><td>162.4</td><td>152h</td></tr>
+            <tr><td>17→18</td><td>6.8</td><td>18時間</td><td>+2</td><td>169.2</td><td>170h</td></tr>
+            <tr><td>18→19</td><td>7.2</td><td>19時間</td><td>+2</td><td>176.4</td><td>189h</td></tr>
+            <tr><td>19→20</td><td>7.6</td><td>20時間</td><td>+2</td><td>184.0</td><td>209h</td></tr>
+            <tr><td>20→21</td><td>80.0</td><td>21時間</td><td>+2</td><td>264.0</td><td>230h</td></tr>
+            <tr><td>21→22</td><td>8.4</td><td>22時間</td><td>+2</td><td>272.4</td><td>252h</td></tr>
+            <tr><td>22→23</td><td>8.8</td><td>23時間</td><td>+2</td><td>281.2</td><td>275h</td></tr>
+            <tr><td>23→24</td><td>9.2</td><td>24時間</td><td>+2</td><td>290.4</td><td>299h</td></tr>
+            <tr><td>24→25</td><td>9.6</td><td>25時間</td><td>+2</td><td>300.0</td><td>324h</td></tr>
+            <tr><td>25→26</td><td>100.0</td><td>26時間</td><td>+2</td><td>400.0</td><td>350h</td></tr>
+            <tr><td>26→27</td><td>10.4</td><td>27時間</td><td>+2</td><td>410.4</td><td>377h</td></tr>
+            <tr><td>27→28</td><td>10.8</td><td>28時間</td><td>+2</td><td>421.2</td><td>405h</td></tr>
+            <tr><td>28→29</td><td>11.2</td><td>29時間</td><td>+2</td><td>432.4</td><td>434h</td></tr>
+            <tr><td>29→30</td><td>11.6</td><td>30時間</td><td>+2</td><td>444.0</td><td>464h</td></tr>
+            <tr><td>30→31</td><td>120.0</td><td>31時間</td><td>+2</td><td>564.0</td><td>495h</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="info-box">
+        <p>黄色の行は5の倍数レベル（特別コスト）です。通常レベルは「レベル×0.4 FP」ですが、5の倍数レベルでは「レベル×4 FP」（通常の10倍）になります。</p>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <h2 class="section-title">
+        <span class="section-icon">📊</span>
+        ステータスポイント配分の目安
+      </h2>
+      <p>レベルアップ時に獲得するポイントの合計と、おすすめの振り分け方です。</p>
+      <table class="summary-table">
+        <thead>
+          <tr><th>レベル帯</th><th>獲得Pt合計</th><th>おすすめ振り分け</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Lv1～5</td><td>8pt</td><td>Quality全振り → Q30を目指す</td></tr>
+          <tr><td>Lv6～10</td><td>10pt</td><td>Quality全振り → Q30達成</td></tr>
+          <tr><td>Lv11～15</td><td>10pt</td><td>Efficiency重視で収益アップ</td></tr>
+          <tr><td>Lv16～20</td><td>10pt</td><td>Efficiency重視 or バランス</td></tr>
+          <tr><td>Lv21～25</td><td>10pt</td><td>Luck or Battery</td></tr>
+          <tr><td>Lv26～31</td><td>12pt</td><td>お好みで自由に振り分け</td></tr>
+        </tbody>
+      </table>
+      <p>フリーカメラの場合、合計60ptを獲得できます（毎レベル+2pt × 30回）。Quality30に到達するには15レベル分（30pt）をQualityに振る必要があります。</p>
+    </section>
+
+    <section class="guide-section">
+      <h2 class="section-title">
+        <span class="section-icon">💡</span>
+        レベルアップのコツ
+      </h2>
+      <img src="images/guide/item_levelup.png" alt="レベルアップポーション" class="section-image-small" loading="lazy">
+      <ul style="padding-left: 1.5em; margin-bottom: 12px;">
+        <li style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.8; padding: 4px 0;"><strong>寝る前に開始</strong> - 高レベルは待ち時間が長い（最大31時間）ので、寝る前に開始</li>
+        <li style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.8; padding: 4px 0;"><strong>5の倍数レベル前にFPを貯める</strong> - 特別コストが大きいので事前に準備</li>
+        <li style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.8; padding: 4px 0;"><strong>待ち時間中も撮影・バトルOK</strong> - クールダウン中でもゲームプレイは可能</li>
+        <li style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.8; padding: 4px 0;"><strong>ブーストクーラーはNFTカメラ専用</strong> - フリーカメラでは使えないので地道に待つ</li>
+      </ul>
+    </section>
+
+    <section class="guide-section">
+      <h2 class="section-title">
+        <span class="section-icon">💬</span>
+        もっと詳しく聞きたい？
+      </h2>
+      <a href="chat.html" class="snappy-card">
+      <span class="snappy-card-icon">💬</span>
+      <div class="snappy-card-body">
+        <span class="snappy-card-title">スナピーに聞く</span>
+        <span class="snappy-card-desc">SNPITのこと、何でも答えるよ！</span>
+      </div>
+      <span class="snappy-card-arrow">›</span>
+    </a>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>SNPITガイド</p>
+    <p class="footer-note">このサイトは非公式のファンサイトです</p>
+    <p class="footer-author">運営: しんぷそん (<a href="https://x.com/chill_simpson_" target="_blank" rel="noopener">@chill_simpson_</a>)</p>
+    <div class="footer-links">
+      <a href="https://x.com/chill_simpson_" target="_blank" rel="noopener">X (Twitter)</a>
+      <a href="https://lp.snpit.xyz/" target="_blank" rel="noopener">SNPIT公式サイト</a>
+      <a href="privacy.html">プライバシーポリシー</a>
+      <a href="reports.html">報告一覧</a>
+    </div>
+  </footer>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
+  <script src="notification-toggle.js"></script>
+</body>
+</html>

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="SNPITガイド">
+  <link rel="apple-touch-icon" href="/images/icon-192.svg">
+  <meta name="theme-color" content="#1A2B2B">
+  <title>カメラ比較表｜レアリティ別ステータス・コスト一覧｜SNPITガイド</title>
+  <meta name="description" content="SNPITのカメラをレアリティ別に比較。フリーカメラとNFTカメラ（Common～Legendary）の初期ステータス、レベルアップコスト、修理費用を一覧で確認。">
+  <link rel="canonical" href="https://snpit-guide.pages.dev/cameras">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="SNPITガイド">
+  <meta property="og:title" content="カメラ比較表｜SNPITガイド">
+  <meta property="og:description" content="SNPITのカメラをレアリティ別に比較。ステータス・コストを一覧で確認。">
+  <meta property="og:url" content="https://snpit-guide.pages.dev/cameras">
+  <meta property="og:image" content="https://snpit-guide.pages.dev/images/ogp.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="notification-toggle.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6789708198801982"
+     crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2CXFBGQWD4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2CXFBGQWD4');
+  </script>
+  <style>
+    .guide-section {
+      background-color: var(--card-background);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+    .guide-section p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+    .guide-section p:last-child { margin-bottom: 0; }
+    .guide-section ul {
+      padding-left: 1.5em;
+      margin-bottom: 12px;
+    }
+    .guide-section li {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      padding: 4px 0;
+    }
+    .camera-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+      font-size: 0.82rem;
+    }
+    .camera-table th, .camera-table td {
+      padding: 9px 8px;
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+    .camera-table th {
+      background-color: var(--card-inner);
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .camera-table td { color: var(--text-secondary); }
+    .table-scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .rarity-common { color: #aaa; }
+    .rarity-uncommon { color: #4caf50; }
+    .rarity-rare { color: #2196f3; }
+    .rarity-epic { color: #9c27b0; }
+    .rarity-legendary { color: #ff9800; }
+    .info-box {
+      background-color: var(--accent-glow);
+      border: 1px solid var(--accent-dark);
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin: 12px 0;
+    }
+    .info-box p {
+      color: var(--text-primary) !important;
+      font-size: 0.9rem;
+      margin: 0;
+    }
+    .warn-box {
+      background-color: rgba(255, 193, 7, 0.1);
+      border: 1px solid rgba(255, 193, 7, 0.3);
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin: 12px 0;
+    }
+    .warn-box p {
+      color: var(--text-primary) !important;
+      font-size: 0.9rem;
+      margin: 0;
+    }
+    .camera-showcase {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin: 0 auto 24px;
+      max-width: 360px;
+    }
+    .camera-showcase img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.05);
+      padding: 4px;
+    }
+    .section-image-small {
+      width: 120px;
+      border-radius: 12px;
+      float: right;
+      margin: 0 0 12px 16px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    }
+    @media (max-width: 600px) {
+      .guide-section { padding: 20px 16px; border-radius: 12px; }
+      .camera-table { font-size: 0.75rem; }
+      .camera-table th, .camera-table td { padding: 7px 5px; }
+      .camera-showcase img { width: 65px; height: 65px; }
+      .section-image-small { width: 100px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <button class="hamburger" onclick="toggleMenu()" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="index.html" class="nav-logo">SNPITガイド</a>
+  </nav>
+  <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+  <div class="slide-menu" id="slideMenu">
+    <div class="menu-header">
+      <span class="menu-title">SNPITガイド</span>
+      <button class="menu-close" onclick="toggleMenu()">&times;</button>
+    </div>
+    
+    <div class="menu-links">
+      <a href="index.html" class="menu-link"><span class="menu-link-icon">🏠</span>ホーム</a>
+      <a href="chat.html" class="menu-link menu-link-accent"><span class="menu-link-icon">💬</span>スナピー (AI)</a>
+      <a href="news.html" class="menu-link"><span class="menu-link-icon">📢</span>お知らせ</a>
+      <div class="menu-link notification-toggle-row" id="notificationToggleRow">
+        <span class="menu-link-icon">🔔</span>
+        <span>プッシュ通知</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="notificationToggle" onchange="toggleNotification(this)">
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+      <span class="menu-category">ガイド</span>
+      <a href="beginners.html" class="menu-link"><span class="menu-link-icon">📖</span>初心者ガイド</a>
+      <a href="strategy.html" class="menu-link"><span class="menu-link-icon">🎯</span>攻略ガイド</a>
+      <a href="battle-guide.html" class="menu-link"><span class="menu-link-icon">⚔️</span>バトル攻略</a>
+      <a href="tutorials.html" class="menu-link"><span class="menu-link-icon">📹</span>チュートリアル</a>
+      <span class="menu-category">データ</span>
+      <a href="levelup.html" class="menu-link"><span class="menu-link-icon">⬆️</span>レベルアップ早見表</a>
+      <a href="cameras.html" class="menu-link active"><span class="menu-link-icon">📷</span>カメラ比較表</a>
+      <a href="exchange.html" class="menu-link"><span class="menu-link-icon">💱</span>FP交換ガイド</a>
+      <span class="menu-category">イベント</span>
+      <a href="bluelock.html" class="menu-link"><span class="menu-link-icon">⚽</span>ブルーロックコラボ</a>
+      <a href="kokaku.html" class="menu-link"><span class="menu-link-icon">🤖</span>攻殻機動隊コラボ</a>
+      <a href="shingeki.html" class="menu-link"><span class="menu-link-icon">⚔️</span>進撃の巨人コラボ</a>
+      <a href="railgun.html" class="menu-link"><span class="menu-link-icon">⚡</span>超電磁砲コラボ</a>
+      <a href="tensura.html" class="menu-link"><span class="menu-link-icon">🔵</span>転スラコラボ</a>
+      <a href="white-scorpion.html" class="menu-link"><span class="menu-link-icon">🦂</span>WHITE SCORPIONコラボ</a>
+      <a href="gr-toyota.html" class="menu-link"><span class="menu-link-icon">🏎️</span>TGRコラボ</a>
+      <a href="calbee.html" class="menu-link"><span class="menu-link-icon">🥔</span>カルビーコラボ</a>
+      <a href="his.html" class="menu-link"><span class="menu-link-icon">✈️</span>HISコラボ</a>
+      <span class="menu-category">ツール</span>
+      <a href="faq.html" class="menu-link"><span class="menu-link-icon">❓</span>よくある質問</a>
+      <a href="glossary.html" class="menu-link"><span class="menu-link-icon">📚</span>用語集</a>
+      <a href="reports.html" class="menu-link"><span class="menu-link-icon">📋</span>報告一覧</a>
+    
+    </div>
+  </div>
+  <script>
+  function toggleMenu() {
+    document.getElementById('slideMenu').classList.toggle('open');
+    document.getElementById('menuOverlay').classList.toggle('open');
+  }
+  </script>
+
+  <header class="header">
+    <h1 class="header-title">カメラ比較表</h1>
+    <p class="header-subtitle">レアリティ別ステータス・コスト一覧</p>
+  </header>
+
+  <main class="main">
+    <div class="camera-showcase">
+      <img src="images/guide/camera_3d_white.png" alt="Common" loading="lazy">
+      <img src="images/guide/camera_3d_green.png" alt="Uncommon" loading="lazy">
+      <img src="images/guide/camera_3d_purple.png" alt="Rare" loading="lazy">
+      <img src="images/guide/camera_3d_pink.png" alt="Legendary" loading="lazy">
+    </div>
+
+    <section class="guide-section">
+      <h2 class="section-title">
+        <span class="section-icon">📷</span>
+        カメラの種類
+      </h2>
+      <p>SNPITのカメラは大きく2種類に分かれます。</p>
+      <ul>
+        <li><strong>フリーカメラ</strong> - 無料でもらえる。FREEとLIMITEDの2種類。撮影でFPを獲得</li>
+        <li><strong>NFTカメラ</strong> - 購入が必要。5段階のレアリティ。撮影でSTPを獲得</li>
+      </ul>
+      <div class="info-box">
+        <p>フリーカメラでもレベルを上げてQuality30に到達すれば、メインバトルに参加してSTPを稼げます。</p>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <h2 class="section-title">
+        <span class="section-icon">📊</span>
+        NFTカメラ レアリティ比較
+      </h2>
+      <p>レアリティが高いほど初期ステータスが高く、レベルアップ時のポイント付与も多くなります。</p>
+      <div class="table-scroll">
+        <table class="camera-table">
+          <thead>
+            <tr><th>項目</th><th class="rarity-common">Common</th><th class="rarity-uncommon">Uncommon</th><th class="rarity-rare">Rare</th><th class="rarity-epic">Epic</th><th class="rarity-legendary">Legendary</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>初期ステータス合計</td><td>4～40</td><td>32～72</td><td>60～100</td><td>92～132</td><td>120～160</td></tr>
+            <tr><td>Lv UP獲得Pt</td><td>2pt</td><td>4pt</td><td>6pt</td><td>8pt</td><td>10pt</td></tr>
+            <tr><td>修理コスト(STP)</td><td>200</td><td>400</td><td>600</td><td>800</td><td>1,000</td></tr>
+            <tr><td>最大Lv</td><td>31</td><td>31</td><td>31</td><td>31</td><td>31</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <h2 class="section-title">
+        <span class="section-icon">🆓</span>
+        フリーカメラ vs NFTカメラ
+      </h2>
+      <p>フリーカメラとNFTカメラの違いをまとめました。</p>
+      <div class="table-scroll">
+        <table class="camera-table">
+          <thead>
+            <tr><th>項目</th><th>フリーカメラ(FREE)</th><th>フリーカメラ(LIMITED)</th><th>NFTカメラ(Common)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>入手方法</td><td>初期配布</td><td>期間限定配布</td><td>購入（マーケット）</td></tr>
+            <tr><td>獲得通貨</td><td>FP</td><td>FP</td><td>STP</td></tr>
+            <tr><td>レベルアップ費用</td><td>FP</td><td>FP</td><td>STP</td></tr>
+            <tr><td>Lv UP獲得Pt</td><td>2pt</td><td>2pt</td><td>2pt</td></tr>
+            <tr><td>ブーストクーラー</td><td>使用不可</td><td>使用不可</td><td>使用可能</td></tr>
+            <tr><td>ミント</td><td>不可</td><td>不可</td><td>可能</td></tr>
+            <tr><td>投票参加</td><td>可能</td><td>可能</td><td>可能</td></tr>
+            <tr><td>メインバトル</td><td>Q30達成で可</td><td>Q30達成で可</td><td>Q30達成で可</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <h2 class="section-title">
+        <span class="section-icon">🛡️</span>
+        故障と修理コスト
+      </h2>
+      <p>200枚以上撮影するとカメラが故障するリスクがあります。Battery値を上げると故障率が下がります。</p>
+      <div class="table-scroll">
+        <table class="camera-table">
+          <thead>
+            <tr><th>撮影枚数</th><th>故障確率</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1～200枚</td><td>0%（安全）</td></tr>
+            <tr><td>201～300枚</td><td>0.3%</td></tr>
+            <tr><td>301～400枚</td><td>1%</td></tr>
+            <tr><td>401枚以上</td><td>3%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="warn-box">
+        <p>故障すると、そのカメラを使用した写真撮影・ミントができなくなります。早めの修理がおすすめです。</p>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <h2 class="section-title">
+        <span class="section-icon">🤔</span>
+        どのカメラを選ぶべき？
+      </h2>
+      <ul>
+        <li><strong>完全無課金</strong> → フリーカメラでOK。Q30まで上げればメインバトルも参加可能</li>
+        <li><strong>少額課金</strong> → Commonカメラ1台。STPを直接獲得できる</li>
+        <li><strong>本格課金</strong> → Uncommon以上。初期ステータスが高く、レベルアップ効率も良い</li>
+        <li><strong>フィルム上限を増やしたい</strong> → カメラの台数を増やす（レベルアップでは増えない）</li>
+      </ul>
+    </section>
+
+    <section class="guide-section">
+      <h2 class="section-title">
+        <span class="section-icon">💬</span>
+        もっと詳しく聞きたい？
+      </h2>
+      <a href="chat.html" class="snappy-card">
+      <span class="snappy-card-icon">💬</span>
+      <div class="snappy-card-body">
+        <span class="snappy-card-title">スナピーに聞く</span>
+        <span class="snappy-card-desc">SNPITのこと、何でも答えるよ！</span>
+      </div>
+      <span class="snappy-card-arrow">›</span>
+    </a>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>SNPITガイド</p>
+    <p class="footer-note">このサイトは非公式のファンサイトです</p>
+    <p class="footer-author">運営: しんぷそん (<a href="https://x.com/chill_simpson_" target="_blank" rel="noopener">@chill_simpson_</a>)</p>
+    <div class="footer-links">
+      <a href="https://x.com/chill_simpson_" target="_blank" rel="noopener">X (Twitter)</a>
+      <a href="https://lp.snpit.xyz/" target="_blank" rel="noopener">SNPIT公式サイト</a>
+      <a href="privacy.html">プライバシーポリシー</a>
+      <a href="reports.html">報告一覧</a>
+    </div>
+  </footer>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js"></script>
+  <script src="notification-toggle.js"></script>
+</body>
+</html>
